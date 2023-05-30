@@ -3,9 +3,9 @@ import React from 'react';
 const Contact = () => {
     return (
         <div className='relative bg-contact bg-center bg-cover bg-no-repeat bg-static bg-fixed  ' id='contact'>
-        <div className='container-ml mb-[50px]  pb-10'>
+        <div className='container-ml   pb-10'>
             <div className='pt-1'>
-                <h1 className='text-white text-[40px] px-3 border-l-[5px] border-[##eae9e9d4] h-[60px] my-[48px]'>Contract</h1>
+                <h1 className='text-white text-[40px] px-3 border-l-[5px] border-[#eae9e9d4] h-[60px]  '>Contract</h1>
                 
             </div>
             <div>

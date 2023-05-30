@@ -183,7 +183,7 @@ const About = () => {
                             <span><MdOutlineReadMore size={18} /></span>
                             <span className='text-[10px] m-[0px]   '>
 
-                              <label htmlFor={`my-modal-l3`}  >
+                              <label htmlFor={`my-modal-12`}  >
 
                                 <span className='hover:underline cursor-pointer'>Read more</span> </label>
                               <AboutModal data={aboutData[2]} />
@@ -232,10 +232,10 @@ const About = () => {
                             <span><MdOutlineReadMore size={18} /></span>
                             <span className='text-[10px] m-[0px]   '>
 
-                              <label htmlFor={`my-modal-l4`}  >
+                              <label htmlFor={`my-modal-13`}  >
 
                                 <span className='hover:underline cursor-pointer'>Read more</span> </label>
-                              <AboutModal data={aboutData[4]} />
+                              <AboutModal data={aboutData[3]} />
                             </span>
                           </div>
 

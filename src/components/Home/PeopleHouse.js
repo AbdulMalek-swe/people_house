@@ -7,17 +7,17 @@ import audio from '../../Assets/People House Image & Data/we the people front pa
 import Invite from './Invite';
 import PeopleHousemodal, { PeopleHouseAudio } from '../homeSubComponents/PeopleHouse';
 const PeopleHouse = () => {
-
-    const [days, setDays] = useState(0);
+   
+    const [week, setweek] = useState(0);
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
     const [year, setYear] = useState(0)
     const [month, setMonth] = useState(0)
     useEffect(() => {
-        const compareDate = new Date('2024-11-05');
+        const compareDate = new Date('2024-1-05');
         compareDate.setDate(compareDate.getDate() + 7);
-        //just for this demo today + 7 days
+        //just for this demo today + 7 week
 
         const timer = setInterval(() => {
             const difference = timeBetweenDates(compareDate);
@@ -25,19 +25,19 @@ const PeopleHouse = () => {
             if (difference <= 0) {
                 clearInterval(timer);
             } else {
-                setDays(Math.floor(difference / (1000 * 60 * 60 * 24)));
+                setYear(Math.floor(difference / (1000 * 60 * 60 * 24 * 365)));
+                setMonth(Math.floor((difference / (1000 * 60 * 60 * 24 * 30.44)) % 12));
+                setweek(Math.floor((difference / (1000 * 60 * 60 * 24))%7));
                 setHours(Math.floor((difference / (1000 * 60 * 60)) % 24));
                 setMinutes(Math.floor((difference / 1000 / 60) % 60));
                 setSeconds(Math.floor((difference / 1000) % 60));
-                //   setYear(Math.floor((days / 365)));
-                setYear(Math.floor(difference / (1000 * 60 * 60 * 24 * 365)));
-                setMonth(Math.floor((difference / (1000 * 60 * 60 * 24 * 30.44)) % 12));
-                setDays(Math.floor(difference / (1000 * 60 * 60 * 24 * 7)));
+                //   setYear(Math.floor((week / 365)));
+                
             }
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [days]);
+    }, [week]);
 
     function timeBetweenDates(toDate) {
         const now = new Date();
@@ -71,7 +71,7 @@ const PeopleHouse = () => {
                                     </button>
                                 </Link>
 
-                                <label htmlFor="my-modal-5" className="bg-primary text-white font-medium py-2 px-5 flex justify-center  items-center rounded-md gap-6   text-center w-[250px] min-w-[250px] my-4">
+                                <label htmlFor="my-modal-5" className="bg-primary text-white font-medium py-2 px-5 flex justify-center  items-center rounded-md gap-6   text-center w-[250px] min-w-[250px] my-4 cursor-pointer">
                                     <span>Request Invite</span>
                                 </label>
 
@@ -114,7 +114,7 @@ const PeopleHouse = () => {
                                         </div>
                                         <div className='text-white font-semibold text-[30px]'>
                                             <p className='bg-primary w-full h-5'></p>
-                                            <p>{days  }</p>
+                                            <p>{week  }</p>
                                             <p>Weeks</p>
                                         </div>
                                     

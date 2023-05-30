@@ -58,7 +58,7 @@ const Podcast = () => {
         }
     };
     return (
-      <div style={{boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}>
+      <div >
         <div className='container-ml mb-[170px]' id='podcast'>
         <div>
             <div>
@@ -74,10 +74,12 @@ const Podcast = () => {
             </div>
             <div 
                className='arrow_no_margin  '>
-              <Carousel itemClass="carousel-item-padding-40-px" responsive={responsive}   >
+              <Carousel 
+              itemClass=" "
+               responsive={responsive}   >
                {
                 [img1,img2,img3,img4,img1,].map(item=>  <div   >
-                    <div className='pl-[40px] pr-[13px] mx-2  shadow-lg shadow-offset-x w-full shadow-offset-y shadow-blur shadow-color' >
+                    <div className=' ' >
                          <img src={`${item}`} alt="loading" width="100%" height="300px" className='h-[300px]'/>
                     </div>
                 </div>)
