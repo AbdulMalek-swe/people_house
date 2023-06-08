@@ -6,31 +6,12 @@ import { MdOutlineReadMore } from 'react-icons/md';
 import { GrStar } from 'react-icons/gr';
 import AboutModal, { AboutAudio, aboutData, audioData } from '../homeSubComponents/AboutSectionSub';
 const About = () => {
-  const [opened, setOpened] = useState(0);
-
-  const onClick1 = (e) => {
-    setOpened(e);
-  };
-
-
-  useEffect(() => {
-    // code to run on component mount or state update
-  }, [opened]);
-
-
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
-  const togglePlay = () => {
-    const audio = audioRef.current;
-    audio.pause();
-    setIsPlaying(!isPlaying);
-  };
-
+ 
   return (
     <div className='bg-[#002868] pb-[100px]' id='about'>
       <div className='flex  '>
 
-        <div className='mt-[130px] '>
+        <div className='mt-[130px] md:block hidden   '>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 3, 2].map(item => <div >
             <div className='text-white flex  '>
 

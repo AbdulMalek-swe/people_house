@@ -15,6 +15,7 @@ module.exports = {
         'sale-banner-bg': "url('/src/Assets/Photos/signin.jpeg')",
         'blog-banner': "url('/src/Assets/Photos/signup.jpeg')",
         'contact': "url('/src/Assets/Photos/hero.jpeg')",
+        'countImg':"url('/src/Assets/People House Image & Data/Countdown flag.jpeg')"
       },
       colors: {
         'white': '#ffffff',

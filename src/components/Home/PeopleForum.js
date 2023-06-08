@@ -9,9 +9,9 @@ const Forum = () => {
   ]);
 
   return (
-    <div className='bg-red text-center p-10 text-white'>
-      <h1 className='mb-10 text-lg'>People's Forum</h1>
-     <div className='grid grid-cols-4 gap-4 items-center justify-center'>
+    <div className='py-20 text-center p-10 text-white container-ml  '>
+      <h1 className='mb-10 text-lg md:text-[30px] text-primary'>People's Forum</h1>
+     <div className='grid grid-cols-4 gap-4  place-content-center mx-6'>
      {posts.map((post) => (
         <Post key={post.id} post={post} />
       ))}
@@ -27,7 +27,7 @@ export default Forum;
  
 export const Post = ({ post }) => {
   return (
-    <div className='bg-white text-black rounded-lg p-5'>
+    <div className='bg-white border border-primary text-black rounded-lg p-5   '>
       <h2>{post.title}</h2>
       <h3>by {post.author}</h3>
       <p>{post.content}</p>

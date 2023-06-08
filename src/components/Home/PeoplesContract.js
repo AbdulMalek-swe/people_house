@@ -33,15 +33,15 @@ const PeoplesContract = () => {
   
     return (
       <div>
-         <div className="bg-red text-white py-20">
+         <div className="bg-white text-white  ">
 
 
         <div className="container-ml">
-        <div className='pt-[10px] text-white'>
-                    <h1 className='  text-[40px] px-3 border-l-[5px] border-[#ffffff] h-[60px] my-[48px]'>Contract</h1>
-                    <p className='px-3 text-[#FFFFFFCC] font-500 text-[20px] mb-[35px]'>The People's Contract</p>
+        <div className='  text-white'>
+                    <h1 className=' text-black  text-[40px] px-3 border-l-[5px] border-black h-[60px] my-[48px]'>The People's Contract</h1>
+                  
                 </div>
-      <div className="bg-white text-black pt-[75px] px-[30px] pb-[35px] rounded-[10px]">
+      <div className="bg-white text-black   px-[30px] pb-[35px] rounded-[10px]">
         <ul>
         {contractItems.map(item => (
             <li key={item.id}className="flex justify-between   items-center   border border-primary rounded-lg mt-2 px-4 py-1">

@@ -23,14 +23,8 @@ const Navbar = () => {
 
     return (
         <>
-            {/* <div className="h-[240px] relative object-cover bg-center bg-no-repeat py-4">
-                <img
-                    src={hero}
-                    className="absolute inset-0 object-cover w-full h-full"
-                    alt=""
-                />
-            </div> */}
-            <div class="     bg-[#B22234] text-white">
+            
+            <div class="   bg-[#B22234] text-white">
                 <div class="relative flex items-center justify-between">
                     <div class="flex items-center">
 
@@ -47,7 +41,7 @@ const Navbar = () => {
 
                             <li  >
                                 <Link
- onClick={()=>{handleClick("about")}}
+                                    to="/about"
                                     class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#002868] "
                                 >
                                     About
@@ -56,7 +50,7 @@ const Navbar = () => {
                             <li className="group relative ">
 
                                 <Link
- onClick={()=>{handleClick("news")}}
+  to="/news"
                                     class=" font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#002868] "
                                      
                                 >
@@ -68,10 +62,10 @@ const Navbar = () => {
                                     </div>
                                 </Link>
 
-                                <ul className="group-hover:block hidden   absolute top-[100%] left-0 z-[999] bg-white  border space-y-3 py-4 rounded-md">
+                                <ul className="group-hover:block hidden   absolute top-[100%] left-0 z-[999] bg-white  border space-y-3 py-4 rounded-md w-[200px]">
                                     <li className=" hover:bg-slate-200">
                                         <Link
-onClick={()=>{handleClick("blog")}}
+                                          to="/blog"
                                             class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868] "
                                         >
                                             Blog
@@ -79,7 +73,7 @@ onClick={()=>{handleClick("blog")}}
                                     </li>
                                     <li className=" hover:bg-slate-200">
                                         <Link
-onClick={()=>{handleClick("reading")}}
+                                      to="/reading"
                                             class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868] "
                                         >
                                             Reading
@@ -87,17 +81,33 @@ onClick={()=>{handleClick("reading")}}
                                     </li>
                                     <li className=" hover:bg-slate-200">
                                         <Link
-onClick={()=>{handleClick("podcast")}}
+        to="/podcast"
                                             class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868] "
                                         >
                                             Podcast
+                                        </Link>
+                                    </li>
+                                    <li className=" hover:bg-slate-200" >
+                                        <Link
+                                              to="/real-news"
+                                            class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868]  "
+                                        >
+                                     Real News
+                                        </Link>
+                                    </li>
+                                    <li className=" hover:bg-slate-200" >
+                                        <Link
+                                              to="/people-forum"
+                                            class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868]  "
+                                        >
+                                    People's Forum
                                         </Link>
                                     </li>
                                 </ul>
                             </li>
                             <li  >
                                         <Link
-                                          onClick={()=>{handleClick("partner")}}
+                                           to="/partners"
                                             class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#002868] "
                                         >
                                          Partners
@@ -105,12 +115,52 @@ onClick={()=>{handleClick("podcast")}}
                                     </li>
                                     <li  >
                                         <Link
-                                              onClick={()=>{handleClick("contact")}}
+                                              to="/contract"
                                             class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#002868] "
                                         >
-                                        Contract
+                                        Contact
                                         </Link>
                                     </li>
+                                    
+                                    <li className="group relative ">
+
+                                <Link
+                                  to="/people-contract"
+                                    class=" font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#002868] "
+                                     
+                                >
+                                    <div className='flex items-center' >
+                                        <span>People's Contract</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                        </svg>
+                                    </div>
+                                </Link>
+
+                                <ul className="group-hover:block hidden   absolute top-[100%] left-0 z-[999] bg-white  border space-y-3 py-4 rounded-md w-[200px]">
+                                    
+                                    <li className=" hover:bg-slate-200">
+                                        <Link
+                                    to="/poll"
+                                            class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868] "
+                                        >
+                                           Polls
+                                        </Link>
+                                    </li>
+                                    
+                                    
+                                    
+                                </ul>
+                            </li>
+                                    <li  >
+                                        <Link
+                                              to="/candidate"
+                                            class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#002868] "
+                                        >
+                                     Candidate
+                                        </Link>
+                                    </li>
+                                   
                                     
                         </ul>
 
@@ -230,7 +280,7 @@ onClick={()=>{handleClick("podcast")}}
 
                                             <li >
                                                 <Link
-                                                   onClick={()=>{handleClick("about")}}
+                                                    to="/about"
                                                     class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                         About       
@@ -239,7 +289,7 @@ onClick={()=>{handleClick("podcast")}}
 
                                             <li className="group relative " onClick={() => setIsOpen(!isOpen)}>
                                                 <Link
-onClick={()=>{handleClick("news")}}
+  to="/news"
                                                     class=" font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#002868] "
                                                 >
                                                     News
@@ -249,7 +299,7 @@ onClick={()=>{handleClick("news")}}
                                                 <ul className={`group-hover:block hidden absolute top-[100%] left-0 z-[999999] bg-white  border space-y-3 py-4 rounded-md ${isOpen ? 'block' : 'hidden'}`}>
                                                     <li className=" hover:bg-slate-200">
                                                         <Link
-onClick={()=>{handleClick("blog")}}
+ to="/blog"
                                                             class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868] "
                                                         >
                                                             Blog
@@ -257,7 +307,7 @@ onClick={()=>{handleClick("blog")}}
                                                     </li>
                                                     <li className=" hover:bg-slate-200">
                                                         <Link
-onClick={()=>{handleClick("reading")}}
+ to="/reading"
                                                             class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868] "
                                                         >
                                                             Reading
@@ -265,10 +315,26 @@ onClick={()=>{handleClick("reading")}}
                                                     </li>
                                                     <li className=" hover:bg-slate-200">
                                                         <Link
-onClick={()=>{handleClick("podcast")}}
+ to="/podcast"
                                                             class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868] "
                                                         >
                                                             Podcast
+                                                        </Link>
+                                                    </li>
+                                                    <li className=" hover:bg-slate-200">
+                                                        <Link
+ to="/real-news"
+                                                            class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868] "
+                                                        >
+                                                         Real News
+                                                        </Link>
+                                                    </li>
+                                                    <li className=" hover:bg-slate-200">
+                                                        <Link
+ to="/people-forum"
+                                                            class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868] "
+                                                        >
+                                                         People-Forum
                                                         </Link>
                                                     </li>
 
@@ -276,7 +342,7 @@ onClick={()=>{handleClick("podcast")}}
                                             </li>
                                             <li >
                                                 <Link
-                                                   onClick={()=>{handleClick("partner")}}
+                                                   to="/partners"
                                                     class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                         Partners      
@@ -284,10 +350,40 @@ onClick={()=>{handleClick("podcast")}}
                                             </li>
                                             <li >
                                                 <Link
-                                                   onClick={()=>{handleClick("contact")}}
+                                                    to="/contract"
                                                     class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                       Contract 
+                                                       Contact 
+                                                </Link>
+                                            </li>
+                                            <li className="group relative " onClick={() => setIsOpen(!isOpen)}>
+                                                <Link
+  to="/people-contract"
+                                                    class=" font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#002868] "
+                                                >
+                                              People-Contract
+                                                </Link>
+
+
+                                                <ul className={`group-hover:block hidden absolute top-[100%] left-0 z-[999999] bg-white  border space-y-3 py-4 rounded-md ${isOpen ? 'block' : 'hidden'}`}>
+                                                    <li className=" hover:bg-slate-200">
+                                                        <Link
+ to="/poll"
+                                                            class="px-8 py-4 font-medium tracking-wide text-slate-800 transition-colors duration-200 hover:text-[#002868] "
+                                                        >
+                                                          polls
+                                                        </Link>
+                                                    </li>
+                                                     
+                                                    
+                                                </ul>
+                                            </li>
+                                            <li >
+                                                <Link
+                                                    to="/candidate"
+                                                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                >
+                                                    Candidate 
                                                 </Link>
                                             </li>
                                         </ul>

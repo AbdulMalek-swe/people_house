@@ -25,26 +25,26 @@ const RealNews = () => {
     formSetter(form => ({ ...form, [event.target.name]: event.target.value }));
   };
   return (
-    <div className='  bg-red '  >
+    <div className='   '  >
       <div className='container-ml    pb-10'>
-        <div className='pt-1'>
-          <h1 className='text-white text-[40px] px-3 border-l-[5px] border-[##eae9e9d4] h-[60px] my-[48px]'>Real News</h1>
+        <div className=' '>
+          <h1 className='text-primary text-[40px] px-3 border-l-[5px] border-primary h-[60px]  '>Real News</h1>
 
         </div>
-        <div>
+        <div className="px-[30px] ">
           <form onSubmit={handleJournalistSubmit}>
             <div className='grid grid-cols-2 gap-4'>
               <div>
                 <CustomeLabel name={" Name"} />
-                <input type="text" name="name" value={form.name} onChange={(e) => handleChange(e, setForm)} requiredonChange={handleChange} className="block w-full px-5 py-3 mt-2 text-white  placeholder-[#eae9e9d4]  bg-transparent shadow-lg rounded-lg  border " placeholder="Name" />
+                <input type="text" name="name" value={form.name} onChange={(e) => handleChange(e, setForm)} requiredonChange={handleChange} className="block w-full px-5 py-3 mt-2 text-primary  placeholder-primary  bg-transparent shadow-lg rounded-lg  border border-primary" placeholder="Name" />
               </div>
               <div>
                 <CustomeLabel name={"Section :"} />
-                <input type="text" name="section" value={form.section} onChange={(e) => handleChange(e, setForm)} className="block w-full px-5 py-3 mt-2 text-[#eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg  border" required placeholder=" Section:" />
+                <input type="text" name="section" value={form.section} onChange={(e) => handleChange(e, setForm)} className="block w-full px-5 py-3 mt-2 text-primary  placeholder-primary bg-transparent shadow-lg rounded-lg  border" required placeholder=" Section:" />
               </div>
               <div>
                 <CustomeLabel name={" Patreon Link:"} />
-                <input type="text" name="patreonLink" value={form.patreonLink} onChange={(e) => handleChange(e, setForm)} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-[#eae9e9d4]  placeholder-[#eae9e9d4]  border" placeholder="Patreon Link" />
+                <input type="text" name="patreonLink" value={form.patreonLink} onChange={(e) => handleChange(e, setForm)} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-primary  placeholder-primary  border" placeholder="Patreon Link" />
               </div>
 
 
@@ -62,11 +62,11 @@ const RealNews = () => {
                 <div className='grid grid-cols-2 gap-4'>
                   <div className="text-white">
                     Article Title:
-                    <input type="text" name="title" value={articleForm.title} onChange={(e) => handleChange(e, setArticleForm)} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-[#eae9e9d4]  placeholder-[#eae9e9d4]  border" placeholder="Article Title:" />
+                    <input type="text" name="title" value={articleForm.title} onChange={(e) => handleChange(e, setArticleForm)} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-primary  placeholder-primary  border" placeholder="Article Title:" />
                   </div>
                   <div className="text-white">
                     Article Content:
-                     <textarea name="content" value={articleForm.content} onChange={(e) => handleChange(e, setArticleForm)} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-[#eae9e9d4]  placeholder-[#eae9e9d4]  border" placeholder="Article Content:"/>
+                     <textarea name="content" value={articleForm.content} onChange={(e) => handleChange(e, setArticleForm)} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-primary  placeholder-primary  border" placeholder="Article Content:"/>
                   </div>
                 </div>
                 <button type="submit"  className="text-white border rounded-lg py-2 px-4 bg-primary mb-10 mt-5">Submit Article</button>
@@ -103,7 +103,7 @@ export default RealNews;
 
 export const CustomeLabel = ({ name }) => {
   return (
-    <label className="flex mb-2 text-sm text-white">
+    <label className="flex mb-2 text-sm text-primary">
 
       {name}
 

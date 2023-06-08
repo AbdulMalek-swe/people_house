@@ -15,36 +15,40 @@ const Candidates = () => {
   };
 
   return (
-    <div className='  bg-primary '  >
-      <div className='container-ml   pb-10'>
+    <div className='  bg-  '  >
+      <div className='container-ml   pb-5'>
         <div className='pt-1'>
-          <h1 className='text-white text-[40px] px-3 border-l-[5px] border-[##eae9e9d4] h-[60px] my-[48px]'>Contract</h1>
+          <h1 className='text-primary text-[40px] px-3 border-l-[5px] border-primary h-[60px] my-[48px]'>Candidate</h1>
 
         </div>
-        <div>
+        <div className="px-[30px] ">
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div className='grid grid-cols-2 gap-4'>
             <div>
                 <CustomeLabel name={" Name"} />
-                <input type="text" name="name" value={form.name} onChange={handleChange} className="block w-full px-5 py-3 mt-2 text-white  placeholder-[#eae9e9d4]  bg-transparent shadow-lg rounded-lg  border " required placeholder="Name"/>
+                <input type="text" name="name" value={form.name} onChange={handleChange} className="block w-full px-5 py-3 mt-2 text-primary placeholder-primary bg-transparent shadow-lg rounded-lg  border " required placeholder="Name"/>
               </div>
               <div>
                 <CustomeLabel name={"  Picture URL:"} />
-                <input type="text" name="picture" value={form.picture} onChange={handleChange} className="block w-full px-5 py-3 mt-2 text-[#eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg  border" required  placeholder=" Picture URL:"/>
+                <input type="text" name="picture" value={form.picture} onChange={handleChange} className="block w-full px-5 py-3 mt-2 text-primary  placeholder-primary bg-transparent shadow-lg rounded-lg  border" required  placeholder=" Picture URL:"/>
               </div>
               <div>
                 <CustomeLabel name={" Website:"} />
-                <input type="text" name="website" value={form.website} onChange={handleChange} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-[#eae9e9d4]  placeholder-[#eae9e9d4]  border" placeholder="website"  />
+                <input type="text" name="website" value={form.website} onChange={handleChange} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-primary  placeholder-primary  border" placeholder="website"  />
               </div>
               <div>
                 <CustomeLabel name={" Platform:"} />
-                <input name="platform" value={form.platform} onChange={handleChange} required className="block w-full px-5 py-3 mt-2 text-[#eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg border " placeholder=" Platform:" />
+                <input name="platform" value={form.platform} onChange={handleChange} required className="block w-full px-5 py-3 mt-2 text-primary  placeholder-primary bg-transparent shadow-lg rounded-lg border " placeholder=" Platform:" />
               </div>
              
             </div>
-            <div>
-              <CustomeLabel name={"Pledge to the People's Contract:"} />
-              <input type="checkbox" name="pledged" required  />
+            <div className="flex  items-center  ">
+            <input type="checkbox" name="pledged" required  />
+              
+              <label className=" ml-1 text-sm text-primary">
+              Pledge to the People's Contract:
+      
+    </label>
             </div>
             <button type="submit" className="text-white border rounded-lg py-2 px-4 bg-red">Create Profile</button>
           </form>
@@ -56,8 +60,8 @@ const Candidates = () => {
   <img class="w-full" src={candidate.picture} alt={candidate.name}/>
   <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">{candidate.name}</div>
-    <p class="text-gray-700 text-base">
-    {candidate.pledged && <span>✓ Pledged to the People's Contract</span>}
+    <p class="text-primary text-base">
+    {candidate.pledged && <span className="text-primary">✓ Pledged to the People's Contract</span>}
     </p>
   </div>
   <div class="px-6 pt-4 pb-2">
@@ -81,7 +85,7 @@ export default Candidates;
 
 export const CustomeLabel = ({ name }) => {
   return (
-    <label className="flex mb-2 text-sm text-white">
+    <label className="flex mb-2 text-sm text-primary">
 
       {name}
 

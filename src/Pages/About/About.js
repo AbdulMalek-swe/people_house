@@ -1,9 +1,9 @@
 import React from 'react'
-
-function About() {
+import About from "../../components/Home/About"
+function Abouts() {
     return (
-        <div>About</div>
+        <About/>
     )
 }
 
-export default About
+export default Abouts

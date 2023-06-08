@@ -4,8 +4,8 @@ const Contact = () => {
     return (
         <div className='relative bg-contact bg-center bg-cover bg-no-repeat bg-static bg-fixed  ' id='contact'>
         <div className='container-ml   pb-10'>
-            <div className='pt-1'>
-                <h1 className='text-white text-[40px] px-3 border-l-[5px] border-[#eae9e9d4] h-[60px]  '>Contract</h1>
+            <div className='pt-1  '>
+                <h1 className='text-white text-[40px] px-3 border-l-[5px] border-[#eae9e9d4] h-[60px] my-12 '>Contact</h1>
                 
             </div>
             <div>
@@ -28,7 +28,7 @@ const Contact = () => {
                                 <CustomeLabel name={"Your message"} />
                                 <textarea type="text" placeholder="Enter your message here" className="block w-full px-5 py-3 mt-2 text-[##eae9e9d4]  placeholder-[##eae9e9d4] bg-transparent shadow-lg rounded-lg " rows={4} />
                             </div>
-                            <button className="  mx-auto max-w-xs px-6 py-3 mt-4 text-sm font-medium tracking-wide   capitalize transition-colors duration-300 transform bg-[#FFFFFFB2] rounded-lg hover:bg-blue-400 flex justify-center items-center gap-4 rounded-[20px]">
+                            <button className="  mx-auto max-w-xs px-6 py-3 mt-4 text-sm font-medium tracking-wide   capitalize transition-colors duration-300 transform bg-[#FFFFFFB2] rounded-lg hover:bg-blue-400 flex justify-center items-center gap-4  ">
                                 <span className='text-[#002868]  '>SEND NOW</span>
                                 
                             </button>
