@@ -90,18 +90,19 @@ const router = createBrowserRouter([
                 path:"/people-forum",
                 element:<Forum/>
             },
+            {
+                path: '/login',
+                element: <Login />,
+            },
+            {
+                path: '/signup',
+                element: <Signup />,
+            },
             
         ],
 
     },
-    {
-        path: '/login',
-        element: <Login />,
-    },
-    {
-        path: '/signup',
-        element: <Signup />,
-    },
+   
     {
         path:"/subscribe",
         element:<Subscribe/>

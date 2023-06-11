@@ -11,11 +11,11 @@ const Trending = () => {
         superLargeDesktop: {
             // the naming can be any, depends on you.
             breakpoint: { max: 4000, min: 3000 },
-            items: 5
+            items: 3
         },
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 4
+            items: 3
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
@@ -32,8 +32,8 @@ const Trending = () => {
             <div>
                 
                 <div className='flex justify-between'>
-                    <span className='px-3 text-[30px]'>Popular & Trending</span>
-                    <span  className='text-[20px]'>See All</span>
+                    <span className='px-3 text-[30px] mb-6'>Popular & Trending</span>
+                    <span  className='text-[20px] mb-6'>See All</span>
                 </div>
             </div>
             <div>
@@ -44,7 +44,7 @@ const Trending = () => {
               <Carousel responsive={responsive}>
                {
                 [img1,img2,img3,img4,img1,].map(item=>    <div   >
-                    <div className='pl-[40px] pr-[13px] mx-2  shadow-lg shadow-offset-x w-full shadow-offset-y shadow-blur shadow-color' >
+                    <div className='pl-[40px] pr-[13px] mx-2  shadow-lg shadow-offset-x w-full shadow-offset-y shadow-blur shadow-color  ' >
                          <img src={item} alt="loading" width="100%" height="300px" className='h-[300px]'/>
                     </div>
                 </div>)

@@ -25,11 +25,11 @@ const Subscribe = () => {
                         <span>Cancel Anytime</span>
                     </p>
                     <div className='flex justify-center'>
-                        <div className="form-control  ">
-                            <label className="cursor-pointer label">
-                                <span className="label-text text-[17px] mx-4">Billed Yearly </span>
-                                <input type="checkbox" className="toggle toggle-accent" />
-                                <span className="label-text text-[17px]  mx-4">Billed Monthly</span>
+                        <div className="form-control   ">
+                            <label className="cursor-pointer label text-red-700 ">
+                                <span className="label-text text-[17px] mx-4  ">Billed Monthly</span>
+                                <input type="checkbox" className="toggle toggle-accent text-red-700 bg-red focus:bg-[#002868]" />
+                                <span className="label-text text-[17px]  mx-4">Billed Yearly</span>
                             </label>
                         </div>
                     </div>
@@ -41,11 +41,10 @@ const Subscribe = () => {
                     <div className=''>
                         <div className='text-center  h-[380px] bg-[#B22234] pt-[79px] border  '  >
                             <h2 className='text-white text-[24px] font-bold '>Liberty Plan</h2>
-                            <h1 className='text-white text-[64px] font-bold mt-[27px]'>$0</h1>
+                            <h1 className='text-white text-[64px] font-bold mt-[27px]'>$0.99</h1>
                             <p className='text-[#FFFFFFB2] text-[14px]  font-normal   mb-[36px]'>per user, per month</p>
-                            {/* <button  htmlFor="my-modal-5" className=''> Subscribe </button> */}
-                            {/* The button to open modal */}
-<label htmlFor="my-modal-5" className="text-black text-[24px]  font-normal  bg-white mb-[36px] py-[6px] px-[12px] pointer-cursor" onClick={()=>handle({name:"Liberty Plan",amount:20,m:3.00,y:36.00,des:"By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",subH:"Choose a billing period and finish the upgrade process"})}>Subscribe
+                             
+<label htmlFor="my-modal-5" className="text-black text-[24px]  font-normal  bg-white mb-[36px] py-[6px] px-[12px] pointer-cursor shadow-lg hover:underline  cursor-pointer" onClick={()=>handle({name:"Liberty Plan",amount:20,m:3.00,y:36.00,des:"By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",subH:"Choose a billing period and finish the upgrade process"})}>Subscribe
 </label>
 
                         </div>
@@ -55,7 +54,7 @@ const Subscribe = () => {
                             <h2 className='text-[#000000] text-[24px] font-bold '>Patriot Plan</h2>
                             <h1 className='text-[#000000] text-[64px] font-bold mt-[27px]'>$2</h1>
                             <p className='text-[#000000B2] text-[14px]  font-normal   mb-[36px]'>per user, per month</p>
-                            <label htmlFor="my-modal-5" className="text-black text-[24px]  font-normal  bg-white mb-[36px] py-[6px] px-[12px] pointer-cursor" onClick={()=>handle({name:"Patriot Plan",amount:30,m:2.00,y:24.00,des:"By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",subH:"Choose a billing period and finish the upgrade process"})}>Subscribe
+                            <label htmlFor="my-modal-5" className="text-black text-[24px]  font-normal  bg-white mb-[36px] py-[6px] px-[12px] pointer-cursor shadow-lg hover:underline cursor-pointer" onClick={()=>handle({name:"Patriot Plan",amount:30,m:2.00,y:24.00,des:"By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",subH:"Choose a billing period and finish the upgrade process"})}>Subscribe
 </label>
  
                         </div>
@@ -65,7 +64,7 @@ const Subscribe = () => {
                             <h2 className='text-white text-[24px] font-bold '>Eagle Plan</h2>
                             <h1 className='text-white text-[64px] font-bold mt-[27px]'>$8</h1>
                             <p className='text-[#FFFFFFB2] text-[14px]  font-normal   mb-[36px]'>per user, per month</p>
-                            <label htmlFor="my-modal-5" className="text-black text-[24px]  font-normal  bg-white mb-[36px] py-[6px] px-[12px] pointer-cursor" onClick={()=>handle({name:"Eagle Plan",amount:30,m:2.00,y:24.00,des:"By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",subH:"Choose a billing period and finish the upgrade process"})}>Subscribe
+                            <label htmlFor="my-modal-5" className="text-black text-[24px]  font-normal  bg-white mb-[36px] py-[6px] px-[12px] pointer-cursor shadow-lg hover:underline cursor-pointer" onClick={()=>handle({name:"Eagle Plan",amount:30,m:2.00,y:24.00,des:"By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",subH:"Choose a billing period and finish the upgrade process"})}>Subscribe
 </label>
                    </div>
                     </div>
@@ -76,7 +75,7 @@ const Subscribe = () => {
  Stripes Plan</h2>
                             <h1 className='text-white text-[64px] font-bold mt-[27px]'>$15</h1>
                             <p className='text-[#FFFFFFB2] text-[14px]  font-normal   mb-[36px]'>per user, per month</p>
-                            <label htmlFor="my-modal-5" className="text-black text-[24px]  font-normal  bg-white mb-[36px] py-[6px] px-[12px] pointer-cursor" onClick={()=>handle({name:"Stars & Stripes Plan",amount:60,m:5.00,y:60.00,des:"By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",subH:"Choose a billing period and finish the upgrade process"})}>Subscribe
+                            <label htmlFor="my-modal-5" className="text-black text-[24px]  font-normal  bg-white mb-[36px] py-[6px] px-[12px] pointer-cursor shadow-lg hover:underline cursor-pointer" onClick={()=>handle({name:"Stars & Stripes Plan",amount:60,m:5.00,y:60.00,des:"By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",subH:"Choose a billing period and finish the upgrade process"})}>Subscribe
 </label>
          
                         </div>
@@ -87,7 +86,7 @@ const Subscribe = () => {
 Fathers Plan</h2>
                             <h1 className='text-[#000000] text-[64px] font-bold mt-[12px] mb-[11px]'>$20</h1>
                             <p className='text-[#000000B2] text-[14px]  font-normal   mb-[20px]'>per user, per month</p>
-                            <label htmlFor="my-modal-5" className="text-black text-[24px]  font-normal  bg-white mb-[36px] py-[6px] px-[12px] pointer-cursor" onClick={()=>handle({name:"Founding Fathers Plan",amount:80,m:3.00,y:36.00,des:"By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",subH:"Choose a billing period and finish the upgrade process"})}>Subscribe
+                            <label htmlFor="my-modal-5" className="text-black text-[24px]  font-normal  bg-white mb-[36px] py-[6px] px-[12px] pointer-cursor shadow-lg hover:underline cursor-pointer" onClick={()=>handle({name:"Founding Fathers Plan",amount:80,m:3.00,y:36.00,des:"By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",subH:"Choose a billing period and finish the upgrade process"})}>Subscribe
 </label>
                     </div>
                     </div>

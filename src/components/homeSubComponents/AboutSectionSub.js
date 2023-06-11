@@ -104,6 +104,8 @@ export const audioData = [
 
 export  const aboutData =[  {
   id:10,
+  s1:'bg-white  text-black p-4 ',
+  mh1:'PLEDGE AND CREDO',
   th1:'Pledge:',
   th2:"Credo",
   text1:"We, the members of this community, pledge to honor and protect the sacrifices made by our military heroes who shed their blood to secure our freedom and ensure the future of our nation. We recognize that their sacrifices were hard-won and the stories lying beneath the headstones at Arlington Cemetery and other military cemeteries a  cross the country are the seeds of freedom that must be protected at all costs. We reject hate and anger an d seek wisdom from the Lord to work towards a brighter future for all Americans. We will hold our leaders accountable, demand that they uphold the Constitution and the laws of our land, and replace those who fail to uphold their duty to our nation.",
@@ -111,6 +113,7 @@ export  const aboutData =[  {
 },
 {
   id:11,
+  s1:'bg-white text-black p-4 ',
   th1:"About",
   th2:"",
   text1:"Fed up with the Billions of dollars that powerful elites pour into our elections, manipulating the system to serve their interests? It's time to fight back, together, we can make their money irrelevant. Introducing The People's House, a revolutionary web portal designed to unite American citizens and create the most influential force in politics: The People's Lobby. The People's House isn't about left or right; it's about joining forces to take back our government from the privileged and the internationalist crowd. We recognize that money in politics has distorted our democracy, but we also know that our  collective strength can render it powerless.Our groundbreaking platform offers you the tools to connect, collaborate, and make your voice heard. Vet politicians, vote on policy proposals, engage in polls, tune in to podcasts, and participate in live debates – The People's House is your one-stop destination to reclaim your rightful place in American politics. Soon, we will launch this powerful movement, and you can be a trailblazer in this new era of people-driven politics. Request an invitation today, and together, we'll build The People's Lobby, a united front that politicians cannot ignore.Embrace this unique opportunity to stand up against the torrent of money in politics and make a lasting impact. Request your invitation now, and let's create an America where the power lies in the hands of the people, not in the pockets of the elite. Rise up, America, and let's build The People's Lobby. The future is ours to shape.",
@@ -118,6 +121,7 @@ export  const aboutData =[  {
 },
 {
   id:12,
+  s1:'bg-white text-black p-4 ',
   th1:"VISION",
   th2:"",
   text1:"VISION At The Peoples House, our vision is to ignite a powerful movement that restores the United States to its founding principles, creating a future where equality of education and opportunity, as well as prope renvironmental management, prevail for all. We envision a nation where the government serves the people, not the other way around, and where every citizen's voice is heard and valued. Read more Read more Listen Vission At The Peoples House, our vision is to ignite a powerful movement that restores the United States to its founding principles, creating a future where equality of education and opportunity, as well as proper environmental management, prevail for all. We envision a nation where the government serves the people, not the other way around, and where every citizen's voice is heard and valued. We are committed to forging a new path where the justice system is truly just and equal, holding all individuals accountable for their actions, regardless of their position or status. Our mission is to break down the barriers of corruption and privilege that have allowed politicians and government officials to evade the consequences of their actions. We believe in the power of education as a catalyst for change, fostering critical thinking and empowering the next generation to stand up for their beliefs. By putting an end to the radicalization and destruction of our youth, we can create an environment where innovation, creativity, and collaboration thrive. As we work to rebuild a government for, by, and of the people, we will champion policies that promote equality of education and opportunity, along with proper environmental management, ensuring that all Americans have access to the resources and opportunities they need to build a brighter future for themselves and their families. Together, we will bring about a new era of unity, patriotism, and hope – a future where every American can prosper, and where our nation stands as a beacon of freedom, democracy, and progress for generations to come.",
@@ -125,6 +129,7 @@ export  const aboutData =[  {
 },
 {
   id:13,
+  s1:'bg-white text-black p-4 ',
   th1:"Mission",
   th2:"",
   text1:"content comming soon",
@@ -132,6 +137,7 @@ export  const aboutData =[  {
 },
 {
   id:14,
+  s1:'bg-white text-black p-4 ',
   th1:"Plan",
   th2:" ",
   text1:"Content comming soon",

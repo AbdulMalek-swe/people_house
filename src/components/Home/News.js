@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import img from '../../Assets/Photos/Video Marketing.png';
 import img1 from '../../Assets/Photos/Telecom.png';
 import img2 from '../../Assets/Photos/Vector (1).png'
-import { Link } from 'react-router-dom';
+import imgs from '../../Assets/Photos/countdownflag.png'
+import { Link, useLocation } from 'react-router-dom';
 const News = () => {
     const data =  [2,3,4,5,5,5,5,5,5,1,2,3,4,5,6,5,6,5,6,3,2,1,2,3,4,3];
+    const {pathname} = useLocation()
     const [toggler,setTogller] = useState(true)
     const [sliceNumber,setSliceNumber] = useState(10);
     const addSlice = e =>{
@@ -16,6 +18,7 @@ const News = () => {
         }
       
     }
+   
     return (
         <div className='container-ml mb-[100px]' id='news'>
             <div>
@@ -24,16 +27,15 @@ const News = () => {
                     <p className='px-3 text-[#000000cc] font-500 text-[20px] mb-[22px]'> Content</p>
                 </div>
                  
-                <div className='grid md:grid-cols-3 grid-cols-1 gap-[20px]'>
+               {  pathname ==='/news' ? <div className='grid md:grid-cols-3 grid-cols-1 gap-[20px]'>
+                </div>: <div className='grid md:grid-cols-3 grid-cols-1 gap-[20px]'>
                     <div  >
-                        <div className='h-[300px]  pl-[40px] pr-[13px] border border-[#001AFF] border-solid shadow-lg shadow-offset-x shadow-offset-y shadow-blur shadow-color'>
-                            <div className='flex items-center pt-[37px] mb-[35px]'>
-                                <div  >  <img src={img} alt='' height="50px" width="50px" /></div>
-                                <p className='text-dark text-[20px] py-[2px] mx-8  mb-[-15px]'>Video Streaming</p>
+                        <div className=' '>
+                            <div className='relative'>
+                                <img src={imgs} className='container-object' alt="" />
+                                <h1 className='absolute translate-1/2 top-1/3 ml-12 text-center text-white text-3xl'>Video Streaming</h1>
                             </div>
-                            <div className='pb-[41px]'>
-                                <span className='text-[20px] font-normal'>Set-top boxes and embedded software for the broadcasting market, including DVB, OTT, and IPTV solutions. </span>
-                            </div>
+                            
                         </div>
                     </div>
                     <div  >
@@ -58,17 +60,17 @@ const News = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>}
                </div>
-               <div className='grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-4 '>
+               <div className='grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-4 my-7'>
                { 
-              data.slice(0,sliceNumber).map(item => <NewsAll  />)
+               pathname ==='/news' && data.slice(0,sliceNumber).map(item => <NewsAll  />)
                }
               
             </div>
            <div className='text-center mb-7 mt-7 text-white'>
             {
-                toggler && <button className='bg-primary px-5 py-3 rounded ' onClick={addSlice}>See More</button>
+              pathname ==='/news' ? toggler && <button className='bg-primary px-5 py-3 rounded ' onClick={addSlice}>See More</button>:""
             }
            
            </div>
@@ -81,7 +83,7 @@ export default News;
 // News card design here 
 export const NewsAll = () => {
     return (
-               <div className='pl-[40px] pr-[13px] mx-2    border-[.5px] border-primary rounded'>
+               <div className='pl-[40px] pr-[13px] mx-2  rounded shadow-lg'>
                 <div className='flex items-center pt-[37px] mb-[35px]'>
                     <div  >  <img src={img2} alt='' height="50px" width="50px" /></div>
                     <p className='text-dark text-[20px] py-[2px] mx-8  mb-[-15px]'>Today’s Article</p>

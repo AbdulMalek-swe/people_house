@@ -62,24 +62,23 @@ const PeopleHouse = () => {
                                 <div className='flex justify-center mx-1 flex-col items-center'>
                                     <PeopleHousemodal />
                                 </div>
-                                <div className='mx-1 flex flex-col justify-center mx-1 items-center'>
+                                <div className='  flex flex-col justify-center mx-1 items-center'>
                                     <PeopleHouseAudio />
                                 </div>
                             </div>
                             <div className="lg:flex lg:flex-row flex-col    items-center gap-10 my-8">
                                 <Link to="/subscribe">
                                     <button className="bg-red text-white font-medium py-2 px-5 flex items-center rounded-md gap-6 w-[250px] text-center justify-center my-4">
-                                        <span>Subscribe</span>
+                                        <span>Signup</span>
+                                    </button>
+                                </Link>
+                                <Link to="/login">
+                                    <button className="bg-primary text-white font-medium py-2 px-5 flex items-center rounded-md gap-6 w-[250px] text-center justify-center my-4">
+                                        <span>Log in</span>
                                     </button>
                                 </Link>
 
-                                <label htmlFor="my-modal-5" className="bg-primary text-white font-medium py-2 px-5 flex justify-center  items-center rounded-md gap-6   text-center w-[250px] min-w-[250px] my-4 cursor-pointer">
-                                    <span>Request Invite</span>
-                                </label>
-
-                                {/* Put this part before </body> tag */}
-                                <input type="checkbox" id="my-modal-5" className="modal-toggle" />
-                                <Invite />
+                                
                             </div>
                         </div>
 

@@ -9,15 +9,10 @@ const handleClick = (id) => {
   };
   
 const Navbar = () => {
-    let [hit, setHit] = useState(false)
+   
+    
 
-    useEffect(() => {
-        document.body.classList.toggle('overflow-hidden', hit);
-    }, [hit]);
-
-    function toggle() {
-        setHit(!hit);
-    }
+     
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -172,13 +167,19 @@ const Navbar = () => {
 
                     {/*  */}
                     <ul class="flex items-center hidden space-x-8 lg:flex mr-3">
+                       <li className='ml-3'>
+                            <Link to="/login">
+                                 Log-in
+                            </Link>
+                        </li>
                         <li>
                             <Link to="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-facebook " viewBox="0 0 16 16">
                                     <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                                 </svg>
                             </Link>
                         </li>
+                       
                         <li>
                             <Link to="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
@@ -263,7 +264,7 @@ const Navbar = () => {
                                             <button
                                                 aria-label="Close Menu"
                                                 title="Close Menu"
-                                                class="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                                class="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline text-black"
                                                 onClick={() => setIsMenuOpen(false)}
                                             >
                                                 <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
