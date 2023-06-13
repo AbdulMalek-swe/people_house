@@ -12,7 +12,7 @@ import Polls from "../Pages/Poll/Poll"
 import Abouts from "../Pages/About/About"
 import Blog, { BlogDetails } from "../components/Home/Blog"
 import Reading, { ReadingDetails } from "../components/Home/Reading"
-import Podcast from "../components/Home/Podcast"
+import Podcast, { PodcastDetails } from "../components/Home/Podcast"
 import Contact from "../components/Home/Contact"
 import Partner from "../components/Home/Partner"
 import News, { NewsDetails } from "../components/Home/News"
@@ -63,6 +63,10 @@ const router = createBrowserRouter([
             {
                 path:"/podcast",
                 element:<Podcast/>
+            },
+            {
+                path:"/podcast/:id",
+                element:<PodcastDetails/>
             },
             {
                 path:"/about",

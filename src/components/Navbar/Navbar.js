@@ -155,6 +155,14 @@ const Navbar = () => {
                                      Candidate
                                         </Link>
                                     </li>
+                                    <li  >
+                                        <Link
+                                              to="/zoo"
+                                            class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#002868] "
+                                        >
+                                    Zoo
+                                        </Link>
+                                    </li>
                                    
                                     
                         </ul>
@@ -385,6 +393,14 @@ const Navbar = () => {
                                                     class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                     Candidate 
+                                                </Link>
+                                            </li>
+                                            <li >
+                                                <Link
+                                                    to="/zoo"
+                                                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                >
+                                                  Zoo
                                                 </Link>
                                             </li>
                                         </ul>

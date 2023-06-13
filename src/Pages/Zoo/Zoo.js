@@ -23,8 +23,8 @@ const Zoo = () => {
         <div className='container-ml mb-[100px]' id='news'>
             <div>
                 <div>
-                    <h1 className='text-black text-[40px] px-3 border-l-[5px] border-[#002868] h-[60px] my-[48px]'>News</h1>
-                    <p className='px-3 text-[#000000cc] font-500 text-[20px] mb-[22px]'> Content</p>
+                    <h1 className='text-black text-[40px] px-3 border-l-[5px] border-[#002868] h-[60px] my-[48px]'> Zoo</h1>
+                    <p className='px-3 text-[#000000cc] font-500 text-[20px] mb-[22px]'> Content Here</p>
                 </div>
 
                  

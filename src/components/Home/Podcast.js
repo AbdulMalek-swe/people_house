@@ -6,39 +6,7 @@ import img2 from '../../Assets/People House Image & Data/mike.jpg';
 import img3 from '../../Assets/People House Image & Data/allmike.jpg';
 import img4 from '../../Assets/People House Image & Data/mike1.jpg';
 import img1 from '../../Assets/People House Image & Data/mikeprimary.jpg';
-
-const CustomRightArrow = ({ onClick, ...rest }) => {
-  const {
-    onMove,
-    carouselState: { currentSlide, deviceType }
-  } = rest;
-  // onMove means if dragging or swiping in progress.
-  return (<button
-    onClick={() => onClick()}
-    style={{
-      backgroundColor: 'red', // Change background color to red
-      border: 'none', // Remove border
-      padding: '10px', // Add padding
-      borderRadius: '50%', // Make button circular
-      boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)' // Add box shadow
-    }}
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="white" // Change arrow color to white
-      stroke="#000000"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M9 18l6-6-6-6" />
-    </svg>
-  </button>);
-};
-
+import youtube from '../../Assets/Icons/youtube.svg';
 const Podcast = () => {
   const { pathname } = useLocation()
 
@@ -139,7 +107,7 @@ export const PodcastAll = () => {
           <p>
             Lorem ipsum is my favourite text so i alltime use it
           </p>
-          <Link to="/reading/1">
+          <Link to="/podcast/1">
             <button className=' hover:underline hover:text-primary   py-3 rounded text-black my-5'>Read more</button>
           </Link>
         </div>
@@ -147,3 +115,58 @@ export const PodcastAll = () => {
     </div>
   );
 };
+
+
+
+export const PodcastDetails = () => {
+  return (
+    <>
+      <div className='bg-primary p-2'>
+        <div className='text-white text-center'>
+          <h3 className='text-xl mb-5'>Episode 10</h3>
+          <h1 className='text-3xl mb-5'>Why empathy is key to your business & your future</h1>
+          <h2 className='text-xl mb-5'>Interview by CITLALLI KLOCKO KRIS KREIGER</h2>
+          <span className='text-xl mb-5'>Date: 30 jun 2020</span>
+        </div>
+      </div>
+       
+      <div className='flex  justify-center  pr-4 pl-4 gap-x-6 gap-y-4 mt-4 '>
+        <div>
+            <img src={youtube} alt='loading ...'/>
+        </div>
+       
+        <div>
+          <h1 className='text-2xl text-black text-center' >Guests</h1>
+       { [1,2,3].map(item=> <div className='p-4   rounded shadow-md'>
+          <div className='flex gap-2  '>
+            <div className='  w-1/6'>
+              <img src={img1} className='rounded-full w-full' alt='loading' />
+            </div>
+            <div className='mb-3'>
+              <h1 className='pt-7 mb-2'>Header</h1>
+              <p>
+                Lorem ipsum is my favourite text so i alltime use it
+              </p>
+               
+            </div>
+          </div>
+        </div>)}
+          </div> 
+      </div>
+      <div >
+        <div  className=' my-5'>
+           <div className='md:px-20 lg:px-28'>
+           <h1 className='text-xl'>In This Episode</h1>
+            <p className='text-[12px]'>this is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sv</p>
+           </div>
+           <div className='md:px-20 lg:px-28 my-8 text-center'>
+           <h1 className='text-xl'>Transcript</h1>
+            <p className='text-[12px]'>this is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is s</p>
+            <button className='bg-primary px-5 py-2 text-white rounded'>see more</button>
+           </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
