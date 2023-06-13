@@ -20,6 +20,7 @@ import PeoplesContract from "../components/Home/PeoplesContract"
 import Candidates from "../components/Home/Candidate"
 import RealNews from "../components/Home/RealNews"
 import Forum from "../components/Home/PeopleForum"
+import Zoo from "../Pages/Zoo/Zoo"
 
 const router = createBrowserRouter([
     {
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
             },{
                 path:"/people-forum",
                 element:<Forum/>
+            },
+            {
+                path: '/zoo',
+                element: <Zoo/>,
             },
             {
                 path: '/login',

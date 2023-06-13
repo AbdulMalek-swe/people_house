@@ -41,7 +41,7 @@ const ModalSub = ({data}) => {
  </div>
 </div>
     <div className="modal-action flex items-center">
-      <label htmlFor="my-modal-5" className="text-[#B22234] text-[20px]">Cancel</label>
+      <label htmlFor="my-modal-5" className="text-[#B22234] text-[20px]  cursor-pointer">Cancel</label>
       <button htmlFor="my-modal-5" className="px-[32px] py-[10px]  bg-[#002868] rounded-[10px] text-white">Choose Payment method</button>
     </div>
   </div>
