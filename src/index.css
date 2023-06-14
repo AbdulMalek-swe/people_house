@@ -120,4 +120,11 @@ code {
   display: none;
 }
 
- 
+ /* subscribe toggle button code  */
+
+ .toggle-accent:checked{
+  background-color: #002868 !important;
+ }
+ .toggle-accent{
+  background-color: red !important;
+ }

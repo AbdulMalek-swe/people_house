@@ -71,8 +71,8 @@ const Partner = () => {
                  </div>
                 </div>
                 <div>
-                  <h1 className=' mb-7 text-3xl text-bold '>Role</h1>
-                   <ul style={{listStyleType:"circle"}}>
+                  <h1 className=' mb-7 text-3xl text-bold text-left'>Role</h1>
+                   <ul style={{listStyleType:"circle"}} className='mx-5'>
                    <li >We, the members of this community.</li>
                    <li>We, the members of this community.</li>
                    <li>We, the members of this community.</li>

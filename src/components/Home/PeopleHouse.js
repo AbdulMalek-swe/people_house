@@ -67,7 +67,7 @@ const PeopleHouse = () => {
                                 </div>
                             </div>
                             <div className="lg:flex lg:flex-row flex-col    items-center gap-10 my-8">
-                                <Link to="/subscribe">
+                                <Link to="/signup">
                                     <button className="bg-red text-white font-medium py-2 px-5 flex items-center rounded-md gap-6 w-[250px] text-center justify-center my-4">
                                         <span>Signup</span>
                                     </button>

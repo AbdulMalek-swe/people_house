@@ -130,7 +130,7 @@ export const PodcastDetails = () => {
         </div>
       </div>
        
-      <div className='flex  justify-center  pr-4 pl-4 gap-x-6 gap-y-4 mt-4 '>
+      <div className='flex  justify-center items-center pr-4 pl-4 gap-x-6 gap-y-4 mt-4 '>
         <div>
             <img src={youtube} alt='loading ...'/>
         </div>
@@ -138,12 +138,12 @@ export const PodcastDetails = () => {
         <div>
           <h1 className='text-2xl text-black text-center' >Guests</h1>
        { [1,2,3].map(item=> <div className='p-4   rounded shadow-md'>
-          <div className='flex gap-2  '>
+          <div className='flex gap-2 '>
             <div className='  w-1/6'>
-              <img src={img1} className='rounded-full w-full' alt='loading' />
+              <img src={img1} className='rounded-full w-48 ' alt='loading' />
             </div>
             <div className='mb-3'>
-              <h1 className='pt-7 mb-2'>Header</h1>
+              <h1 className='  mb-2'>Header</h1>
               <p>
                 Lorem ipsum is my favourite text so i alltime use it
               </p>
@@ -154,10 +154,10 @@ export const PodcastDetails = () => {
           </div> 
       </div>
       <div >
-        <div  className=' my-5'>
+        <div  className=' my-10'>
            <div className='md:px-20 lg:px-28'>
-           <h1 className='text-xl'>In This Episode</h1>
-            <p className='text-[12px]'>this is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sv</p>
+           <h1 className='text-xl text-center'>In This Episode</h1>
+            <p className='text-[12px] text-center'>this is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sv</p>
            </div>
            <div className='md:px-20 lg:px-28 my-8 text-center'>
            <h1 className='text-xl'>Transcript</h1>
