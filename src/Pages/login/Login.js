@@ -23,12 +23,12 @@ export const Login = () => {
                     <div class="w-full max-w-lg mx-auto mt-6 ">
                         <form className="space-y-8">
                             <div>
-                                <label class="block mb-2 text-sm text-slate-300">Username or Email</label>
-                                <input type="email" placeholder="Enter your username or email" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <label class="block mb-2 text-sm text-slate-300">Username Or Email</label>
+                                <input type="email" placeholder="Enter Your Username Or Email" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-transparent shadow-lg rounded-lg border border-white" />
                             </div>
                             <div>
                                 <label class="block mb-2 text-sm text-slate-300">Password</label>
-                                <input type="password" placeholder="Enter your password" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="password" placeholder="Enter Your Password" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  border border-white " />
                             </div>
 
                             <div className="flex justify-between text-slate-200">

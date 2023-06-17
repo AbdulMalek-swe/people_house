@@ -113,62 +113,62 @@ const handleAgree = e =>{
                         <form className="space-y-4">
                             <div>
                                 <CustomeLabel name={"Username"} />
-                                <input type="text" placeholder="Enter your username or email" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " required />
+                                <input type="text" placeholder="Enter Your Username Or Email" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg border border-white " required />
                             </div>
                             <div>
                                 <CustomeLabel name={"Email"} />
-                                <input type="email" placeholder="Enter your username or email" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " required />
+                                <input type="email" placeholder="Enter Your Username Or Email" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " required />
                             </div>
 
                             <div>
                                 <CustomeLabel name={"First Name"} />
-                                <input type="text" placeholder="First Name" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="text" placeholder="First Name" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
                             <div>
                                 <CustomeLabel name={"Last Name"} />
-                                <input type="text" placeholder="Last Name" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="text" placeholder="Last Name" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
 
                             <div>
                                 <CustomeLabel name={"Password"} />
-                                <input type="password" placeholder="password" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="password" placeholder="Password" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
 
                             <div>
                                 <CustomeLabel name={"Password Confirmation"} />
-                                <input type="password" placeholder="Confirm password" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="password" placeholder="Confirm Password" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
                             <div>
                                 <CustomeLabel name={"Cell phone Number"} />
-                                <input type="tel" placeholder="cell phone number" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="tel" placeholder="Cell Phone Number" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
                             <div>
                                 <CustomeLabel name={"Birth Month and Year"} />
-                                <input type="date" placeholder="Enter your password" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="date" placeholder="Enter Your Password" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
                             <div>
                                 <CustomeLabel name={"State"} />
-                                <input type="text" placeholder="State" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="text" placeholder="State" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
                             <div>
                                 <CustomeLabel name={"City"} />
-                                <input type="text" placeholder="State" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="text" placeholder="State" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
                             <div>
                                 <CustomeLabel name={"Country"} />
-                                <input type="text" placeholder="Country" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="text" placeholder="Country" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
                             <div>
                                 <CustomeLabel name={"Political Affiliation"} />
-                                <input type="text" placeholder="Democrate" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="text" placeholder="Democrate" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
                             <div>
                                 <CustomeLabel name={"Number of National Elections voted in"} />
-                                <input type="text" placeholder="1" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="text" placeholder="1" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
                             <div>
                                 <CustomeLabel name={"Number of State Elections voted in"} />
-                                <input type="text" placeholder="1" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg " />
+                                <input type="text" placeholder="1" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
                             </div>
 
                             <div className="flex flex-col justify-start text-slate-300">
@@ -185,7 +185,7 @@ const handleAgree = e =>{
                                 </p>
 
                             </div>
-                            <button className="  mx-auto max-w-xs px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-800 rounded-lg hover:bg-blue-400 flex justify-center items-center gap-4">
+                            <button className="  mx-auto max-w-xs px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-800  rounded-lg   border border-white hover:bg-blue-400 flex justify-center items-center gap-4">
 
                                 <span className='text-center'>Sign up</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
@@ -217,7 +217,7 @@ export default Signup;
 
 export const CustomeLabel = ({ name }) => {
     return (
-        <label className="flex mb-2 text-sm text-slate-300">
+        <label className="flex mb-2 text-sm text-slate-300 capitalize">
 
             {name}
 

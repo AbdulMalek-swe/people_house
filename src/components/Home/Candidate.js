@@ -34,7 +34,7 @@ const Candidates = () => {
               </div>
               <div>
                 <CustomeLabel name={" Website:"} />
-                <input type="text" name="website" value={form.website} onChange={handleChange} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-primary  placeholder-primary  border" placeholder="website"  />
+                <input type="text" name="website" value={form.website} onChange={handleChange} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-primary  placeholder-primary  border" placeholder="Website"  />
               </div>
               <div>
                 <CustomeLabel name={" Platform:"} />

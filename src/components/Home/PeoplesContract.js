@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import Invite from "./Invite";
+ 
 const PeoplesContract = () => {
     // Mock data for the contract items
     const [contractItems, setContractItems] = useState([
@@ -41,6 +42,9 @@ const PeoplesContract = () => {
                     <h1 className=' text-black  text-[40px] px-3 border-l-[5px] border-black h-[60px] my-[48px]'>The People's Contract</h1>
                   
                 </div>
+                <div>
+                <Invite/> 
+               </div>
       <div className="bg-white text-black   px-[30px] pb-[35px] rounded-[10px]">
         <ul>
         {contractItems.map(item => (

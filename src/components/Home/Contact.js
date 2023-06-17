@@ -13,20 +13,20 @@ const Contact = () => {
                            <div className='grid grid-cols-2 gap-4'>
                            <div>
                                 <CustomeLabel name={" Name"} />
-                                <input type="text" placeholder="Enter your name" className="block w-full px-5 py-3 mt-2 text-[##eae9e9d4]  placeholder-[##eae9e9d4] bg-transparent shadow-lg rounded-lg " required />
+                                <input type="text" placeholder="Enter Your Name" className="block w-full px-5 py-3 mt-2 text-[#eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg border border-black " required />
                             </div>
                             <div>
                                 <CustomeLabel name={"Email"} />
-                                <input type="email" placeholder="Enter your  email" className="block w-full px-5 py-3 mt-2 text-[##eae9e9d4]  placeholder-[##eae9e9d4] bg-transparent shadow-lg rounded-lg " required />
+                                <input type="email" placeholder="Enter Your  Email" className="block w-full px-5 py-3 mt-2 text-[#eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg border border-black" required />
                             </div>
                             <div>
                                 <CustomeLabel name={"Your Subject"} />
-                                <input type="text" placeholder="Your Subject" className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-[##eae9e9d4]  placeholder-[##eae9e9d4] " />
+                                <input type="text" placeholder="Your Subject" className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-[#eae9e9d4]  placeholder-[#eae9e9d4] border border-black" />
                             </div>
                            </div>
                             <div>
                                 <CustomeLabel name={"Your message"} />
-                                <textarea type="text" placeholder="Enter your message here" className="block w-full px-5 py-3 mt-2 text-[##eae9e9d4]  placeholder-[##eae9e9d4] bg-transparent shadow-lg rounded-lg " rows={4} />
+                                <textarea type="text" placeholder="Enter Your Message Here" className="block w-full px-5 py-3 mt-2 text-[##eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg border border-black" rows={4} />
                             </div>
                             <button className="  mx-auto max-w-xs px-6 py-3 mt-4 text-sm font-medium tracking-wide   capitalize transition-colors duration-300 transform bg-[#FFFFFFB2] rounded-lg hover:bg-blue-400 flex justify-center items-center gap-4  ">
                                 <span className='text-[#002868]  '>SEND NOW</span>
