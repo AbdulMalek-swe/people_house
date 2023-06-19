@@ -1,19 +1,20 @@
+import { Field, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
-   
+
     const [visible, setVisible] = useState(false)
     useEffect(() => {
         console.log(visible)
     }, [visible])
-const [agree,setAgree] = useState(false)
-const handleAgree = e =>{
-    setAgree(!agree)
-}
+    const [agree, setAgree] = useState(false)
+    const handleAgree = e => {
+        setAgree(!agree)
+    }
     return (
         <div className="relative bg-blog-banner bg-center bg-cover bg-no-repeat bg-static bg-fixed">
-             
+
             <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
             <div className="relative  z-10">
 
@@ -21,78 +22,78 @@ const handleAgree = e =>{
                     {
                         visible &&
                         <>
-                        <div className={`max-w-sm p-3.5 bg-white mt-[10%] `}>
-                            <div className="flex flex-col space-y-2 p-3.5">
-                                <p>I.Core values</p>
-                                <ul className='list-disc'>
-                                    <li>Respect fellow citizens.</li>
-                                    <li>Uphold the rule of law.</li>
-                                    <li>Honor the original contract with America, which is the Constitution..</li>
-                                    <li>Understand that this is a government by, for, and of the people.</li>
-                                    <li>Review the Constitution, amendments, and Bill of Rights.</li>
-                                    <li>Hold politicians accountable.</li>
-                                    <li>Engage in discussions and offer suggestions.</li>
-                                    <li>Participate in democracy by voting in all elections.</li>
-                                    <li>Protect children, the elderly, and those who cannot protect themselves.</li>
-                                </ul>
-                            </div>
-                            <div className="flex flex-col space-y-2 p-3.5">
-                                <p>II. Encouraged Behaviour</p>
-                                <ul className='list-disc'>
-                                    <li>Participate in open debate and respectful discussions.</li>
-                                    <li>Show kindness and respect for others, regardless of differing beliefs.</li>
-                                    <li>Contribute to creating a new contract for America..</li>
-                                    <li>Participate in polls.</li>
-                                    <li>Use proper language, avoiding vulgarity or disrespect.</li>
-                                    <li>Recruit and invite others to join the movement.</li>
+                            <div className={`max-w-sm p-3.5 bg-white mt-[10%] `}>
+                                <div className="flex flex-col space-y-2 p-3.5">
+                                    <p>I.Core values</p>
+                                    <ul className='list-disc'>
+                                        <li>Respect fellow citizens.</li>
+                                        <li>Uphold the rule of law.</li>
+                                        <li>Honor the original contract with America, which is the Constitution..</li>
+                                        <li>Understand that this is a government by, for, and of the people.</li>
+                                        <li>Review the Constitution, amendments, and Bill of Rights.</li>
+                                        <li>Hold politicians accountable.</li>
+                                        <li>Engage in discussions and offer suggestions.</li>
+                                        <li>Participate in democracy by voting in all elections.</li>
+                                        <li>Protect children, the elderly, and those who cannot protect themselves.</li>
+                                    </ul>
+                                </div>
+                                <div className="flex flex-col space-y-2 p-3.5">
+                                    <p>II. Encouraged Behaviour</p>
+                                    <ul className='list-disc'>
+                                        <li>Participate in open debate and respectful discussions.</li>
+                                        <li>Show kindness and respect for others, regardless of differing beliefs.</li>
+                                        <li>Contribute to creating a new contract for America..</li>
+                                        <li>Participate in polls.</li>
+                                        <li>Use proper language, avoiding vulgarity or disrespect.</li>
+                                        <li>Recruit and invite others to join the movement.</li>
 
-                                </ul>
-                            </div>
-                            <div className="flex flex-col space-y-2 p-3.5">
-                                <p>III. Conflicts of Interest</p>
-                                <ul className='list-disc'>
-                                    <li>Lorem ipsum dolor sit.</li>
-                                    <li>Lorem ipsum dolor sit.</li>
-                                    <li>Lorem ipsum dolor sit.</li>
-                                    <li>Lorem ipsum dolor sit.</li>
-                                    <li>Lorem ipsum dolor sit.</li>
-                                    <li>Lorem ipsum dolor sit.</li>
-                                    <li>Lorem ipsum dolor sit.</li>
-                                </ul>
-                            </div>
-                            <div className="flex flex-col space-y-2 p-3.5">
-                                <p>IV. Conflicts of Interest</p>
-                                <ul className='list-disc'>
-                                    <li>Conflicts of interest will be handled by a rotating ethics panel..</li>
-                                </ul>
-                            </div>
-                            <div className="flex flex-col space-y-2 p-3.5">
-                                <p>V. Privacy and Personal Information</p>
-                                <ul className='list-disc'>
-                                    <li>Members' information will not be sold, traded, or leased.</li>
-                                    <li>Members will not be targeted for advertisers.</li>
-                                    <li>All members' information will remain private.</li>
-                                </ul>
-                            </div>
-                            <div className="flex flex-col space-y-2 p-3.5">
-                                <p>VI. Reporting and Addressing Violations</p>
-                                <ul className='list-disc'>
-                                    <li>Violations will be reviewed by a rotating ethics panel.</li>
-                                    <li>Repeated violators may be relegated to the "zoo" and/or expelled from the platform.</li>
-                                </ul>
-                            </div>
-                            <div className="flex flex-col space-y-2 p-3.5">
-                                <p>VII. Political Neutrality</p>
-                                <ul className='list-disc'>
-                                    <li>While political neutrality is not required, members are expected to respect others and their opinions.</li>
+                                    </ul>
+                                </div>
+                                <div className="flex flex-col space-y-2 p-3.5">
+                                    <p>III. Conflicts of Interest</p>
+                                    <ul className='list-disc'>
+                                        <li>Lorem ipsum dolor sit.</li>
+                                        <li>Lorem ipsum dolor sit.</li>
+                                        <li>Lorem ipsum dolor sit.</li>
+                                        <li>Lorem ipsum dolor sit.</li>
+                                        <li>Lorem ipsum dolor sit.</li>
+                                        <li>Lorem ipsum dolor sit.</li>
+                                        <li>Lorem ipsum dolor sit.</li>
+                                    </ul>
+                                </div>
+                                <div className="flex flex-col space-y-2 p-3.5">
+                                    <p>IV. Conflicts of Interest</p>
+                                    <ul className='list-disc'>
+                                        <li>Conflicts of interest will be handled by a rotating ethics panel..</li>
+                                    </ul>
+                                </div>
+                                <div className="flex flex-col space-y-2 p-3.5">
+                                    <p>V. Privacy and Personal Information</p>
+                                    <ul className='list-disc'>
+                                        <li>Members' information will not be sold, traded, or leased.</li>
+                                        <li>Members will not be targeted for advertisers.</li>
+                                        <li>All members' information will remain private.</li>
+                                    </ul>
+                                </div>
+                                <div className="flex flex-col space-y-2 p-3.5">
+                                    <p>VI. Reporting and Addressing Violations</p>
+                                    <ul className='list-disc'>
+                                        <li>Violations will be reviewed by a rotating ethics panel.</li>
+                                        <li>Repeated violators may be relegated to the "zoo" and/or expelled from the platform.</li>
+                                    </ul>
+                                </div>
+                                <div className="flex flex-col space-y-2 p-3.5">
+                                    <p>VII. Political Neutrality</p>
+                                    <ul className='list-disc'>
+                                        <li>While political neutrality is not required, members are expected to respect others and their opinions.</li>
 
-                                </ul>
+                                    </ul>
+                                </div>
+
+                                <hr />
+
+                                <button className='px-6 py-3.5 bg-rose-700 text-white rounded-md mt-4 ml-auto block ' onClick={() => handleAgree()}>Agree</button>
                             </div>
-
-                            <hr />
-
-                            <button className='px-6 py-3.5 bg-rose-700 text-white rounded-md mt-4 ml-auto block '  onClick={()=>handleAgree()}>Agree</button>
-                    </div>
                         </>
                     }
 
@@ -108,91 +109,385 @@ const handleAgree = e =>{
                         <h1 className="mt-4 text-2xl font-semibold tracking-wide text-center text-slate-200 capitalize md:text-3xl">
                             Signup
                         </h1>
+                        <Formik
+                            enableReinitialize
+                            initialValues={{
+                                username: '',
+                                email: '',
+                                first_name: '',
+                                last_name: '',
+                                password: '',
+                                password2: '',
+                                profile: {
+                                    cell_phone: '',
+                                    birth_month_year: '',
+                                    state: '',
+                                    city: '',
+                                    country: '',
+                                    political_affiliation: '',
+                                    national_elections_voted: 0,
+                                    state_elections_voted: 0,
+                                },
+                            }}
+                            validate={(values) => {
+                                console.log(values);
+                                const errors = {};
+                                if (!values.username) {
+                                    errors.username = "Please enter your user name";
+                                }
+                                else if (values.username.length < 7) {
+                                    errors.username = "minimum six character";
+                                }
+                                if (!values.email) {
+                                    errors.email = "Please enter your email";
+                                }
+                                if (!values.first_name) {
+                                    errors.first_name = "Please enter your first name";
+                                }
+                                if (!values.last_name) {
+                                    errors.last_name = "Please enter your last name";
+                                }
+                                if (!values.password) {
+                                    errors.password = "Please enter your password";
+                                }
+                                if (!values.password2) {
+                                    errors.password2 = "Please enter your  confirm password";
+                                }
+                                if (values.password.length < 7) {
+                                    errors.password = "Please enter 5 word";
+                                }
+                                if (!values.profile?.cell_phone) {
+                                    errors.cell_phone = "enter your cell phone"
+                                }
+                                if (!values.profile?.birth_month_year) {
+                                    errors.birth_month_year = "Please enter your dob";
+                                }
+                                if (!values.profile?.city) {
+                                    errors.city = "Please enter your city name";
+                                }
+                                if (!values.profile?.state) {
+                                    errors.state = "Please enter your state name";
+                                }
+                                if (!values.profile?.country) {
+                                    errors.country = "Please enter your country name";
+                                }
+                                if (!values.profile?.state_elections_voted) {
+                                    errors.state_elections_voted = "Please enter your state election vote";
+                                }
+                                if (!values.profile?.political_affiliation) {
+                                    errors.political_affiliation = "Please enter your affiliation";
+                                }
+                                if (!values.profile?.national_elections_voted) {
+                                    errors.national_elections_voted = "Please enter your national elections";
+                                }
+                                return errors;
+                            }}
+                            onSubmit={(values, { resetForm }) => {
+                                console.log(values);
+                                // Registerapi(values);
+                            }}
+                        >
+                            {({
+                                values,
+                                errors,
+                                touched,
+                                handleChange,
+                                handleBlur,
+                                handleSubmit,
+                                isSubmitting,
+                                /* and other goodies */
+                            }) => (
+                                <form className="space-y-4" onSubmit={handleSubmit} >
+                                    <div>
+                                        <CustomeLabel name={"Username"} />
+                                        <input
+                                            placeholder='Enter Username'
+                                            type="text"
+                                            id="username"
+                                            name="username"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.username ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.username}
+                                            error={errors.username && touched.username && errors.username}
+                                            helperText={errors.username && touched.username && errors.username}
+                                        />
+                                        {errors.username && touched.username && (
+                                            <div className="text-red text-xs">{errors.username}</div>
+                                        )}
+
+                                        {!errors.username && touched.username && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <CustomeLabel name={"Email"} />
+                                        <input
+                                            placeholder='Enter Your Email'
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.email ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.email}
+                                            error={errors.email && touched.username && errors.email}
+                                            helperText={errors.email && touched.email && errors.email}
+                                        />
+                                        {errors.email && touched.email && (
+                                            <div className="text-red text-xs">{errors.email}</div>
+                                        )}
+
+                                        {!errors.email && touched.email && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+                                    </div>
+
+                                    <div>
+                                        <CustomeLabel name={"First Name"} />
+                                        <input
+                                            placeholder='Enter Your First Name'
+                                            type="text"
+                                            id="first_name"
+                                            name="first_name"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.first_name ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.first_name}
+                                            error={errors.first_name && touched.usefirst_name && errors.first_name}
+                                            helperText={errors.first_name && touched.first_name && errors.first_name}
+                                        />
+                                        {errors.first_name && touched.first_name && (
+                                            <div className="text-red text-xs">{errors.first_name}</div>
+                                        )}
+
+                                        {!errors.first_name && touched.first_name && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+
+                                    </div>
+                                    <div>
+                                        <CustomeLabel name={"Last Name"} />
+                                        <input
+                                            placeholder='Enter Your Last Name'
+                                            type="text"
+                                            id="last_name"
+                                            name="last_name"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.last_name ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.last_name}
+                                            error={errors.last_name && touched.uselast_name && errors.last_name}
+                                            helperText={errors.last_name && touched.last_name && errors.last_name}
+                                        />
+                                        {errors.last_name && touched.last_name && (
+                                            <div className="text-red text-xs">{errors.last_name}</div>
+                                        )}
+
+                                        {!errors.last_name && touched.last_name && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+                                    </div>
+
+                                    <div>
+                                        <CustomeLabel name={"Password"} />
+                                        <input
+
+                                            placeholder='Enter Password'
+                                            type="password"
+                                            id="password"
+                                            name="password"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.password ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.password}
+                                            error={errors.password && touched.usepassword && errors.password}
+                                            helperText={errors.password && touched.password && errors.password}
+                                        />
+                                        {errors.password && touched.password && (
+                                            <div className="text-red text-xs">{errors.password}</div>
+                                        )}
+
+                                        {!errors.password && touched.password && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+                                    </div>
+
+                                    <div>
+                                        <CustomeLabel name={"Password Confirmation"} />
+                                        <input
+
+                                            placeholder='Enter Password2'
+                                            type="password"
+                                            id="password2"
+                                            name="password2"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.password2 ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.password2}
+                                            error={errors.password2 && touched.usepassword2 && errors.password2}
+                                            helperText={errors.password2 && touched.password2 && errors.password2}
+                                        />
+                                        {errors.password2 && touched.password2 && (
+                                            <div className="text-red text-xs">{errors.password2}</div>
+                                        )}
+
+                                        {!errors.password2 && touched.password2 && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <CustomeLabel name={"Cell phone Number"} />
+                                        <input
 
 
-                        <form className="space-y-4">
-                            <div>
-                                <CustomeLabel name={"Username"} />
-                                <input type="text" placeholder="Enter Your Username Or Email" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg border border-white " required />
-                            </div>
-                            <div>
-                                <CustomeLabel name={"Email"} />
-                                <input type="email" placeholder="Enter Your Username Or Email" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " required />
-                            </div>
+                                            placeholder='Enter cell_phone'
+                                            type="phone"
+                                            id="cell_phone"
+                                            name="cell_phone"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.cell_phone ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.cell_phone}
+                                            error={errors.cell_phone && touched.usecell_phone && errors.cell_phone}
+                                            helperText={errors.cell_phone && touched.cell_phone && errors.cell_phone}
+                                        />
+                                        {errors.cell_phone && touched.cell_phone && (
+                                            <div className="text-red text-xs">{errors.cell_phone}</div>
+                                        )}
 
-                            <div>
-                                <CustomeLabel name={"First Name"} />
-                                <input type="text" placeholder="First Name" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
-                            <div>
-                                <CustomeLabel name={"Last Name"} />
-                                <input type="text" placeholder="Last Name" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
+                                        {!errors.cell_phone && touched.cell_phone && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <CustomeLabel name={"Birth Month and Year"} />
+                                        <input
 
-                            <div>
-                                <CustomeLabel name={"Password"} />
-                                <input type="password" placeholder="Password" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
+                                            type="date"
+                                            id="birth_month_year"
+                                            name="birth_month_year"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.birth_month_year ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.birth_month_year}
+                                            error={errors.birth_month_year && touched.usebirth_month_year && errors.birth_month_year}
+                                            helperText={errors.birth_month_year && touched.birth_month_year && errors.birth_month_year}
+                                        />
+                                        {errors.birth_month_year && touched.birth_month_year && (
+                                            <div className="text-red text-xs">{errors.birth_month_year}</div>
+                                        )}
 
-                            <div>
-                                <CustomeLabel name={"Password Confirmation"} />
-                                <input type="password" placeholder="Confirm Password" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
-                            <div>
-                                <CustomeLabel name={"Cell phone Number"} />
-                                <input type="tel" placeholder="Cell Phone Number" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
-                            <div>
-                                <CustomeLabel name={"Birth Month and Year"} />
-                                <input type="date" placeholder="Enter Your Password" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
-                            <div>
-                                <CustomeLabel name={"State"} />
-                                <input type="text" placeholder="State" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
-                            <div>
-                                <CustomeLabel name={"City"} />
-                                <input type="text" placeholder="State" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
-                            <div>
-                                <CustomeLabel name={"Country"} />
-                                <input type="text" placeholder="Country" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
-                            <div>
-                                <CustomeLabel name={"Political Affiliation"} />
-                                <input type="text" placeholder="Democrate" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
-                            <div>
-                                <CustomeLabel name={"Number of National Elections voted in"} />
-                                <input type="text" placeholder="1" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
-                            <div>
-                                <CustomeLabel name={"Number of State Elections voted in"} />
-                                <input type="text" placeholder="1" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
-                            </div>
+                                        {!errors.birth_month_year && touched.birth_month_year && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <CustomeLabel name={"State"} />
+                                        <input
+                                            placeholder='Enter State'
 
-                            <div className="flex flex-col justify-start text-slate-300">
-                                <div className="flex items-center gap-5">
-                                    <input type="checkbox" name="remember" className="mr-1 rounded-sm focus:ring-violet-400 focus:ring-2 " checked={agree?true:false}  />
-                                   
-                                    <label for="remember" className="text-sm ">
-                                        Commitment to Engage in polite Political Discourse to help create a new "People's contract with america"
-                                    </label>
+                                            type="text"
+                                            id="state"
+                                            name="state"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.state ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.state}
+                                            error={errors.state && touched.usestate && errors.state}
+                                            helperText={errors.state && touched.state && errors.state}
+                                        />
+                                        {errors.state && touched.state && (
+                                            <div className="text-red text-xs">{errors.state}</div>
+                                        )}
 
-                                </div>
-                                <p for="remember" className="text-sm m-4 pl-4 ">
-                                    I have read and agree the <span className='font-medium text-slate-50 cursor-pointer' onClick={() => setVisible(!visible)}>code of Ethics</span>
-                                </p>
+                                        {!errors.state && touched.state && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <CustomeLabel name={"City"} />
+                                        <input
+                                            placeholder='Enter City'
+                                            type="text"
+                                            id="city"
+                                            name="city"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.city ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.city}
+                                            error={errors.city && touched.usecity && errors.city}
+                                            helperText={errors.city && touched.city && errors.city}
+                                        />
+                                        {errors.city && touched.city && (
+                                            <div className="text-red text-xs">{errors.city}</div>
+                                        )}
 
-                            </div>
-                            <button className="  mx-auto max-w-xs px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-800  rounded-lg   border border-white hover:bg-blue-400 flex justify-center items-center gap-4">
+                                        {!errors.city && touched.city && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <CustomeLabel name={"Country"} />
+                                        <input
 
-                                <span className='text-center'>Sign up</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                                </svg>
-                            </button>
-                        </form>
+
+                                            placeholder='Enter country'
+                                            type="text"
+                                            id="country"
+                                            name="country"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.country ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.country}
+                                            error={errors.country && touched.usecountry && errors.country}
+                                            helperText={errors.country && touched.country && errors.country}
+                                        />
+                                        {errors.country && touched.country && (
+                                            <div className="text-red text-xs">{errors.country}</div>
+                                        )}
+
+                                        {!errors.country && touched.country && (
+                                            <div className="text-green-500 text-xs">Ok</div>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <CustomeLabel name={"Political Affiliation"} />
+                                        <input type="text" placeholder="Democrate" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
+                                    </div>
+                                    <div>
+                                        <CustomeLabel name={"Number of National Elections voted in"} />
+                                        <input type="text" placeholder="1" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
+                                    </div>
+                                    <div>
+                                        <CustomeLabel name={"Number of State Elections voted in"} />
+                                        <input type="text" placeholder="1" className="block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg  rounded-lg   border border-white " />
+                                    </div>
+
+                                    <div className="flex flex-col justify-start text-slate-300">
+                                        <div className="flex items-center gap-5">
+                                            <input type="checkbox" name="remember" className="mr-1 rounded-sm focus:ring-violet-400 focus:ring-2 " checked={agree ? true : false} />
+
+                                            <label for="remember" className="text-sm ">
+                                                Commitment to Engage in polite Political Discourse to help create a new "People's contract with america"
+                                            </label>
+
+                                        </div>
+                                        <p for="remember" className="text-sm m-4 pl-4 ">
+                                            I have read and agree the <span className='font-medium text-slate-50 cursor-pointer' onClick={() => setVisible(!visible)}>code of Ethics</span>
+                                        </p>
+
+                                    </div>
+                                    <button className="  mx-auto max-w-xs px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-800  rounded-lg   border border-white hover:bg-blue-400 flex justify-center items-center gap-4" type='submit'>
+
+                                        <span className='text-center'>Sign up</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                                        </svg>
+                                    </button>
+                                </form>
+                            )}
+                        </Formik>
                         <div className="mt-6 text-center">
                             <Link to="/login" className="text-sm text-slate-300 hover:underline ">
                                 Already have an account? Sign in

@@ -25,7 +25,7 @@ const RealNews = () => {
     formSetter(form => ({ ...form, [event.target.name]: event.target.value }));
   };
   return (
-    <div className='   '  >
+    <div className='py-7'  >
       <div className='container-ml    pb-10'>
         <div className=' '>
           <h1 className='text-primary text-[40px] px-3 border-l-[5px] border-primary h-[60px]  '>Real News</h1>
