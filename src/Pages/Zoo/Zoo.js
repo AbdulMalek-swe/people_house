@@ -27,7 +27,7 @@ const Zoo = () => {
                     <p className='px-3 text-[#000000cc] font-500 text-[20px] mb-[22px]'> Content Here</p>
                 </div>
 
-                 
+
             </div>
             <div className='grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-4 my-7'>
                 {data.slice(0, sliceNumber).map(item => <ZooAll />)}
@@ -56,9 +56,9 @@ export const ZooAll = () => {
                 <p className='text-dark text-[20px] py-[2px] mx-8   mt-5'> Abusive Image Video </p>
             </div>
             <div className='text-center'>
-            <Link to="/news/1">
-                <button className='bg-primary px-5 py-3 rounded text-white my-5'>Submit & Request</button>
-            </Link>
+                <Link to="/news/1">
+                    <button className='bg-primary px-5 py-3 rounded text-white my-5'>Submit & Request</button>
+                </Link>
             </div>
 
         </div>

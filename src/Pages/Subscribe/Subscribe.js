@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import img from '../../Assets/Photos/download.png'
 import ModalSub from './ModalSub';
+import axios from '../../apiService/axios';
+import Pays from './Payment';
+ 
+
+
+
 const toggleData = [
     {
         name: "Liberty Plan",
@@ -40,14 +46,26 @@ const Subscribe = () => {
         setData(e)
         setToggle(true);
         // <ModalSub/>
-
     }
-    const [togglerValue,setTogglerVallue ] = useState(false)
-   
-    const toggleButtonClassName = togglerValue ? 'toggle toggle-accent text-red-700 bg-red focus:bg-[#002868]  ' : 'toggle toggle-accent     ';
+    const [togglerValue, setTogglerVallue] = useState(false)
 
+    const toggleButtonclassName = togglerValue ? 'toggle toggle-accent text-red-700 bg-red focus:bg-[#002868]  ' : 'toggle toggle-accent     ';
+   
+    useEffect(()=>{
+        // axios.post("/subscriptions/create/",{stripe_token:"adjsfhsa",plan_id:1})
+        // .then(res=>{
+        //   console.log(res);
+        // })
+        // .catch(err=>{
+        //     console.log(err.message);
+        // })
+         
+    },[])
+ 
+    
     return (
         <div className='container-ml mt-12'>
+                <Pays/> 
             {
                 toggle && <ModalSub data={data} />
             }
@@ -64,7 +82,7 @@ const Subscribe = () => {
                         <div className="form-control   ">
                             <label className="cursor-pointer label text-red-700 ">
                                 <span className="label-text text-[17px] mx-4  ">Billed Monthly</span>
-                                <input type="checkbox"   className={toggleButtonClassName}  onChange={(e)=>{setTogglerVallue(!togglerValue)}} />
+                                <input type="checkbox" className={toggleButtonclassName} onChange={(e) => { setTogglerVallue(!togglerValue) }} />
                                 <span className="label-text text-[17px]  mx-4">Billed Yearly</span>
                             </label>
                         </div>

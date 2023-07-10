@@ -56,28 +56,28 @@ const Partner = () => {
                   <img src={img2} alt='loading ...' />
                 </div>
                 <div>
-                 
+
                   <div className='mb-3'>
                     <h1 className=' mb-7 text-3xl text-bold '>Name of the company</h1>
                     <p>
                       Lorem ipsum is my favourite text so i alltime use it
                     </p>
                   </div>
-                 <div className=' relative  '>
-                 <Link to="/" className='hover:underline absolute -bottom-20 '>
-                    www.google.com
-                  </Link>
-                  
-                 </div>
+                  <div className=' relative  '>
+                    <Link to="/" className='hover:underline absolute -bottom-20 '>
+                      www.google.com
+                    </Link>
+
+                  </div>
                 </div>
                 <div>
                   <h1 className=' mb-7 text-3xl text-bold text-left'>Role</h1>
-                   <ul style={{listStyleType:"circle"}} className='mx-5'>
-                   <li >We, the members of this community.</li>
-                   <li>We, the members of this community.</li>
-                   <li>We, the members of this community.</li>
-                   <li>We, the members of this community.</li>
-                   </ul>
+                  <ul style={{ listStyleType: "circle" }} className='mx-5'>
+                    <li >We, the members of this community.</li>
+                    <li>We, the members of this community.</li>
+                    <li>We, the members of this community.</li>
+                    <li>We, the members of this community.</li>
+                  </ul>
                 </div>
               </div>
             </div> : <Swiper
@@ -104,7 +104,7 @@ const Partner = () => {
 
             >
               {
-                [1, 2, 3, 4, 5, 6, 7, 8].map(item => <SwiperSlide className='bg-white mx-auto   '>
+                [1, 2, 3, 4, 5, 6, 7, 8].map((item,index) => <SwiperSlide className='bg-white mx-auto   ' key={index}>
                   <img src={img2} alt="slide_image" className='w-[200px] h-[200px] rounded-full mx-auto' />
                 </SwiperSlide>)
 

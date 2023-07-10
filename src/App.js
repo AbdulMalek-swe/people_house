@@ -1,15 +1,49 @@
 import { RouterProvider } from "react-router"
 import router from "./Routes/routes.config"
- 
-import {CircleArrow as ScrollUpButton} from "react-scroll-up-button"; //Add this line Here
 
+import { CircleArrow as ScrollUpButton } from "react-scroll-up-button"; //Add this line Here
+import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from "react";
+import axios from "./apiService/axios";
+import store from "./Redux/store/store";
+import { addUserActions } from "./Redux/apiSlice/userSlice";
+import { useSelector } from "react-redux";
 export default function App() {
+
+  const [, , removeCookie] = useCookies(["token"]);
+  // const navigate = useNavigate()
+  const user = useSelector(state=>state)
+  
+  const [cookies] = useCookies(['token']);
+  const token = cookies['token'];
+  
+  useEffect(() => {
+    async function userProfile() {
+      try {
+        const profile = await axios.get("/profile/")
+       
+        // .then(res=>{
+         store.dispatch(addUserActions.addUser(profile?.data));
+        // })
+      }
+      catch {
+        removeCookie("token", { path: "/" });
+        // navigate("/")
+      }
+
+    }
+
+    userProfile()
+  }, [])
+
   return (
-  <>
-     <ScrollUpButton    ContainerClassName="   p-2 "
-      TransitionClassName="transition duration-300"/>
-       <RouterProvider router={router} />
-  </>
+    <>
+      <ScrollUpButton ContainerclassName="   p-2 "
+        TransitionclassName="transition duration-300" />
+
+      <RouterProvider router={router} />
+    </>
   )
 }
 

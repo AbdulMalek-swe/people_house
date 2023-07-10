@@ -21,6 +21,7 @@ import Candidates from "../components/Home/Candidate"
 import RealNews from "../components/Home/RealNews"
 import Forum from "../components/Home/PeopleForum"
 import Zoo from "../Pages/Zoo/Zoo"
+import PublicRoute from "./PublicRoute"
 
 const router = createBrowserRouter([
     {
@@ -101,11 +102,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/login',
-                element: <Login />,
+                element: <PublicRoute><Login /></PublicRoute> ,
             },
             {
                 path: '/signup',
-                element: <Signup />,
+                element: <PublicRoute><Signup /></PublicRoute> ,
             },
             
         ],

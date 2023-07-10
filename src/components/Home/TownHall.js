@@ -1,4 +1,4 @@
- 
+
 import React from 'react';
 
 const PeoplesTownHall = () => {
@@ -28,4 +28,3 @@ const PeoplesTownHall = () => {
 };
 
 export default PeoplesTownHall;
- 

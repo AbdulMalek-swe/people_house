@@ -24,31 +24,31 @@ const Candidates = () => {
         <div className="px-[30px] ">
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div className='grid grid-cols-2 gap-4'>
-            <div>
+              <div>
                 <CustomeLabel name={" Name"} />
-                <input type="text" name="name" value={form.name} onChange={handleChange} className="block w-full px-5 py-3 mt-2 text-primary placeholder-primary bg-transparent shadow-lg rounded-lg  border " required placeholder="Name"/>
+                <input type="text" name="name" value={form.name} onChange={handleChange} className="block w-full px-5 py-3 mt-2 text-primary placeholder-primary bg-transparent shadow-lg rounded-lg  border " required placeholder="Name" />
               </div>
               <div>
                 <CustomeLabel name={"  Picture URL:"} />
-                <input type="text" name="picture" value={form.picture} onChange={handleChange} className="block w-full px-5 py-3 mt-2 text-primary  placeholder-primary bg-transparent shadow-lg rounded-lg  border" required  placeholder=" Picture URL:"/>
+                <input type="text" name="picture" value={form.picture} onChange={handleChange} className="block w-full px-5 py-3 mt-2 text-primary  placeholder-primary bg-transparent shadow-lg rounded-lg  border" required placeholder=" Picture URL:" />
               </div>
               <div>
                 <CustomeLabel name={" Website:"} />
-                <input type="text" name="website" value={form.website} onChange={handleChange} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-primary  placeholder-primary  border" placeholder="Website"  />
+                <input type="text" name="website" value={form.website} onChange={handleChange} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-primary  placeholder-primary  border" placeholder="Website" />
               </div>
               <div>
                 <CustomeLabel name={" Platform:"} />
                 <input name="platform" value={form.platform} onChange={handleChange} required className="block w-full px-5 py-3 mt-2 text-primary  placeholder-primary bg-transparent shadow-lg rounded-lg border " placeholder=" Platform:" />
               </div>
-             
+
             </div>
             <div className="flex  items-center  ">
-            <input type="checkbox" name="pledged" required  />
-              
+              <input type="checkbox" name="pledged" required />
+
               <label className=" ml-1 text-sm text-primary">
-              Pledge to the People's Contract:
-      
-    </label>
+                Pledge to the People's Contract:
+
+              </label>
             </div>
             <button type="submit" className="text-white border rounded-lg py-2 px-4 bg-red">Create Profile</button>
           </form>
@@ -56,20 +56,20 @@ const Candidates = () => {
 
             {candidates.map((candidate, index) => (
               <li key={index} className="flex justify-center  ">
-                <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white p-5">
-  <img class="w-full" src={candidate.picture} alt={candidate.name}/>
-  <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">{candidate.name}</div>
-    <p class="text-primary text-base">
-    {candidate.pledged && <span className="text-primary">✓ Pledged to the People's Contract</span>}
-    </p>
-  </div>
-  <div class="px-6 pt-4 pb-2">
-    <span
-      class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"> <a href={candidate.website}>Visit Website</a></span>
- 
-  </div>
-</div>
+                <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-5">
+                  <img className="w-full" src={candidate.picture} alt={candidate.name} />
+                  <div className="px-6 py-4">
+                    <div className="font-bold text-xl mb-2">{candidate.name}</div>
+                    <p className="text-primary text-base">
+                      {candidate.pledged && <span className="text-primary">✓ Pledged to the People's Contract</span>}
+                    </p>
+                  </div>
+                  <div className="px-6 pt-4 pb-2">
+                    <span
+                      className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"> <a href={candidate.website}>Visit Website</a></span>
+
+                  </div>
+                </div>
               </li>
             ))}
           </ul>

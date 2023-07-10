@@ -6,35 +6,33 @@ import { Link } from 'react-router-dom';
 import audio from '../../Assets/People House Image & Data/we the people front page.mpeg'
 import Invite from './Invite';
 import PeopleHousemodal, { PeopleHouseAudio } from '../homeSubComponents/PeopleHouse';
+import { useSelector } from 'react-redux';
 const PeopleHouse = () => {
-   
     const [week, setweek] = useState(0);
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
     const [year, setYear] = useState(0)
     const [month, setMonth] = useState(0)
+    const user = useSelector(state=>state.reducer.user)
     useEffect(() => {
         const compareDate = new Date('2024-11-05');
-        const chicagoTime = compareDate.toLocaleString('en-US', { timeZone: 'America/Chicago' });
-
+        // const chicagoTime = compareDate.toLocaleString('en-US', { timeZone: 'America/Chicago' });
         compareDate.setDate(compareDate.getDate() + 7);
         //just for this demo today + 7 week
-
         const timer = setInterval(() => {
             const difference = timeBetweenDates(compareDate);
-
             if (difference <= 0) {
                 clearInterval(timer);
             } else {
                 setYear(Math.floor(difference / (1000 * 60 * 60 * 24 * 365)));
                 setMonth(Math.floor((difference / (1000 * 60 * 60 * 24 * 30.44)) % 12));
-                setweek(Math.floor((difference / (1000 * 60 * 60 * 24))%7));
+                setweek(Math.floor((difference / (1000 * 60 * 60 * 24)) % 7));
                 setHours(Math.floor((difference / (1000 * 60 * 60)) % 24));
                 setMinutes(Math.floor((difference / 1000 / 60) % 60));
                 setSeconds(Math.floor((difference / 1000) % 60));
                 //   setYear(Math.floor((week / 365)));
-                
+
             }
         }, 1000);
 
@@ -51,7 +49,7 @@ const PeopleHouse = () => {
         <div className='container-ml mt-[14px] pb-[100px]'>
 
             <div className=' flex gap-x-10 gap-y-10  flex-wrap md:flex-nowrap flex-col-reverse md:flex-row md:items-center '>
-                <div  className=' w-fit'>
+                <div className=' w-fit'>
                     <div>
                         <div className='my-[55px] '>
                             <h3 className='text-black font-600 text-[50px] mb-[18px]   '>The Peoples House</h3>
@@ -67,18 +65,30 @@ const PeopleHouse = () => {
                                 </div>
                             </div>
                             <div className="lg:flex lg:flex-row flex-col    items-center gap-10 my-8">
-                                <Link to="/signup">
-                                    <button className="bg-red text-white font-medium py-2 px-5 flex items-center rounded-md gap-6 w-[250px] text-center justify-center my-4">
+                               {
+                               user.email ?  <Link to="/subscribe">
+                               <button className="bg-red text-white font-medium py-2 px-5 flex items-center rounded-md gap-6 w-[250px] text-center justify-center my-4">
+                                   <span>Subscribe</span>
+                               </button>
+                           </Link>: <Link to="/signup">
+                                    <button className="bg-primary text-white font-medium py-2 px-5 flex items-center rounded-md gap-6 w-[250px] text-center justify-center my-4">
                                         <span>Signup</span>
                                     </button>
                                 </Link>
-                                <Link to="/login">
-                                    <button className="bg-primary text-white font-medium py-2 px-5 flex items-center rounded-md gap-6 w-[250px] text-center justify-center my-4">
-                                        <span>Log in</span>
+                               
+                               }
+                                 {
+                               user.email ?   
+                                   <span> </span>
+                              : <Link to="/login">
+                                    <button className="bg-red text-white font-medium py-2 px-5 flex items-center rounded-md gap-6 w-[250px] text-center justify-center my-4">
+                                        <span>Login</span>
                                     </button>
                                 </Link>
+                               
+                               }
+                            
 
-                                
                             </div>
                         </div>
 
@@ -110,10 +120,10 @@ const PeopleHouse = () => {
                                         </div>
                                         <div className='text-white font-semibold lg:text-[30px] md:text-xl text-lg'>
                                             <p className='bg-primary w-full h-5'></p>
-                                            <p className='lg:mt-5'>{week  }</p>
+                                            <p className='lg:mt-5'>{week}</p>
                                             <p className='lg:mt-3'>Weeks</p>
                                         </div>
-                                    
+
                                         <div className='text-white font-semibold lg:text-[30px] md:text-xl text-lg lg:mt-9'>
                                             <p className='bg-red w-full h-5'></p>
                                             <p className='lg:mt-5'>{hours} </p>
@@ -129,7 +139,7 @@ const PeopleHouse = () => {
                                             <p className='lg:mt-5'> {seconds} </p>
                                             <p className='lg:mt-3'>Second</p>
                                         </div>
-                                         
+
                                     </div>
                                 </div>
                             </div>

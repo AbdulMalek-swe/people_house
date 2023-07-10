@@ -1,25 +1,45 @@
-// import axios from '../../apiService/axios';
-import axios from 'axios';
+import axios from '../../apiService/axios';
+// import axios from 'apiService/axios';
 import { Field, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
-
+    const [cookie, setCookie] = useCookies(["token"]);
     const [visible, setVisible] = useState(false)
     useEffect(() => {
-        console.log(visible)
+     
     }, [visible])
     const [agree, setAgree] = useState(false)
     const handleAgree = e => {
         setAgree(!agree)
     }
-    const Registerapi=(values)=>{
-          console.log(values);
-          axios.post("https://thepeopleshouse.co/api/register/",values)
-          .then(res=>{
-            console.log(res);
-          })
+    const Registerapi = async (values) => {
+        const loading = toast.loading("Please wait a moment...");
+
+        try {
+            const res = await axios.post("/register/", values)
+           
+            const { data, status } = res;
+            if (status === 200) {
+                // setIsLoading(false);
+                toast.dismiss(loading);
+                toast.success("successfully create account");
+                setCookie("token", data?.token, {
+                    path: "/",
+                    maxAge: 60 * 60 * 24 * 7, // 1 week
+                });
+            }
+            else {
+                toast.dismiss(loading);
+            }
+        } catch (error) {
+            toast.dismiss(loading);
+         
+        }
+
     }
     return (
         <div className="relative bg-blog-banner bg-center bg-cover bg-no-repeat bg-static bg-fixed">
@@ -31,7 +51,7 @@ const Signup = () => {
                     {
                         visible &&
                         <>
-                           <SignConduct handleAgree={handleAgree}/>
+                            <SignConduct handleAgree={handleAgree} />
                         </>
                     }
 
@@ -68,7 +88,7 @@ const Signup = () => {
                                 },
                             }}
                             validate={(values) => {
-                               
+
                                 const errors = {};
                                 if (!values.username) {
                                     errors.username = "Please enter your user name";
@@ -76,52 +96,52 @@ const Signup = () => {
                                 else if (values.username.length < 7) {
                                     errors.username = "minimum six character";
                                 }
-                                if (!values.email) {
+                                else if (!values.email) {
                                     errors.email = "Please enter your email";
                                 }
-                                if (!values.first_name) {
+                                else if (!values.first_name) {
                                     errors.first_name = "Please enter your first name";
                                 }
-                                if (!values.last_name) {
+                                else if (!values.last_name) {
                                     errors.last_name = "Please enter your last name";
                                 }
-                                if (!values.password) {
+                                else if (!values.password) {
                                     errors.password = "Please enter your password";
                                 }
-                                if (!values.password2) {
+                                else if (!values.password2) {
                                     errors.password2 = "Please enter your  confirm password";
                                 }
-                                if (values.password.length < 7) {
+                                else if (values.password.length < 7) {
                                     errors.password = "Please enter 5 word";
                                 }
-                                if (!values.profile?.cell_phone) {
+                                else if (!values.profile?.cell_phone) {
                                     errors.cell_phone = "enter your cell phone"
                                 }
-                                if (!values.profile?.birth_month_year) {
+                                else if (!values.profile?.birth_month_year) {
                                     errors.birth_month_year = "Please enter your dob";
                                 }
-                                if (!values.profile?.city) {
+                                else if (!values.profile?.city) {
                                     errors.city = "Please enter your city name";
                                 }
-                                if (!values.profile?.state) {
+                                else if (!values.profile?.state) {
                                     errors.state = "Please enter your state name";
                                 }
-                                if (!values.profile?.country) {
+                                else if (!values.profile?.country) {
                                     errors.country = "Please enter your country name";
                                 }
-                                if (!values.profile?.state_elections_voted) {
+                                else if (!values.profile?.state_elections_voted) {
                                     errors.state_elections_voted = "Please enter your state election vote";
                                 }
-                                if (!values.profile?.political_affiliation) {
+                                else if (!values.profile?.political_affiliation) {
                                     errors.political_affiliation = "Please enter your affiliation";
                                 }
-                                if (!values.profile?.national_elections_voted) {
+                                else if (!values.profile?.national_elections_voted) {
                                     errors.national_elections_voted = "Please enter your national elections";
                                 }
                                 return errors;
                             }}
                             onSubmit={(values, { resetForm }) => {
-                                console.log(values);
+                             
                                 Registerapi(values);
                             }}
                         >
@@ -155,7 +175,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.username && touched.username && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
                                     <div>
@@ -177,7 +197,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.email && touched.email && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
 
@@ -200,7 +220,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.first_name && touched.first_name && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
 
                                     </div>
@@ -223,7 +243,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.last_name && touched.last_name && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
 
@@ -247,7 +267,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.password && touched.password && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
 
@@ -271,7 +291,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.password2 && touched.password2 && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
                                     <div>
@@ -295,7 +315,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.cell_phone && touched.cell_phone && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
                                     <div>
@@ -317,7 +337,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.birth_month_year && touched.birth_month_year && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
                                     <div>
@@ -340,7 +360,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.state && touched.state && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
                                     <div>
@@ -362,7 +382,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.city && touched.city && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
                                     <div>
@@ -384,7 +404,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.country && touched.country && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
                                     <div>
@@ -407,7 +427,7 @@ const Signup = () => {
                                         )}
 
                                         {!errors.political_affiliation && touched.political_affiliation && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
                                     <div>
@@ -430,30 +450,30 @@ const Signup = () => {
                                         )}
 
                                         {!errors.national_elections_voted && touched.national_elections_voted && (
-                                            <div className="text-green-500 text-xs">Ok</div>
+                                            <div className="text-green-500 text-xs"></div>
                                         )}
                                     </div>
                                     <div>
                                         <CustomeLabel name={"Number of State Elections voted in"} />
                                         <input
-                                       placeholder='Enter state_elections_voted'
-                                       type="number"
-                                       id="state_elections_voted"
-                                       name="profile.state_elections_voted"
-                                       className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.state_elections_voted?'border border-red':'border border-white'}`}
-                                       onChange={handleChange}
-                                       onBlur={handleBlur}
-                                       value={values.profile?.state_elections_voted}
-                                       error={errors.state_elections_voted && touched.state_elections_voted && errors.state_elections_voted}
-                                       helperText={errors.state_elections_voted && touched.state_elections_voted && errors.state_elections_voted}
-                                               />
-                                               {errors.state_elections_voted && touched.state_elections_voted && (
-                                                   <div className="text-red text-xs">{errors.state_elections_voted}</div>
-                                               )}
-                                       
-                                               {!errors.state_elections_voted && touched.state_elections_voted && (
-                                                   <div className="text-green-500 text-xs">Ok</div>
-                                               )}
+                                            placeholder='Enter state_elections_voted'
+                                            type="number"
+                                            id="state_elections_voted"
+                                            name="profile.state_elections_voted"
+                                            className={`block w-full px-5 py-3 mt-2 text-slate-300 placeholder-gray-400 bg-transparent shadow-lg rounded-lg  ${errors.state_elections_voted ? 'border border-red' : 'border border-white'}`}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.profile?.state_elections_voted}
+                                            error={errors.state_elections_voted && touched.state_elections_voted && errors.state_elections_voted}
+                                            helperText={errors.state_elections_voted && touched.state_elections_voted && errors.state_elections_voted}
+                                        />
+                                        {errors.state_elections_voted && touched.state_elections_voted && (
+                                            <div className="text-red text-xs">{errors.state_elections_voted}</div>
+                                        )}
+
+                                        {!errors.state_elections_voted && touched.state_elections_voted && (
+                                            <div className="text-green-500 text-xs"></div>
+                                        )}
                                     </div>
 
                                     <div className="flex flex-col justify-start text-slate-300">
@@ -515,81 +535,80 @@ export const CustomeLabel = ({ name }) => {
     )
 
 }
- 
-export const SignConduct= (props) => {
+
+export const SignConduct = (props) => {
     return (
         <div className={`max-w-sm p-3.5 bg-white mt-[10%] `}>
-                                <div className="flex flex-col space-y-2 p-3.5">
-                                    <p>I.Core values</p>
-                                    <ul className='list-disc'>
-                                        <li>Respect fellow citizens.</li>
-                                        <li>Uphold the rule of law.</li>
-                                        <li>Honor the original contract with America, which is the Constitution..</li>
-                                        <li>Understand that this is a government by, for, and of the people.</li>
-                                        <li>Review the Constitution, amendments, and Bill of Rights.</li>
-                                        <li>Hold politicians accountable.</li>
-                                        <li>Engage in discussions and offer suggestions.</li>
-                                        <li>Participate in democracy by voting in all elections.</li>
-                                        <li>Protect children, the elderly, and those who cannot protect themselves.</li>
-                                    </ul>
-                                </div>
-                                <div className="flex flex-col space-y-2 p-3.5">
-                                    <p>II. Encouraged Behaviour</p>
-                                    <ul className='list-disc'>
-                                        <li>Participate in open debate and respectful discussions.</li>
-                                        <li>Show kindness and respect for others, regardless of differing beliefs.</li>
-                                        <li>Contribute to creating a new contract for America..</li>
-                                        <li>Participate in polls.</li>
-                                        <li>Use proper language, avoiding vulgarity or disrespect.</li>
-                                        <li>Recruit and invite others to join the movement.</li>
+            <div className="flex flex-col space-y-2 p-3.5">
+                <p>I.Core values</p>
+                <ul className='list-disc'>
+                    <li>Respect fellow citizens.</li>
+                    <li>Uphold the rule of law.</li>
+                    <li>Honor the original contract with America, which is the Constitution..</li>
+                    <li>Understand that this is a government by, for, and of the people.</li>
+                    <li>Review the Constitution, amendments, and Bill of Rights.</li>
+                    <li>Hold politicians accountable.</li>
+                    <li>Engage in discussions and offer suggestions.</li>
+                    <li>Participate in democracy by voting in all elections.</li>
+                    <li>Protect children, the elderly, and those who cannot protect themselves.</li>
+                </ul>
+            </div>
+            <div className="flex flex-col space-y-2 p-3.5">
+                <p>II. Encouraged Behaviour</p>
+                <ul className='list-disc'>
+                    <li>Participate in open debate and respectful discussions.</li>
+                    <li>Show kindness and respect for others, regardless of differing beliefs.</li>
+                    <li>Contribute to creating a new contract for America..</li>
+                    <li>Participate in polls.</li>
+                    <li>Use proper language, avoiding vulgarity or disrespect.</li>
+                    <li>Recruit and invite others to join the movement.</li>
 
-                                    </ul>
-                                </div>
-                                <div className="flex flex-col space-y-2 p-3.5">
-                                    <p>III. Conflicts of Interest</p>
-                                    <ul className='list-disc'>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                    </ul>
-                                </div>
-                                <div className="flex flex-col space-y-2 p-3.5">
-                                    <p>IV. Conflicts of Interest</p>
-                                    <ul className='list-disc'>
-                                        <li>Conflicts of interest will be handled by a rotating ethics panel..</li>
-                                    </ul>
-                                </div>
-                                <div className="flex flex-col space-y-2 p-3.5">
-                                    <p>V. Privacy and Personal Information</p>
-                                    <ul className='list-disc'>
-                                        <li>Members' information will not be sold, traded, or leased.</li>
-                                        <li>Members will not be targeted for advertisers.</li>
-                                        <li>All members' information will remain private.</li>
-                                    </ul>
-                                </div>
-                                <div className="flex flex-col space-y-2 p-3.5">
-                                    <p>VI. Reporting and Addressing Violations</p>
-                                    <ul className='list-disc'>
-                                        <li>Violations will be reviewed by a rotating ethics panel.</li>
-                                        <li>Repeated violators may be relegated to the "zoo" and/or expelled from the platform.</li>
-                                    </ul>
-                                </div>
-                                <div className="flex flex-col space-y-2 p-3.5">
-                                    <p>VII. Political Neutrality</p>
-                                    <ul className='list-disc'>
-                                        <li>While political neutrality is not required, members are expected to respect others and their opinions.</li>
+                </ul>
+            </div>
+            <div className="flex flex-col space-y-2 p-3.5">
+                <p>III. Conflicts of Interest</p>
+                <ul className='list-disc'>
+                    <li>Lorem ipsum dolor sit.</li>
+                    <li>Lorem ipsum dolor sit.</li>
+                    <li>Lorem ipsum dolor sit.</li>
+                    <li>Lorem ipsum dolor sit.</li>
+                    <li>Lorem ipsum dolor sit.</li>
+                    <li>Lorem ipsum dolor sit.</li>
+                    <li>Lorem ipsum dolor sit.</li>
+                </ul>
+            </div>
+            <div className="flex flex-col space-y-2 p-3.5">
+                <p>IV. Conflicts of Interest</p>
+                <ul className='list-disc'>
+                    <li>Conflicts of interest will be handled by a rotating ethics panel..</li>
+                </ul>
+            </div>
+            <div className="flex flex-col space-y-2 p-3.5">
+                <p>V. Privacy and Personal Information</p>
+                <ul className='list-disc'>
+                    <li>Members' information will not be sold, traded, or leased.</li>
+                    <li>Members will not be targeted for advertisers.</li>
+                    <li>All members' information will remain private.</li>
+                </ul>
+            </div>
+            <div className="flex flex-col space-y-2 p-3.5">
+                <p>VI. Reporting and Addressing Violations</p>
+                <ul className='list-disc'>
+                    <li>Violations will be reviewed by a rotating ethics panel.</li>
+                    <li>Repeated violators may be relegated to the "zoo" and/or expelled from the platform.</li>
+                </ul>
+            </div>
+            <div className="flex flex-col space-y-2 p-3.5">
+                <p>VII. Political Neutrality</p>
+                <ul className='list-disc'>
+                    <li>While political neutrality is not required, members are expected to respect others and their opinions.</li>
 
-                                    </ul>
-                                </div>
+                </ul>
+            </div>
 
-                                <hr />
+            <hr />
 
-                                <button className='px-6 py-3.5 bg-rose-700 text-white rounded-md mt-4 ml-auto block ' onClick={() => props.handleAgree()}>Agree</button>
-                            </div>
+            <button className='px-6 py-3.5 bg-rose-700 text-white rounded-md mt-4 ml-auto block ' onClick={() => props.handleAgree()}>Agree</button>
+        </div>
     );
 };
- 

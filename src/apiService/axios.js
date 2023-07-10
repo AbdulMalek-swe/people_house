@@ -5,8 +5,8 @@ const api = axios.create({
   baseURL: 'https://thepeopleshouse.co/api/',
   headers: {
   //   "Content-Type": "multipart/form-data",
-   " Access-Control-Allow-Origin":"*",
-   "Access-Control-Allow-Headers":"*",
+  //  " Access-Control-Allow-Origin":"*",
+  //  "Access-Control-Allow-Headers":"*",
   },
 });
 
@@ -30,7 +30,7 @@ api.interceptors.request.use(
     const token1 = await TokenGettingtoken();
   
     if (token1?.length > 0) {
-      config.headers.Authorization = `Bearer ${token1}`;
+      config.headers.Authorization = `token ${token1}`;
     } 
     return config;
   },

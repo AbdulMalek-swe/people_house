@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import img from '../../Assets/Photos/brain.png'
 import { FaUserCircle } from 'react-icons/fa';
 import vector from '../../Assets/Photos/Vector (2).png'
 import { Link, useLocation } from 'react-router-dom';
+import axios from '../../apiService/axios';
 
 const Blog = () => {
+    const [blog,setBlog] = useState([]);
+    async function blogFunction(){
+       try {
+        axios.get("/blogs/")
+        .then(res=>{
+           console.log(res.data,"ok blog");
+           setBlog(res.data)
+        })
+       } catch (error) {
+        
+       }
+    }
+    useEffect(()=>{
+        blogFunction()
+    },[])
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -33,13 +49,13 @@ const Blog = () => {
         <div className='  pb-[60px]' id='blog'>
             <div className='container-ml'>
                 <div className='pt-[10px] text-primary'>
-                    <h1 className='  text-[40px] px-3 border-l-[5px] border-primary h-[60px] my-[48px]'>The Peoples Voice</h1>
+                    <h1 className='  text-[40px] px-3 border-l-[5px] border-primary h-[60px] my-[48px] '>The Peoples Voice</h1>
 
                 </div>
-                {pathname == "/blog" ? <div> <BlogAll />  </div> : <div
+                {pathname == "/blog" ? <div> <BlogAll blog={blog} />  </div> : <div
                     className='arrow_no_margin  '>
                     <Carousel responsive={responsive}   >
-                        {[1, 2, 34, 5, 6, 4].map(item => <div className='bg-white pt-[75px] px-[30px] pb-[35px] rounded-[10px] border'>
+                        {blog.map(item => <div className='bg-white pt-[75px] px-[30px] pb-[35px] rounded-[10px] border' key={item.id}>
                             <div className='grid grid-cols-4 gap-4'>
                                 <div>
                                     <p className="mb-[26px]">
@@ -91,8 +107,8 @@ export default Blog;
 
 
 // reading card design here 
-export const BlogAll = () => {
-    const data = [2, 3];
+export const BlogAll = ({blog}) => {
+     
     return (
         <div className='  rounded'>
 
@@ -105,10 +121,10 @@ export const BlogAll = () => {
                     {
 
 
-                        data.map(item => <div>
+                        blog.map(item => <div key={item.id}>
                             <img src={img} alt='loading' className='h-24 w-full' />
-                            <h1 className='my-4 text-2xl'>header field when come backend it work</h1>
-                            <p className='mb-5'>some text here i represent in the field so i have no choice i rest the api</p>
+                            <h1 className='my-4 text-2xl'>{item.title} </h1>
+                            <p className='mb-5'>{item.content}</p>
                         </div>)
                     }
                 </div>
@@ -125,7 +141,7 @@ export const BlogAll = () => {
                         <div className='border mb-10'></div>
                     </div>
                     {
-                        data.map(item => <div>
+                        blog.map(item => <div key={item.id}>
                             <div className='flex items-center'>
                                 <div>
                                     <img src={img} alt='loading' className='h-10 w-10 rounded-full' />
@@ -135,26 +151,26 @@ export const BlogAll = () => {
                                     <span className='mx-3 block'>May 30</span>
                                 </div>
                             </div>
-                            <h1 className='my-4 text-2xl'>header field when come backend it work</h1>
-                            <p className='mb-5'>some text here i represent in the field so i have no choice i rest the api</p>
+                            <h1 className='my-4 text-2xl'>{item.title} </h1>
+                            <p className='mb-5'>{item.content} </p>
                         </div>)
                     }
                 </div>
             </div>
             <div className='mt-10 grid md:grid-cols-3 grid-cols-1 gap-4 gap-y-10'>
-                {[1,  3, 4].map(item => <BlogCard />)}
+                {blog.map(item => <BlogCard key={item.id} item={item} />)}
             </div>
         </div>
     );
 };
 
-export const BlogCard = () => {
+export const BlogCard = ({item}) => {
     return (
         <>
             <div>
                 <img src={img} alt='loading' className='h-40 w-full' />
-                <h1 className='my-4 text-2xl'>header field when come backend it work</h1>
-                <p className='mb-5'>some text here i represent in the field so i have no choice i rest the api</p>
+                <h1 className='my-4 text-2xl'> {item.title}</h1>
+                <p className='mb-5'>{item.content}</p>
                 <div className='mt-5'>
                     <Link to="/blog/1" className='shadow-lg px-7 py-4 rounded hover:underline'>
                         See More

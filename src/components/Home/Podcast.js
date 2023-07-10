@@ -61,10 +61,10 @@ const Podcast = () => {
               <div
                 className='arrow_no_margin  '>
                 <Carousel
-                  itemClass=" "
+                  itemclassName=" "
                   responsive={responsive}   >
                   {
-                    [img1, img2, img3, img4, img1,].map(item => <div   >
+                    [img1, img2, img3, img4, img1,].map((item,index )=> <div  key={index} >
                       <div className='mx-3 ' >
                         <img src={`${item}`} alt="loading" width="100%" height="300px" className='h-[300px]' />
                       </div>
@@ -129,41 +129,41 @@ export const PodcastDetails = () => {
           <span className='text-xl mb-5'>Date: 30 jun 2020</span>
         </div>
       </div>
-       
+
       <div className='flex  justify-center items-center pr-4 pl-4 gap-x-6 gap-y-4 mt-4 '>
         <div>
-            <img src={youtube} alt='loading ...'/>
+          <img src={youtube} alt='loading ...' />
         </div>
-       
+
         <div>
           <h1 className='text-2xl text-black text-center' >Guests</h1>
-       { [1,2,3].map(item=> <div className='p-4   rounded shadow-md'>
-          <div className='flex gap-2 '>
-            <div className='  w-1/6'>
-              <img src={img1} className='rounded-full w-48 ' alt='loading' />
+          {[1, 2, 3].map(item => <div className='p-4   rounded shadow-md'>
+            <div className='flex gap-2 '>
+              <div className='  w-1/6'>
+                <img src={img1} className='rounded-full w-48 ' alt='loading' />
+              </div>
+              <div className='mb-3'>
+                <h1 className='  mb-2'>Header</h1>
+                <p>
+                  Lorem ipsum is my favourite text so i alltime use it
+                </p>
+
+              </div>
             </div>
-            <div className='mb-3'>
-              <h1 className='  mb-2'>Header</h1>
-              <p>
-                Lorem ipsum is my favourite text so i alltime use it
-              </p>
-               
-            </div>
-          </div>
-        </div>)}
-          </div> 
+          </div>)}
+        </div>
       </div>
       <div >
-        <div  className=' my-10'>
-           <div className='md:px-20 lg:px-28'>
-           <h1 className='text-xl text-center'>In This Episode</h1>
+        <div className=' my-10'>
+          <div className='md:px-20 lg:px-28'>
+            <h1 className='text-xl text-center'>In This Episode</h1>
             <p className='text-[12px] text-center'>this is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sv</p>
-           </div>
-           <div className='md:px-20 lg:px-28 my-8 text-center'>
-           <h1 className='text-xl'>Transcript</h1>
+          </div>
+          <div className='md:px-20 lg:px-28 my-8 text-center'>
+            <h1 className='text-xl'>Transcript</h1>
             <p className='text-[12px]'>this is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is s</p>
             <button className='bg-primary px-5 py-2 text-white rounded'>see more</button>
-           </div>
+          </div>
         </div>
       </div>
     </>

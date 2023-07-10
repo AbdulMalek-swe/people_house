@@ -8,19 +8,19 @@ import AboutModal, { AboutAudio, aboutData, audioData } from '../homeSubComponen
 import { useLocation } from 'react-router-dom';
 const About = () => {
   const { pathname } = useLocation()
-  const [toggle,setToggle] = useState({})
-  const handleClick = e =>{
- 
-      setToggle({id:e,toggler:!toggle.toggler})
-      
+  const [toggle, setToggle] = useState({})
+  const handleClick = e => {
+
+    setToggle({ id: e, toggler: !toggle.toggler })
+
   }
-   
+
   return (
-    <div className='bg-[#002868] pb-[100px]'  id='about'>
+    <div className='bg-[#002868] pb-[100px]' id='about'>
       {pathname == "/about" ? <div className='bg-white  pb-5'>
 
         {/* collapse data here  */}
-            <AboutAll/>
+        <AboutAll />
       </div>
 
         :
@@ -324,8 +324,8 @@ const About = () => {
 
 export default About;
 
-  
- 
+
+
 const AboutAll = () => {
   const [expandedPosts, setExpandedPosts] = useState([]);
   const togglePost = (postId) => {
@@ -338,32 +338,31 @@ const AboutAll = () => {
 
   return (
     <div>
-        {aboutData.map((post) => (
+      {aboutData.map((post) => (
         <div key={post.id} className='shadow-lg my-6 p-4'>
-           <h1 className='text-center text-4xl  '>{post?.mh1}</h1>
-           <h1 className='text-center text-4xl   my-8'>{post?.th1}</h1>
-           <p className="text-gray-800">
+          <h1 className='text-center text-4xl  '>{post?.mh1}</h1>
+          <h1 className='text-center text-4xl   my-8'>{post?.th1}</h1>
+          <p className="text-gray-800">
             {expandedPosts.includes(post?.id)
               ? post.text1
               : `${post?.text1?.slice(0, 400)}...`}
           </p>
-           <h1 className='text-center text-4xl   my-8'>{post?.th2}</h1>
+          <h1 className='text-center text-4xl   my-8'>{post?.th2}</h1>
           <p className="text-gray-800">
             {expandedPosts.includes(post?.id)
               ? post.text2
               : `${post?.text2.slice(0, 400)}...`}
           </p>
           <div className='text-center'>
-          <button
-            onClick={() => togglePost(post.id)}
-            className="text-center px-4 py-2 rounded text-black bg-white hover:underline mt-4 shadow-lg"
-          >
-            {expandedPosts.includes(post.id) ? 'See less' : 'See more'}
-          </button>
+            <button
+              onClick={() => togglePost(post.id)}
+              className="text-center px-4 py-2 rounded text-black bg-white hover:underline mt-4 shadow-lg"
+            >
+              {expandedPosts.includes(post.id) ? 'See less' : 'See more'}
+            </button>
           </div>
         </div>
       ))}
     </div>
   );
 };
- 

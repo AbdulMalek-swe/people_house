@@ -13,7 +13,7 @@ const RealNews = () => {
 
   const handleArticleSubmit = (journalist, event) => {
     event.preventDefault();
-    console.log(journalist );
+    
     const updatedJournalists = journalists.map(j =>
       j.name === journalist.name ? { ...j, articles: [...j.articles, articleForm] } : j
     );
@@ -66,24 +66,24 @@ const RealNews = () => {
                   </div>
                   <div className="text-white">
                     Article Content:
-                     <textarea name="content" value={articleForm.content} onChange={(e) => handleChange(e, setArticleForm)} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-primary  placeholder-primary  border" placeholder="Article Content:"/>
+                    <textarea name="content" value={articleForm.content} onChange={(e) => handleChange(e, setArticleForm)} required className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-primary  placeholder-primary  border" placeholder="Article Content:" />
                   </div>
                 </div>
-                <button type="submit"  className="text-white border rounded-lg py-2 px-4 bg-primary mb-10 mt-5">Submit Article</button>
+                <button type="submit" className="text-white border rounded-lg py-2 px-4 bg-primary mb-10 mt-5">Submit Article</button>
               </form>
               {journalists?.articles?.map((article, index) => (
                 <div key={index} className="flex justify-center  text-white">
-                  <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white p-5">
+                  <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-5">
 
-                    <div class="px-6 py-4">
-                      <div class="font-bold text-xl mb-2">{article.title}</div>
-                      <p class="text-gray-700 text-base">
+                    <div className="px-6 py-4">
+                      <div className="font-bold text-xl mb-2">{article.title}</div>
+                      <p className="text-gray-700 text-base">
                         {article.content}
                       </p>
                     </div>
-                    <div class="px-6 pt-4 pb-2">
+                    <div className="px-6 pt-4 pb-2">
                       <span
-                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"> <a href={article.patreonLink}>Visit Website</a></span>
+                        className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"> <a href={article.patreonLink}>Visit Website</a></span>
 
                     </div>
                   </div>
