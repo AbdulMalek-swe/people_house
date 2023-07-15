@@ -1,7 +1,9 @@
-import { useState } from "react";
+import axios from "../../apiService/axios";
+import { useEffect, useState } from "react";
 
 const Polls = () => {
   // Sample state for a poll (you'd fetch this from your backend in a real application)
+ 
   const [poll, setPoll] = useState({
     question: "Who should be the next President?",
     options: ["Candidate 1", "Candidate 2", "Candidate 3"],
@@ -15,7 +17,8 @@ const Polls = () => {
       return { ...currentPoll, votes: newVotes };
     });
   };
-
+   
+  
   return (
     <div className="bg-primary text-white py-20">
       <div className="container-ml">
@@ -25,6 +28,7 @@ const Polls = () => {
         </div>
         <div className="bg-white text-black pt-[75px] px-[30px] pb-[35px] rounded-[10px]">
           <ul>
+
             {poll.options.map((option, index) => (
               <li key={index} className="flex justify-between   items-center   border border-primary rounded-lg mt-2 px-4 py-1">
                 <div>

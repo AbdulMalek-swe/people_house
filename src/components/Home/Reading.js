@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import img2 from '../../Assets/Photos/Video Marketing.png'
 import Carousel from 'react-multi-carousel';
 import { Link, useLocation } from 'react-router-dom';
+import axios from '../../apiService/axios';
+
 const Reading = () => {
     const { pathname } = useLocation()
     const responsive = {
@@ -35,6 +37,32 @@ const Reading = () => {
         }
 
     }
+    const [reading,setReading] = useState([])
+    const [filters,setFilters] = useState([]);
+    async function getReading(){
+        axios.get("/recommended-readings/")
+        .then(res=>{
+           console.log(res.data,"ok blog");
+           setReading(res.data)
+           setFilters(res.data)
+        })  
+    }
+    useEffect(()=>{
+      getReading()
+  
+    },[])
+    const handleReading = items =>{
+        const s = filters.filter(item=> {
+            console.log(item.type.toLowerCase() ==items);
+           return item.type.toLowerCase() ==items
+        })
+       
+            setReading(s)
+         
+        
+       
+       
+    } 
     return (
         <div className='container-ml mb-[10px]' id='reading'>
             <div>
@@ -46,13 +74,13 @@ const Reading = () => {
                 </div>
 
                 {pathname === '/reading' && <div className='grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-1 gap-x-1 '>
-                    <button className="bg-red text-white font-medium py-2 px-5 flex items-center rounded-md gap-6   text-center justify-center my-2 shadow-lg hover:bg-primary">
+                    <button className="bg-red text-white font-medium py-2 px-5 flex items-center rounded-md gap-6   text-center justify-center my-2 shadow-lg hover:bg-primary" onClick={()=>handleReading('book')}>
                         <span>Book</span>
                     </button>
-                    <button className="bg-white text-black font-medium py-2 px-5 flex items-center rounded-md gap-6  text-center justify-center my-2  shadow-lg hover:bg-red hover:text-white ">
+                    <button className="bg-white text-black font-medium py-2 px-5 flex items-center rounded-md gap-6  text-center justify-center my-2  shadow-lg hover:bg-red hover:text-white " onClick={()=>handleReading('video')}>
                         <span>Video </span>
                     </button>
-                    <button className="bg-primary text-white font-medium py-2 px-5 flex items-center rounded-md gap-6  text-center justify-center my-2 shadow-lg hover:bg-red">
+                    <button className="bg-primary text-white font-medium py-2 px-5 flex items-center rounded-md gap-6  text-center justify-center my-2 shadow-lg hover:bg-red" onClick={()=>handleReading('article')}>
                         <span>Article</span>
                     </button>
                 </div>}
@@ -92,7 +120,7 @@ const Reading = () => {
             </div>
             <div className='mt-7 grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-4 '>
                 {
-                    pathname === '/reading' && data.slice(0, sliceNumber).map(item => <ReadingAll />)
+                    pathname === '/reading' && reading.slice(0, sliceNumber).map(item => <ReadingAll item={item} key={item.ReadingAll}/>)
                 }
 
             </div>
@@ -109,15 +137,15 @@ const Reading = () => {
 export default Reading;
 
 // reading card design here 
-export const ReadingAll = () => {
+export const ReadingAll = ({item}) => {
     return (
         <div className='pl-[40px] pr-[13px]   rounded shadow-md'>
             <div className='flex items-center pt-[37px] mb-[35px]'>
-                <div  >  <img src={img2} alt='' height="50px" width="50px" /></div>
-                <p className='text-dark text-[20px] py-[2px] mx-8  mb-[-15px]'>Today’s Article</p>
+                <div  >  <img src={item?.image} alt='' height="50px" width="50px" /></div>
+                <p className='text-dark text-[20px] py-[2px] mx-8  mb-[-15px]'> {item?.title}</p>
             </div>
             <div className='pb-[41px]'>
-                <span className='text-[20px] font-normal'>Set-top boxes and embedded software for the broadcasting market, including DVB, OTT, and IPTV solutions. </span>
+                <span className='text-[20px] font-normal whitespace-normal break-words'> {item?.description} </span>
             </div>
             <Link to="/reading/1">
                 <button className='bg-primary px-5 py-3 rounded text-white my-5'>Details</button>

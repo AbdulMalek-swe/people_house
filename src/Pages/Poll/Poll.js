@@ -1,38 +1,58 @@
-import { useState } from "react";
+import { toast } from "react-toastify";
+import axios from "../../apiService/axios";
+import { useEffect, useState } from "react";
 
 const Polls = () => {
+  const [voter,setVoter] = useState([])
   // Sample state for a poll (you'd fetch this from your backend in a real application)
-  const [poll, setPoll] = useState({
-    question: "Who should be the next President?",
-    options: ["Candidate 1", "Candidate 2", "Candidate 3"],
-    votes: [0, 0, 0],  // Vote counts for each option
-  });
-
-  const vote = (index) => {
-    setPoll(currentPoll => {
-      const newVotes = [...currentPoll.votes];
-      newVotes[index]++;
-      return { ...currentPoll, votes: newVotes };
-    });
+ 
+  async function getVote(){
+   try {
+  const result = await axios.get('/polls/')
+      setVoter(result.data)
+    
+   } catch (error) {
+    
+   }
+  }
+  const vote = (id) => {
+    axios.post('/polls/vote/',{
+      "poll_id":"1",
+      "choice_id":id
+  })
+    .then(res=>{
+      console.log(res);
+      if(res.status===201){
+        getVote()
+        toast.success("successfully given a vote")
+      }
+    })
+    .catch(err=>{
+      toast.error('oops sorry not give vote')
+    })
   };
-
+  useEffect(()=>{
+   
+    getVote()
+  },[])
+  console.log(voter[0]?.choices);
   return (
     <div className="bg-white text-white py-20">
       <div className="container-ml">
         <div className='pt-[10px] text-white'>
           <h1 className=' text-primary text-[40px] px-3 border-l-[5px] border-primary h-[60px] my-[18px]'>Poll</h1>
-          <p className='px-3 text-primary  font-500 text-[20px] mb-[35px]'>{poll.question}</p>
+          <p className='px-3 text-primary  font-500 text-[20px] mb-[35px]'>{voter[0]?.question}</p>
         </div>
         <div className="bg-white text-black pt-[75px] px-[30px] pb-[35px] rounded-[10px]">
           <ul>
-            {poll.options.map((option, index) => (
+          {voter[0]?.choices.map((option, index) => (
               <li key={index} className="flex justify-between   items-center   border border-primary rounded-lg mt-2 px-4 py-1">
                 <div>
-                  <h1> {option}</h1>
-                  <button className="bg-primary text-white px-4 py-1 rounded-lg my-2" onClick={() => vote(index)} >Vote  </button>
+                  <h1> {option.choice_text}</h1>
+                  <button className="bg-primary text-white px-4 py-1 rounded-lg my-2" onClick={() => vote(option?.id)} >Vote  </button>
                 </div>
                 <div>
-                  <span className=""> {poll.votes[index]} votes</span>
+                  <span className="">  {option?.votes} votes</span>
                 </div>
               </li>
             ))}

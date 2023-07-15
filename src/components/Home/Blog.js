@@ -62,19 +62,20 @@ const Blog = () => {
                                         <FaUserCircle size={48} />
                                     </p>
                                     <img alt='' src={vector} />
-                                    <p className='text-[15px] mb-[15px]'>MD: Sazzadul Alam Sajib</p>
+                                    <p className='text-[15px] mb-[15px]'>{item.user.username}</p>
                                     <p className='text-[15px]  '> Chief Designer<br />
                                         Visionary Technology<br />
                                         Bangladesh</p>
 
                                 </div>
                                 <div className='col-span-2'>
-                                    <h1 className='text-[30px] text-black mb-[38px]'>A Serious Discussion</h1>
-                                    <p className='text-[20px] '>Hardware and software solutions for the manufacturers of systems for industrial automation, robots, power engineering, and motor control.</p>
-                                    <p className='text-[20px] text-[#00000096] font-normal mt-10'>Hardware and software solutions for the manufacturers of systems for industrial automation, robots, power engineering, and motor control.</p>
+                                    <h1 className='text-[30px] text-black mb-[38px]'>{item.title}</h1>
+                                    <div dangerouslySetInnerHTML={{__html:item.content.slice(0,400)}}>
+
+                                    </div>
                                 </div>
                                 <div className="card w-[208px] bg-base-100 shadow-xl image-full h-[283px]">
-                                    <figure className='w-[208px] h-[283px]'><img src={img} alt="Shoes" width="100%" className='w-full h-[283px]' height="283px" /></figure>
+                                    <figure className='w-[208px] h-[283px]'><img src={item.image} alt="Shoes" width="100%" className='w-full h-[283px]' height="283px" /></figure>
                                     <div className="   flex flex-col items-center justify-center text-[#FFFFFF]">
 
                                         <p className='text-[#FFFFFF] z-10 text-center text-[20px]'>Here will be <br /> a image <br /> about the <br /> discussion</p>
@@ -112,7 +113,7 @@ export const BlogAll = ({blog}) => {
     return (
         <div className='  rounded'>
 
-            <div className='grid md:grid-cols-4 place-content-center   justify-center gap-4 '>
+            <div className='grid md:grid-cols-4 place-content-center   justify-center gap-6 '>
                 <div className='mx-auto '>
                     <div>
                         <h1 className='text-3xl mb-3'>Top Stories</h1>
@@ -121,10 +122,12 @@ export const BlogAll = ({blog}) => {
                     {
 
 
-                        blog.map(item => <div key={item.id}>
-                            <img src={img} alt='loading' className='h-24 w-full' />
+                        blog.map(item => <div key={item.id}  >
+                            <img src={item?.image} alt='loading' className='h-24 w-full' />
                             <h1 className='my-4 text-2xl'>{item.title} </h1>
-                            <p className='mb-5'>{item.content}</p>
+                            <div dangerouslySetInnerHTML={{ __html: item.content }} />
+                          
+                             
                         </div>)
                     }
                 </div>
@@ -144,7 +147,7 @@ export const BlogAll = ({blog}) => {
                         blog.map(item => <div key={item.id}>
                             <div className='flex items-center'>
                                 <div>
-                                    <img src={img} alt='loading' className='h-10 w-10 rounded-full' />
+                                    <img src={item?.image} alt='loading' className='h-10 w-10 rounded-full' />
                                 </div>
                                 <div>
                                     <span className='mx-3 block'>Admin</span>
@@ -152,7 +155,7 @@ export const BlogAll = ({blog}) => {
                                 </div>
                             </div>
                             <h1 className='my-4 text-2xl'>{item.title} </h1>
-                            <p className='mb-5'>{item.content} </p>
+                            <div dangerouslySetInnerHTML={{ __html: item.content }} />
                         </div>)
                     }
                 </div>
@@ -168,13 +171,13 @@ export const BlogCard = ({item}) => {
     return (
         <>
             <div>
-                <img src={img} alt='loading' className='h-40 w-full' />
+                <img src={item?.image} alt='loading' className='h-40 w-full' />
                 <h1 className='my-4 text-2xl'> {item.title}</h1>
-                <p className='mb-5'>{item.content}</p>
+                <div dangerouslySetInnerHTML={{ __html: item.content }} />
                 <div className='mt-5'>
-                    <Link to="/blog/1" className='shadow-lg px-7 py-4 rounded hover:underline'>
+                    {/* <Link to="/blog/1" className='shadow-lg px-7 py-4 rounded hover:underline'>
                         See More
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </>

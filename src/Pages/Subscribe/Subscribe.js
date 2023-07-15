@@ -9,30 +9,35 @@ import Pays from './Payment';
 
 const toggleData = [
     {
+        id:"price_1NKlZIHGm5JMFetDUh2mx2Dg",
         name: "Liberty Plan",
         amount: 0.99, m: 3.00, y: 36.00,
         des: "By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",
         subH: "Choose a billing period and finish the upgrade process"
     },
     {
+        id:'price_1NKlaFHGm5JMFetDIUhZhIYd',
         name: "Patriot Plan",
         amount: 30, m: 2.00, y: 24.00,
         des: "By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",
         subH: "Choose a billing period and finish the upgrade process"
     },
     {
+        id:'price_1NKlawHGm5JMFetDAKpghtOW',
         name: "Eagle Plan",
         amount: 30, m: 2.00, y: 24.00,
         des: "By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",
         subH: "Choose a billing period and finish the upgrade process"
     },
     {
+        id:'price_1NKlbmHGm5JMFetDeJ5hTru3',
         name: "Stars & Stripes Plan",
         amount: 60, m: 5.00, y: 60.00,
         des: "By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",
         subH: "Choose a billing period and finish the upgrade process"
     },
     {
+        id:'price_1NKldVHGm5JMFetDSRKccgiB',
         name: "Founding Fathers Plan",
         amount: 80, m: 3.00, y: 36.00,
         des: "By checking out, you agree with our Terms and Services and confirm that you have read our Privacy Policy. You can cancel recurring payments at any time.",
@@ -65,7 +70,7 @@ const Subscribe = () => {
     
     return (
         <div className='container-ml mt-12'>
-                <Pays/> 
+              
             {
                 toggle && <ModalSub data={data} />
             }

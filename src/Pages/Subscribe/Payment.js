@@ -3,8 +3,24 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from '../../apiService/axios';
 
-const stripePromise = loadStripe('pk_test_51MvGRULyPagBwcPn8cfry3uU9i9gGASSwjiGcTz10T4zUROjvtfdtuyx4NGQYwWX8gRqbAjFV3E9rW4B44WsP161006YllnuPM');
-const PaymentForm = () => {
+const stripePromise = loadStripe('pk_test_51Mtz5oHGm5JMFetDGtK3IBCrzCwwHe7D0Bfy1Y1KElQqiJBACfFj2Z0gynSXqY5hLfRw0U0SHvsG4GFCMYEGQLLC00synsMba1');
+const PaymentForm = ({id}) => {
+  const cardElementStyle = {
+    base: {
+      width: '339px',
+      background: 'red',
+      fontFamily: 'Arial, sans-serif',
+      fontSize: '16px',
+      color: 'black',
+      padding:'6px 3px',
+      '::placeholder': {
+        color: 'black',
+      },
+    },
+    invalid: {
+      color: '#dc3545',
+    },
+  };
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
@@ -30,14 +46,18 @@ const PaymentForm = () => {
       setError(error.message);
     } else {
      
-     axios.post("/subscriptions/create/",{stripe_token:paymentMethod.id, plan_id:134})
+     axios.post("/subscriptions/create/",{
+      plan_id: id,
+      stripe_token: paymentMethod.id
+  })
       .then(res=>{
         console.log(res);
+        setPaymentSuccess(true);
       })
       .catch(err=>{
           console.log(err.message);
       })
-      setPaymentSuccess(true);
+     
     }
   };
 
@@ -58,25 +78,23 @@ const PaymentForm = () => {
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="form-row">
-            <label htmlFor="card-element">
-              Credit or debit card
-            </label>
-            <div id="card-element">
-              <CardElement options={{ /* customize styling */ }} />
+            
+            <div id="card-element" className='mt-7'>
+              <CardElement options={{style:cardElementStyle}} />
             </div>
             {error && <div className="error">{error}</div>}
           </div>
-          <button type="submit">Pay</button>
+          <button type="submit" className='mt-7 bg-white w-full hover:bg-black hover:text-white shadow-lg px-6 py-3 hover:underline'>Pay</button>
         </form>
       )}
     </div>
   );
 };
 
-const Pays = () => {
+const Pays = ({id}) => {
   return (
     <Elements stripe={stripePromise}>
-      <PaymentForm />
+      <PaymentForm id={id}/>
     </Elements>
   );
 };

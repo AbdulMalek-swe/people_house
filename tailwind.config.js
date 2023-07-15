@@ -1,9 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  purge: {
+    content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+    options: {
+      safelist: ['prose', 'prose-sm', 'm-auto'], // Add any other classes you're using
+    },
+  },
   darkMode: 'class',
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+   
   theme: {
     container: {
       center: true,

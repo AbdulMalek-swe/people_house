@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Pays from './Payment';
 
 const ModalSub = ({ data }) => {
- 
+   const [togler,setToggler] = useState(false)
   return (
     <div>
       <input type="checkbox" id="my-modal-5" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box w-11/12 max-w-5xl">
+        {!togler&&<div className="modal-box w-11/12 max-w-5xl">
           <h3 className="font-bold text-left text-[#000000] text-[30px]"> {data?.name}</h3>
           <p className="py-4 text-left text-[#000000B2]  text-[20px]">{data?.subH}</p>
 
@@ -42,9 +43,20 @@ const ModalSub = ({ data }) => {
           </div>
           <div className="modal-action flex items-center">
             <label htmlFor="my-modal-5" className="text-[#B22234] text-[20px]  cursor-pointer">Cancel</label>
-            <button htmlFor="my-modal-5" className="px-[32px] py-[10px]  bg-[#002868] rounded-[10px] text-white">Choose Payment method</button>
+            <button htmlFor="my-modal-5" className="px-[32px] py-[10px]  bg-[#002868] rounded-[10px] text-white" onClick={()=>{setToggler(!togler)}}>Choose Payment method</button>
           </div>
-        </div>
+          
+        </div>}
+        {
+          
+         togler && <div className='container-sk bg-white px-5 py-3 rounded w-1/2'>
+                <Pays id={data?.id}/>
+                
+                <label htmlFor="my-modal-5" className="text-[#B22234] text-[20px]  cursor-pointer mt-7 w-full">Cancel</label>
+               
+            </div>
+         
+          }
       </div>
     </div>
   );

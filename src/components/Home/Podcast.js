@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import Carousel from 'react-multi-carousel';
@@ -7,6 +7,7 @@ import img3 from '../../Assets/People House Image & Data/allmike.jpg';
 import img4 from '../../Assets/People House Image & Data/mike1.jpg';
 import img1 from '../../Assets/People House Image & Data/mikeprimary.jpg';
 import youtube from '../../Assets/Icons/youtube.svg';
+import axios from '../../apiService/axios';
 const Podcast = () => {
   const { pathname } = useLocation()
 
@@ -41,6 +42,21 @@ const Podcast = () => {
     }
 
   }
+  const [podcast,setPodcast] = useState([]);
+    async function blogFunction(){
+       try {
+        axios.get("/podcasts/")
+        .then(res=>{
+           console.log(res.data,"ok blog");
+           setPodcast(res.data)
+        })
+       } catch (error) {
+        
+       }
+    }
+    useEffect(()=>{
+        blogFunction()
+    },[])
   return (
     <div >
       <div className='container-ml mb-6' id='podcast'>
@@ -76,7 +92,7 @@ const Podcast = () => {
         </div>
         <div className='mt-7   '>
           {
-            pathname === '/podcast' && data.slice(0, sliceNumber).map(item => <PodcastAll />)
+            pathname === '/podcast' && podcast.slice(0, sliceNumber).map(item => <PodcastAll item={item}/>)
           }
 
         </div>
@@ -95,21 +111,19 @@ export default Podcast;
 
 
 // reading card design here 
-export const PodcastAll = () => {
+export const PodcastAll = ({item}) => {
   return (
     <div className='p-4   rounded shadow-md'>
       <div className='flex items-center  '>
         <div className='  w-1/6'>
-          <img src={img1} className='rounded-full w-full' alt='loading' />
+          <img src={item?.image} className='rounded-full w-full' alt='loading' />
         </div>
         <div className='mb-3'>
-          <h1 className='pt-7 mb-2'>Header</h1>
-          <p>
-            Lorem ipsum is my favourite text so i alltime use it
-          </p>
-          <Link to="/podcast/1">
+          <h1 className='pt-7 mb-2'>{item?.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: item?.description }}></div>
+          {/* <Link to="/podcast/1">
             <button className=' hover:underline hover:text-primary   py-3 rounded text-black my-5'>Read more</button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

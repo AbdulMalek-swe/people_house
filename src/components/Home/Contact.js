@@ -1,6 +1,34 @@
-import React from 'react';
+import { toast } from 'react-toastify';
+import axios from '../../apiService/axios';
+import React, { useState } from 'react';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post('/contact/', formData);
+            // Handle the response if needed
+            if(response.status===201){
+                toast.success("successfully contact with us")
+            }
+            console.log(response.data);
+        } catch (error) {
+            // Handle the error
+            console.error(error);
+        }
+    };
     return (
         <div className='relative bg-contact bg-center bg-cover bg-no-repeat bg-static bg-fixed  ' id='contact'>
             <div className='container-ml   pb-10'>
@@ -9,28 +37,60 @@ const Contact = () => {
 
                 </div>
                 <div>
-                    <form className="space-y-4">
-                        <div className='grid grid-cols-2 gap-4'>
+                    <form className="space-y-4" onSubmit={handleSubmit}>
+                        <div className="grid grid-cols-2 gap-4">
                             <div>
                                 <CustomeLabel name={" Name"} />
-                                <input type="text" placeholder="Enter Your Name" className="block w-full px-5 py-3 mt-2 text-[#eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg border border-black " required />
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    placeholder="Enter Your Name"
+                                    className="block w-full px-5 py-3 mt-2 text-[#eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg border border-black"
+                                    required
+                                />
                             </div>
                             <div>
                                 <CustomeLabel name={"Email"} />
-                                <input type="email" placeholder="Enter Your  Email" className="block w-full px-5 py-3 mt-2 text-[#eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg border border-black" required />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    placeholder="Enter Your Email"
+                                    className="block w-full px-5 py-3 mt-2 text-[#eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg border border-black"
+                                    required
+                                />
                             </div>
                             <div>
                                 <CustomeLabel name={"Your Subject"} />
-                                <input type="text" placeholder="Your Subject" className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-[#eae9e9d4]  placeholder-[#eae9e9d4] border border-black" />
+                                <input
+                                    type="text"
+                                    name="subject"
+                                    value={formData.subject}
+                                    onChange={handleChange}
+                                    placeholder="Your Subject"
+                                    className="block w-full px-5 py-3 mt-2  bg-transparent shadow-lg rounded-lg text-[#eae9e9d4]  placeholder-[#eae9e9d4] border border-black"
+                                />
                             </div>
                         </div>
                         <div>
                             <CustomeLabel name={"Your message"} />
-                            <textarea type="text" placeholder="Enter Your Message Here" className="block w-full px-5 py-3 mt-2 text-[##eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg border border-black" rows={4} />
+                            <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                placeholder="Enter Your Message Here"
+                                className="block w-full px-5 py-3 mt-2 text-[##eae9e9d4]  placeholder-[#eae9e9d4] bg-transparent shadow-lg rounded-lg border border-black"
+                                rows={4}
+                            />
                         </div>
-                        <button className="  mx-auto max-w-xs px-6 py-3 mt-4 text-sm font-medium tracking-wide   capitalize transition-colors duration-300 transform bg-[#FFFFFFB2] rounded-lg hover:bg-blue-400 flex justify-center items-center gap-4  ">
-                            <span className='text-[#002868]  '>SEND NOW</span>
-
+                        <button
+                            type="submit"
+                            className="mx-auto max-w-xs px-6 py-3 mt-4 text-sm font-medium tracking-wide capitalize transition-colors duration-300 transform bg-[#FFFFFFB2] rounded-lg hover:bg-blue-400 flex justify-center items-center gap-4"
+                        >
+                            <span className="text-[#002868]">SEND NOW</span>
                         </button>
                     </form>
                 </div>
