@@ -4,9 +4,10 @@ import axios from "axios";
 const api = axios.create({
   baseURL: 'https://thepeopleshouse.co/api/',
   headers: {
-  //   "Content-Type": "multipart/form-data",
+    // "Content-Type": "multipart/form-data",
   //  " Access-Control-Allow-Origin":"*",
   //  "Access-Control-Allow-Headers":"*",
+  "Content-Type": "application/json"
   },
 });
 
