@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import store from '../../Redux/store/store';
+import { addUserActions } from '../../Redux/apiSlice/userSlice';
 
 const Signup = () => {
     const [cookie, setCookie] = useCookies(["token"]);
@@ -25,6 +27,7 @@ const Signup = () => {
             const { data, status } = res;
             if (status === 200) {
                 // setIsLoading(false);
+                store.dispatch(addUserActions.addUser(res.data))
                 toast.dismiss(loading);
                 toast.success("successfully create account");
                 setCookie("token", data?.token, {

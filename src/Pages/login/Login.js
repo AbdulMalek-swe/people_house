@@ -3,6 +3,8 @@ import axios from '../../apiService/axios';
 import { toast } from "react-toastify";
 import { useCookies } from 'react-cookie';
 import { Formik } from "formik";
+import store from "../../Redux/store/store";
+import { addUserActions } from "../../Redux/apiSlice/userSlice";
 export const Login = () => {
     const [cookie, setCookie] = useCookies(["token"]);
     const Registerapi = async (values) => {
@@ -10,10 +12,11 @@ export const Login = () => {
 
         try {
             const res = await axios.post("/login/", values)
-            
+             console.log(res);
             const { data, status } = res;
             if (status === 200) {
                 // setIsLoading(false);
+                store.dispatch(addUserActions.addUser(res.data.profile))
                 toast.dismiss(loading);
                 toast.success("successfully login");
                 setCookie("token", data?.token, {

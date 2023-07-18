@@ -22,6 +22,7 @@ import RealNews from "../components/Home/RealNews"
 import Forum from "../components/Home/PeopleForum"
 import Zoo from "../Pages/Zoo/Zoo"
 import PublicRoute from "./PublicRoute"
+import ProtectedRoute from "./ProtectedRoute"
 
 const router = createBrowserRouter([
     {
@@ -115,7 +116,7 @@ const router = createBrowserRouter([
    
     {
         path:"/subscribe",
-        element:<Subscribe/>
+        element:<ProtectedRoute><Subscribe/></ProtectedRoute> 
     },
     
     {
