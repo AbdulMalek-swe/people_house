@@ -6,23 +6,25 @@ import { FaUserCircle } from 'react-icons/fa';
 import vector from '../../Assets/Photos/Vector (2).png'
 import { Link, useLocation } from 'react-router-dom';
 import axios from '../../apiService/axios';
+import { MdOutlineReadMore } from 'react-icons/md';
+import ModelShare from '../shareModel/ModelShare';
 
 const Blog = () => {
-    const [blog,setBlog] = useState([]);
-    async function blogFunction(){
-       try {
-        axios.get("/blogs/")
-        .then(res=>{
-           console.log(res.data,"ok blog");
-           setBlog(res.data)
-        })
-       } catch (error) {
-        
-       }
+    const [blog, setBlog] = useState([]);
+    async function blogFunction() {
+        try {
+            axios.get("/blogs/")
+                .then(res => {
+                    console.log(res.data, "ok blog");
+                    setBlog(res.data)
+                })
+        } catch (error) {
+
+        }
     }
-    useEffect(()=>{
+    useEffect(() => {
         blogFunction()
-    },[])
+    }, [])
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -70,7 +72,7 @@ const Blog = () => {
                                 </div>
                                 <div className='col-span-2'>
                                     <h1 className='text-[30px] text-black mb-[38px]'>{item.title}</h1>
-                                    <div dangerouslySetInnerHTML={{__html:item.content.slice(0,400)}}>
+                                    <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 400) }}>
 
                                     </div>
                                 </div>
@@ -108,8 +110,8 @@ export default Blog;
 
 
 // reading card design here 
-export const BlogAll = ({blog}) => {
-     
+export const BlogAll = ({ blog }) => {
+
     return (
         <div className='  rounded'>
 
@@ -126,8 +128,8 @@ export const BlogAll = ({blog}) => {
                             <img src={item?.image} alt='loading' className='h-24 w-full' />
                             <h1 className='my-4 text-2xl'>{item.title} </h1>
                             <div dangerouslySetInnerHTML={{ __html: item.content }} />
-                          
-                             
+
+
                         </div>)
                     }
                 </div>
@@ -167,7 +169,7 @@ export const BlogAll = ({blog}) => {
     );
 };
 
-export const BlogCard = ({item}) => {
+export const BlogCard = ({ item }) => {
     return (
         <>
             <div>
@@ -185,6 +187,7 @@ export const BlogCard = ({item}) => {
 };
 
 export const BlogDetails = () => {
+    const datas =window.location.href
     return (
         <div className='text-center container-ml my-7'>
             <div className='flex items-center justify-center' >
@@ -193,7 +196,15 @@ export const BlogDetails = () => {
                     <img src='' alt='loaded the imgs' className='my-5' />
                     <p>
                         We, the members of this community, pledge to honor and protect the sacrifices made by our military heroes who shed their blood to secure our freedom and ensure the future of our nation. We recognize that their sacrifices were hard-won and the stories lying beneath the headstones at Arlington Cemetery and other military cemeteries across the country are the seeds of freedom that must be protected at all costs.
+                       
                     </p>
+                    <div className=' flex flex-col justify-center mx-1 items-center text-black'>
+                        <span className='text-[10px] m-[0px]'>
+                            <label htmlFor='my-modal-s1'  >
+                                <span className='hover:underline cursor-pointer'>Read more</span> </label>
+                            <ModelShare data={datas} />
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

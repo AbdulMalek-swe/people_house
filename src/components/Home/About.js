@@ -124,7 +124,7 @@ const About = () => {
                           </div>
                           <div className='flex justify-end  '>
 
-                            <div className='mx-1 flex flex-col justify-center mx-1 items-center text-black'>
+                            <div className=' flex flex-col justify-center mx-1 items-center text-black'>
 
                               <span><MdOutlineReadMore size={18} /></span>
                               <span className='text-[10px] m-[0px]   '>
