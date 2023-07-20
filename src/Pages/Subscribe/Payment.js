@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from '../../apiService/axios';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const stripePromise = loadStripe('pk_test_51Mtz5oHGm5JMFetDGtK3IBCrzCwwHe7D0Bfy1Y1KElQqiJBACfFj2Z0gynSXqY5hLfRw0U0SHvsG4GFCMYEGQLLC00synsMba1');
 const PaymentForm = ({id}) => {
@@ -25,10 +27,10 @@ const PaymentForm = ({id}) => {
   const elements = useElements();
   const [error, setError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-
+const navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+ 
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet
       return;
@@ -51,11 +53,15 @@ const PaymentForm = ({id}) => {
       stripe_token: paymentMethod.id
   })
       .then(res=>{
-        console.log(res);
-        setPaymentSuccess(true);
+        if(res.status==201 || res.status==200){
+          toast.success('payment done successfully')
+          navigate("/")
+          setPaymentSuccess(true);
+        }
+      
       })
       .catch(err=>{
-          console.log(err.message);
+           toast.error('fail the payment method')
       })
      
     }

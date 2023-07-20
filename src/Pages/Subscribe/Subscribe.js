@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import img from '../../Assets/Photos/download.png'
 import ModalSub from './ModalSub';
-import axios from '../../apiService/axios';
-import Pays from './Payment';
- 
-
-
-
 const toggleData = [
     {
         id:"price_1NKlZIHGm5JMFetDUh2mx2Dg",
@@ -55,19 +49,7 @@ const Subscribe = () => {
     const [togglerValue, setTogglerVallue] = useState(false)
 
     const toggleButtonclassName = togglerValue ? 'toggle toggle-accent text-red-700 bg-red focus:bg-[#002868]  ' : 'toggle toggle-accent     ';
-   
-    useEffect(()=>{
-        // axios.post("/subscriptions/create/",{stripe_token:"adjsfhsa",plan_id:1})
-        // .then(res=>{
-        //   console.log(res);
-        // })
-        // .catch(err=>{
-        //     console.log(err.message);
-        // })
-         
-    },[])
  
-    
     return (
         <div className='container-ml mt-12'>
               
