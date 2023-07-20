@@ -161,7 +161,7 @@ export const PodcastDetails = () => {
                 <p>
                   Lorem ipsum is my favourite text so i alltime use it
                 </p>
-
+              
               </div>
             </div>
           </div>)}

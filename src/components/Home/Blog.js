@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import img from '../../Assets/Photos/brain.png'
-import { FaUserCircle } from 'react-icons/fa';
+import { FaShare, FaUserCircle } from 'react-icons/fa';
 import vector from '../../Assets/Photos/Vector (2).png'
 import { Link, useLocation } from 'react-router-dom';
 import axios from '../../apiService/axios';
@@ -198,10 +198,11 @@ export const BlogDetails = () => {
                         We, the members of this community, pledge to honor and protect the sacrifices made by our military heroes who shed their blood to secure our freedom and ensure the future of our nation. We recognize that their sacrifices were hard-won and the stories lying beneath the headstones at Arlington Cemetery and other military cemeteries across the country are the seeds of freedom that must be protected at all costs.
                        
                     </p>
-                    <div className=' flex flex-col justify-center mx-1 items-center text-black'>
-                        <span className='text-[10px] m-[0px]'>
-                            <label htmlFor='my-modal-s1'  >
-                                <span className='hover:underline cursor-pointer'>Read more</span> </label>
+                    <div className='flex justify-end mx-1 items-center text-black mt-5'>
+                        <span className='text-base '>
+                              <label htmlFor='my-modal-s1'  >
+                                <FaShare className='text-7xl cursor-pointer text-right' title='share post'/>
+                                  </label>
                             <ModelShare data={datas} />
                         </span>
                     </div>

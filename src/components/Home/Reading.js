@@ -3,6 +3,8 @@ import img2 from '../../Assets/Photos/Video Marketing.png'
 import Carousel from 'react-multi-carousel';
 import { Link, useLocation } from 'react-router-dom';
 import axios from '../../apiService/axios';
+import { FaShare } from 'react-icons/fa';
+import ModelShare from '../shareModel/ModelShare';
 
 const Reading = () => {
     const { pathname } = useLocation()
@@ -157,6 +159,7 @@ export const ReadingAll = ({item}) => {
 
 //  details of every reading 
 export const ReadingDetails = () => {
+    const datas =window.location.href
     return (
         <div className='text-center container-ml my-7'>
             <div className='flex items-center justify-center' >
@@ -168,6 +171,14 @@ export const ReadingDetails = () => {
                         We, the members of this community, pledge to honor and protect the sacrifices made by our military heroes who shed their blood to secure our freedom and ensure the future of our nation. We recognize that their sacrifices were hard-won and the stories lying beneath the headstones at Arlington Cemetery and other military cemeteries across the country are the seeds of freedom that must be protected at all costs.
 
                     </p>
+                    <div className='flex justify-end mx-1 items-center text-black mt-5'>
+                        <span className='text-base '>
+                              <label htmlFor='my-modal-s1'  >
+                                <FaShare className='text-7xl cursor-pointer text-right' title='share post'/>
+                                  </label>
+                            <ModelShare data={datas} />
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

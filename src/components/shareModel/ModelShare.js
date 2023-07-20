@@ -1,5 +1,5 @@
 import React from 'react';
-import { FacebookShareButton } from 'react-share';
+import { FacebookIcon, FacebookShareButton, InstapaperIcon, InstapaperShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton } from 'react-share';
 
 const ModelShare = ({data}) => {
     return (
@@ -9,29 +9,21 @@ const ModelShare = ({data}) => {
         <div className="modal">
           <div className="modal-box relative">
             <label htmlFor='my-modal-s1' className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-            <h3 className="py-4 text-[40px] text-center text-red"> d</h3>
-            <p className="text-justify py-4 text-[#000000] text-[20px]">
-              
-            </p>
-            <h3 className="py-4 text-[40px] text-center text-red"> </h3>
-            <p className="text-justify py-4 text-[#000000] text-[20px]">
-            {/* <Helmet> */}
-        {/* Open Graph meta tags */}
-        {/* <meta property="og:title" content={shareContent.title} />
-        <meta property="og:description" content={shareContent.description} />
-        <meta property="og:url" content={shareContent.url} />
-        <meta property="og:image" content={shareContent.image} /> */}
-      {/* </Helmet> */}
-                  <div>
+            
       {/* Facebook Share Button */}
-      <FacebookShareButton url={data}>
-        Share on Facebook {data}
+      <FacebookShareButton url={data}  title="facebook share">
+        <FacebookIcon className='rounded-full mx-2'/>
       </FacebookShareButton>
- 
-
-    
-    </div>
-            </p>
+      <LinkedinShareButton url={data}  title="linkedin share">
+      <LinkedinIcon className='rounded-full mx-2'/>
+      </LinkedinShareButton>
+      <TwitterShareButton url={data}  title="twitter share">
+        <TwitterIcon className='rounded-full mx-2'/>
+      </TwitterShareButton>
+      <InstapaperShareButton url={data}  title="instgram share">
+        <InstapaperIcon className='rounded-full mx-2'/>
+      </InstapaperShareButton>
+  
           </div>
         </div>
   
