@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 import Carousel from 'react-multi-carousel';
 import img2 from '../../Assets/People House Image & Data/mike.jpg';
@@ -8,6 +8,8 @@ import img4 from '../../Assets/People House Image & Data/mike1.jpg';
 import img1 from '../../Assets/People House Image & Data/mikeprimary.jpg';
 import youtube from '../../Assets/Icons/youtube.svg';
 import axios from '../../apiService/axios';
+import { FaShare } from 'react-icons/fa';
+import ModelShare from '../shareModel/ModelShare';
 const Podcast = () => {
   const { pathname } = useLocation()
 
@@ -133,6 +135,24 @@ export const PodcastAll = ({item}) => {
 
 
 export const PodcastDetails = () => {
+  const [pod, setPod] = useState({});
+  const {id} = useParams()
+ 
+  useEffect(() => {
+      async function blogFunction() {
+          try {
+              axios.get(`/podcast/${id}/`)
+                  .then(res => {
+                      console.log(res.data, "ok blog");
+                      setPod(res.data)
+                  })
+          } catch (error) {
+  
+          }
+      }
+      blogFunction()
+  }, [id])
+  const datas = window.location.href;
   return (
     <>
       <div className='bg-primary p-2'>
@@ -144,32 +164,31 @@ export const PodcastDetails = () => {
         </div>
       </div>
 
-      <div className='flex  justify-center items-center pr-4 pl-4 gap-x-6 gap-y-4 mt-4 '>
+      <div className='grid grid-cols-2  justify-center items-center pr-4 pl-4 gap-x-6 gap-y-4 mt-4 '>
         <div>
-          <img src={youtube} alt='loading ...' />
+          <img src={pod.image} alt='loading ...' className='object-contain' />
         </div>
 
         <div>
-          <h1 className='text-2xl text-black text-center' >Guests</h1>
-          {[1, 2, 3].map(item => <div className='p-4   rounded shadow-md'>
+          <h1 className='text-2xl text-black text-center' > {pod.visibility}</h1>
+          <div className='p-4   rounded shadow-md'>
             <div className='flex gap-2 '>
               <div className='  w-1/6'>
-                <img src={img1} className='rounded-full w-48 ' alt='loading' />
+                <img src={pod.image} className='rounded-full w-48 ' alt='loading' />
               </div>
               <div className='mb-3'>
-                <h1 className='  mb-2'>Header</h1>
-                <p>
-                  Lorem ipsum is my favourite text so i alltime use it
-                </p>
-              
+                <h1 className='  mb-2'>{pod.title}</h1>
+             
+                    <a href={pod?.file}>play</a>
               </div>
             </div>
-          </div>)}
+          </div> 
         </div>
       </div>
       <div >
-        <div className=' my-10'>
-          <div className='md:px-20 lg:px-28'>
+        <div className=' my-10 mx-12'>
+        <div dangerouslySetInnerHTML={{ __html: pod.description}} />
+          {/* <div className='md:px-20 lg:px-28'>
             <h1 className='text-xl text-center'>In This Episode</h1>
             <p className='text-[12px] text-center'>this is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sv</p>
           </div>
@@ -177,9 +196,18 @@ export const PodcastDetails = () => {
             <h1 className='text-xl'>Transcript</h1>
             <p className='text-[12px]'>this is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is s</p>
             <button className='bg-primary px-5 py-2 text-white rounded'>see more</button>
-          </div>
+          </div> */}
         </div>
+       
       </div>
+      <div className=' flex justify-end mx-10 items-center text-black mt-5'>
+                        <span className='text-base '>
+                            <label htmlFor='my-modal-s1'  >
+                                <FaShare className='text-7xl cursor-pointer text-right' title='share post' />
+                            </label>
+                            <ModelShare data={datas} />
+                        </span>
+                    </div>
     </>
   );
 };

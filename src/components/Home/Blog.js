@@ -4,7 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import img from '../../Assets/Photos/brain.png'
 import { FaShare, FaUserCircle } from 'react-icons/fa';
 import vector from '../../Assets/Photos/Vector (2).png'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import axios from '../../apiService/axios';
 import { MdOutlineReadMore } from 'react-icons/md';
 import ModelShare from '../shareModel/ModelShare';
@@ -115,38 +115,38 @@ export const BlogAll = ({ blog }) => {
     return (
         <div className='  rounded'>
 
-            <div className='grid md:grid-cols-4 place-content-center   justify-center gap-6 '>
-                <div className='mx-auto '>
+            <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-content-center   justify-center gap-x-6 '>
+                <div className=' '>
                     <div>
                         <h1 className='text-3xl mb-3'>Top Stories</h1>
                         <div className='border mb-6'></div>
                     </div>
                     {
-
-
-                        blog.map(item => <div key={item.id}  >
+                        blog.slice(0,1).map(item => <div key={item.id}  >
                             <img src={item?.image} alt='loading' className='h-24 w-full' />
                             <h1 className='my-4 text-2xl'>{item.title} </h1>
-                            <div dangerouslySetInnerHTML={{ __html: item.content }} />
+                            <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }} />
 
-
+                            <div className='mt-7 text-right'>
+                                <Link className='py-2 px-3 rounded bg-primary text-white  hover:underline hover:text-red' to={`/blog/${item.id}`}>See More</Link>
+                            </div>
                         </div>)
                     }
                 </div>
-                <div className='mx-auto col-span-2'>
+                <div className='  col-span-2 lg:block hidden'>
                     <div>
                         <img src={img} alt='loading' className=' w-full' />
                         <h1 className='my-4 text-2xl'>header field when come backend it work</h1>
                         <p className='mb-5'>some text here i represent in the field so i have no choice i rest the api</p>
                     </div>
                 </div>
-                <div className='mx-auto'>
+                <div className=' '>
                     <div>
                         <h1 className='text-3xl mb-3'>Recent Stories</h1>
                         <div className='border mb-10'></div>
                     </div>
                     {
-                        blog.map(item => <div key={item.id}>
+                        blog.slice(0,1).map(item => <div key={item.id}>
                             <div className='flex items-center'>
                                 <div>
                                     <img src={item?.image} alt='loading' className='h-10 w-10 rounded-full' />
@@ -157,7 +157,10 @@ export const BlogAll = ({ blog }) => {
                                 </div>
                             </div>
                             <h1 className='my-4 text-2xl'>{item.title} </h1>
-                            <div dangerouslySetInnerHTML={{ __html: item.content }} />
+                            <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }} />
+
+                            <div className='mt-7 text-right'>
+                                <Link className='py-2 px-3 rounded bg-primary text-white  hover:underline hover:text-red' to={`/blog/${item.id}`}>See More</Link></div>
                         </div>)
                     }
                 </div>
@@ -175,11 +178,10 @@ export const BlogCard = ({ item }) => {
             <div>
                 <img src={item?.image} alt='loading' className='h-40 w-full' />
                 <h1 className='my-4 text-2xl'> {item.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: item.content }} />
-                <div className='mt-5'>
-                    {/* <Link to="/blog/1" className='shadow-lg px-7 py-4 rounded hover:underline'>
-                        See More
-                    </Link> */}
+                <div dangerouslySetInnerHTML={{ __html: item.content.slice(0,300) }} />
+    
+                        <div className='mt-7 text-right'>
+                        <Link className='py-2 px-3 rounded bg-primary text-white  hover:underline hover:text-red' to={`/podcast/${item.id}`}>See More</Link>
                 </div>
             </div>
         </>
@@ -187,22 +189,36 @@ export const BlogCard = ({ item }) => {
 };
 
 export const BlogDetails = () => {
-    const datas =window.location.href
+    const datas = window.location.href;
+    const [blog, setBlog] = useState({});
+    const {id} = useParams()
+   
+    useEffect(() => {
+        async function blogFunction() {
+            try {
+                axios.get(`/blog/${id}/`)
+                    .then(res => {
+                        console.log(res.data, "ok blog");
+                        setBlog(res.data)
+                    })
+            } catch (error) {
+    
+            }
+        }
+        blogFunction()
+    }, [id])
     return (
         <div className='text-center container-ml my-7'>
             <div className='flex items-center justify-center' >
                 <div>
-                    <h1 className='my-5'>header of the news</h1>
-                    <img src='' alt='loaded the imgs' className='my-5' />
-                    <p>
-                        We, the members of this community, pledge to honor and protect the sacrifices made by our military heroes who shed their blood to secure our freedom and ensure the future of our nation. We recognize that their sacrifices were hard-won and the stories lying beneath the headstones at Arlington Cemetery and other military cemeteries across the country are the seeds of freedom that must be protected at all costs.
-                       
-                    </p>
+                    <h1 className='my-5 text-5xl'> {blog.title}</h1>
+                    <img src={blog.image} alt='loaded the imgs' className='my-5' />
+                    <div dangerouslySetInnerHTML={{ __html: blog.content}} />
                     <div className='flex justify-end mx-1 items-center text-black mt-5'>
                         <span className='text-base '>
-                              <label htmlFor='my-modal-s1'  >
-                                <FaShare className='text-7xl cursor-pointer text-right' title='share post'/>
-                                  </label>
+                            <label htmlFor='my-modal-s1'  >
+                                <FaShare className='text-7xl cursor-pointer text-right' title='share post' />
+                            </label>
                             <ModelShare data={datas} />
                         </span>
                     </div>

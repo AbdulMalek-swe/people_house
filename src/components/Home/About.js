@@ -8,13 +8,6 @@ import AboutModal, { AboutAudio, aboutData, audioData } from '../homeSubComponen
 import { useLocation } from 'react-router-dom';
 const About = () => {
   const { pathname } = useLocation()
-  const [toggle, setToggle] = useState({})
-  const handleClick = e => {
-
-    setToggle({ id: e, toggler: !toggle.toggler })
-
-  }
-
   return (
     <div className='bg-[#002868] pb-[100px]' id='about'>
       {pathname == "/about" ? <div className='bg-white  pb-5'>
