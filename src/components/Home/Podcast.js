@@ -122,10 +122,10 @@ export const PodcastAll = ({item}) => {
         </div>
         <div className='mb-3'>
           <h1 className='pt-7 mb-2'>{item?.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: item?.description }}></div>
-          {/* <Link to="/podcast/1">
+          <div dangerouslySetInnerHTML={{ __html: item?.description.slice(0,250) }}></div>
+          <Link to={`/podcast/${item.id}`}>
             <button className=' hover:underline hover:text-primary   py-3 rounded text-black my-5'>Read more</button>
-          </Link> */}
+          </Link>
         </div>
       </div>
     </div>

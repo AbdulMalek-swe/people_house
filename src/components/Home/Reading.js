@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import img2 from '../../Assets/Photos/Video Marketing.png'
 import Carousel from 'react-multi-carousel';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import axios from '../../apiService/axios';
 import { FaShare } from 'react-icons/fa';
 import ModelShare from '../shareModel/ModelShare';
@@ -147,9 +147,9 @@ export const ReadingAll = ({item}) => {
                 <p className='text-dark text-[20px] py-[2px] mx-8  mb-[-15px]'> {item?.title}</p>
             </div>
             <div className='pb-[41px]'>
-                <span className='text-[20px] font-normal whitespace-normal break-words'> {item?.description} </span>
+                <span className='text-[20px] font-normal whitespace-normal break-words'> {item?.description.slice(0,200)} </span>
             </div>
-            <Link to="/reading/1">
+            <Link to={`/reading/${item.id}`}>
                 <button className='bg-primary px-5 py-3 rounded text-white my-5'>Details</button>
             </Link>
 
@@ -159,16 +159,35 @@ export const ReadingAll = ({item}) => {
 
 //  details of every reading 
 export const ReadingDetails = () => {
-    const datas =window.location.href
+    const datas =window.location.href;
+    const [blog, setBlog] = useState({});
+    const {id} = useParams()
+   
+    useEffect(() => {
+        async function blogFunction() {
+            try {
+                axios.get(`/recommended-readings/${id}/`)
+                    .then(res => {
+                        console.log(res.data, "ok blog");
+                        setBlog(res.data)
+                    })
+            } catch (error) {
+    
+            }
+        }
+        blogFunction()
+    }, [id])
     return (
         <div className='text-center container-ml my-7'>
             <div className='flex items-center justify-center' >
                 <div>
-                    <h1 className='my-5'>header of the news</h1>
-                    <img src='' alt='loaded the imgs' className='my-5' />
+                    <h1 className='my-5'>{blog.title}</h1>
+                   <div className='flex justify-center items-center'>
+                   <img src={blog.image} alt='loaded the imgs' className='my-5 w-72 h-52'  />
+                   </div>
                     <p>
 
-                        We, the members of this community, pledge to honor and protect the sacrifices made by our military heroes who shed their blood to secure our freedom and ensure the future of our nation. We recognize that their sacrifices were hard-won and the stories lying beneath the headstones at Arlington Cemetery and other military cemeteries across the country are the seeds of freedom that must be protected at all costs.
+                       {blog.description}
 
                     </p>
                     <div className='flex justify-end mx-1 items-center text-black mt-5'>
