@@ -44,19 +44,21 @@ const Polls = () => {
           <p className='px-3 text-primary  font-500 text-[20px] mb-[35px]'>{voter[0]?.question}</p>
         </div>
         <div className="bg-white text-black pt-[75px] px-[30px] pb-[35px] rounded-[10px]">
-          <ul>
-          {voter[0]?.choices.map((option, index) => (
-              <li key={index} className="flex justify-between   items-center   border border-primary rounded-lg mt-2 px-4 py-1">
-                <div>
-                  <h1> {option.choice_text}</h1>
-                  <button className="bg-primary text-white px-4 py-1 rounded-lg my-2" onClick={() => vote(option?.id)} >Vote  </button>
-                </div>
-                <div>
-                  <span className="">  {option?.votes} votes</span>
-                </div>
-              </li>
-            ))}
-          </ul>
+            {
+              voter.map((item,index)=> <ul key={index}>
+                  <h1 className=" text-black px-3 py-3 my-3 font-arial font-900 rounded">{item?.question}</h1>
+                  {item.choices.map((item,index)=> <li key={index} className="flex justify-between   items-center   border border-primary rounded-lg mt-2 px-4 py-1">
+                  <div>
+                    <h1> {item?.choice_text}</h1>
+                    <button className="bg-primary text-white px-4 py-1 rounded-lg my-2" onClick={() => vote(item?.id)} >Vote  </button>
+                  </div>
+                  <div>
+                    <span className="">  {item?.votes} votes</span>
+                  </div>
+                </li>)
+                }
+              </ul>)
+            }
         </div>
       </div>
     </div>

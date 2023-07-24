@@ -134,11 +134,7 @@ export const BlogAll = ({ blog }) => {
                     }
                 </div>
                 <div className='  col-span-2 lg:block hidden'>
-                    <div>
-                        <img src={img} alt='loading' className=' w-full' />
-                        <h1 className='my-4 text-2xl'>header field when come backend it work</h1>
-                        <p className='mb-5'>some text here i represent in the field so i have no choice i rest the api</p>
-                    </div>
+                     
                 </div>
                 <div className=' '>
                     <div>
@@ -181,7 +177,7 @@ export const BlogCard = ({ item }) => {
                 <div dangerouslySetInnerHTML={{ __html: item.content.slice(0,300) }} />
     
                         <div className='mt-7 text-right'>
-                        <Link className='py-2 px-3 rounded bg-primary text-white  hover:underline hover:text-red' to={`/podcast/${item.id}`}>See More</Link>
+                        <Link className='py-2 px-3 rounded bg-primary text-white  hover:underline hover:text-red' to={`/blog/${item.id}`}>See More</Link>
                 </div>
             </div>
         </>
