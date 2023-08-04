@@ -124,12 +124,14 @@ code {
 
 .contacts:hover .contacts-footer{
    display: block;
+   
 }
 .contacts:hover .contact{
   display: none;
 }
  .contacts-footer{
   display: none;
+  
 }
 
 .reading-card{

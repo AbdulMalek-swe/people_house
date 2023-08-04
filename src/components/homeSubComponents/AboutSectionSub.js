@@ -1,25 +1,45 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import audio1 from '../../Assets/People House Image & Data/Data/Pledge and Credo.mp3';
 import audio2 from '../../Assets/People House Image & Data/Data/Request_Invitation.mp3'
 import audio4 from '../../Assets/People House Image & Data/Data/Pledge and Credo.mp3'
 import audio3 from '../../Assets/People House Image & Data/Data/Vision_Audio.mp3'
 import audio5 from '../../Assets/People House Image & Data/Data/Pledge and Credo.mp3'
+import axios from '../../apiService/axios';
 const AboutModal = ({ data }) => {
+  const [pledgeData,setPledgeData] = useState({});
+  useEffect(()=>{
+    axios.get("/pages/pledge/")
+    .then(res=>{
+      setPledgeData(res.data)
+    })
+  },[])
   return (
     <>
       {/* Put this part before </body> tag */}
-      <input type="checkbox" id={`my-modal-${data.id}`} className="modal-toggle" />
+      <input type="checkbox" id={`my-modal-${data.type}`} className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
-          <label htmlFor={`my-modal-${data.id}`} className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-          <h3 className="py-4 text-[40px] text-center text-red">{data.th1}</h3>
-          <p className="text-justify py-4 text-[#000000] text-[20px]">
-            {data.text1}
+          <label htmlFor={`my-modal-${data.type}`} className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          {
+            data.type == 'credo' ? <h3 className="py-4 xl:text-4xl md:text-3xl text-xl text-center text-red"> {pledgeData.title} </h3>:   <h3 className="py-4 xl:text-4xl md:text-3xl text-xl text-center text-red"> {data.title} </h3>
+          }
+          <p className="text-justify py-4 text-[#000000] ">
+            
+            {
+            data.type == 'credo' ? <p className="text-justify py-4 text-[#000000] xl:text-xl md:text-base text-sm ">
+            {pledgeData.text} 
+          </p>: <p className="text-justify py-4 text-[#000000]  xl:text-xl md:text-base text-sm ">{data.text}</p>
+          }
           </p>
-          <h3 className="py-4 text-[40px] text-center text-red">{data.th2} </h3>
-          <p className="text-justify py-4 text-[#000000] text-[20px]">
-            {data.text2}
-          </p>
+          {
+            data.type == 'credo' ? <h3 className="py-4 xl:text-4xl md:text-3xl text-xl text-center text-red"> {data.title} </h3>:""
+          }
+          {
+            data.type == 'credo' ? <p className="text-justify py-4 text-[#000000] xl:text-xl md:text-base text-sm ">
+            {data.text} 
+          </p>:""
+          }
+          
         </div>
       </div>
 
