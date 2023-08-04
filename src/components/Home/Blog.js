@@ -52,41 +52,25 @@ const Blog = () => {
             <div className='container-ml'>
                 <div className='pt-[10px] text-primary'>
                     <h1 className='  text-[40px] px-3 border-l-[5px] border-primary h-[60px] my-[48px] '>The Peoples Voice</h1>
-
                 </div>
-                {pathname == "/blog" ? <div> <BlogAll blog={blog} />  </div> : <div
-                    className='arrow_no_margin  '>
+                {pathname == "/blog" ? <div > <BlogAll blog={blog} />  </div> : <div
+                    className='arrow_no_margin  pb-5 '>
                     <Carousel responsive={responsive}   >
-                        {blog.map(item => <div className='bg-white pt-[75px] px-[30px] pb-[35px] rounded-[10px] border' key={item.id}>
-                            <div className='grid grid-cols-4 gap-4'>
-                                <div>
-                                    <p className="mb-[26px]">
-                                        <FaUserCircle size={48} />
-                                    </p>
-                                    <img alt='' src={vector} />
-                                    <p className='text-[15px] mb-[15px]'>{item.user.username}</p>
-                                    <p className='text-[15px]  '> Chief Designer<br />
-                                        Visionary Technology<br />
-                                        Bangladesh</p>
+                        {blog.map(item => <div className=' py-5 rounded-lg xl:px-12 lg:px-8 md:px-5 px-3 xl:h-[600px] lg:h-[500px]  h-[450px] border border-red-400/30' key={item.id}>
+                            <div className='grid grid-cols-3 gap-4   justify-between'>
 
-                                </div>
-                                <div className='col-span-2'>
-                                    <h1 className='text-[30px] text-black mb-[38px]'>{item.title}</h1>
-                                    <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 400) }}>
-
+                                <div className=' col-span-2 pb-5'>
+                                    <h1 className='xl:text-3xl lg:text-2xl text-xl text-black  '>{item.title}</h1>
+                                    <p className='xl:text-xl lg:text-base text-sm mt-3 mb-5 '>{item.user.username}</p>
+                                    <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 400) }} className='xl:text-xl lg:text-base text-sm'>
                                     </div>
                                 </div>
-                                <div className="card w-[208px] bg-base-100 shadow-xl image-full h-[283px]">
-                                    <figure className='w-[208px] h-[283px]'><img src={item.image} alt="Shoes" width="100%" className='w-full h-[283px]' height="283px" /></figure>
-                                    <div className="   flex flex-col items-center justify-center text-[#FFFFFF]">
-
-                                        <p className='text-[#FFFFFF] z-10 text-center text-[20px]'>Here will be <br /> a image <br /> about the <br /> discussion</p>
-                                    </div>
+                                <div className="flex items-center    image-full">   
+                                   <figure className='object-contain'><img src={item.image} alt="Shoes"   className='object-contain'  /></figure>
                                 </div>
                             </div>
                         </div>
                         )}
-
                     </Carousel>
                 </div>
                 }
@@ -122,7 +106,7 @@ export const BlogAll = ({ blog }) => {
                         <div className='border mb-6'></div>
                     </div>
                     {
-                        blog.slice(0,1).map(item => <div key={item.id}  >
+                        blog.slice(0, 1).map(item => <div key={item.id}  >
                             <img src={item?.image} alt='loading' className='h-24 w-full' />
                             <h1 className='my-4 text-2xl'>{item.title} </h1>
                             <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }} />
@@ -134,7 +118,7 @@ export const BlogAll = ({ blog }) => {
                     }
                 </div>
                 <div className='  col-span-2 lg:block hidden'>
-                     
+
                 </div>
                 <div className=' '>
                     <div>
@@ -142,7 +126,7 @@ export const BlogAll = ({ blog }) => {
                         <div className='border mb-10'></div>
                     </div>
                     {
-                        blog.slice(0,1).map(item => <div key={item.id}>
+                        blog.slice(0, 1).map(item => <div key={item.id}>
                             <div className='flex items-center'>
                                 <div>
                                     <img src={item?.image} alt='loading' className='h-10 w-10 rounded-full' />
@@ -174,10 +158,10 @@ export const BlogCard = ({ item }) => {
             <div>
                 <img src={item?.image} alt='loading' className='h-40 w-full' />
                 <h1 className='my-4 text-2xl'> {item.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: item.content.slice(0,300) }} />
-    
-                        <div className='mt-7 text-right'>
-                        <Link className='py-2 px-3 rounded bg-primary text-white  hover:underline hover:text-red' to={`/blog/${item.id}`}>See More</Link>
+                <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }} />
+
+                <div className='mt-7 text-right'>
+                    <Link className='py-2 px-3 rounded bg-primary text-white  hover:underline hover:text-red' to={`/blog/${item.id}`}>See More</Link>
                 </div>
             </div>
         </>
@@ -187,8 +171,8 @@ export const BlogCard = ({ item }) => {
 export const BlogDetails = () => {
     const datas = window.location.href;
     const [blog, setBlog] = useState({});
-    const {id} = useParams()
-   
+    const { id } = useParams()
+
     useEffect(() => {
         async function blogFunction() {
             try {
@@ -198,7 +182,7 @@ export const BlogDetails = () => {
                         setBlog(res.data)
                     })
             } catch (error) {
-    
+
             }
         }
         blogFunction()
@@ -209,7 +193,7 @@ export const BlogDetails = () => {
                 <div>
                     <h1 className='my-5 text-5xl'> {blog.title}</h1>
                     <img src={blog.image} alt='loaded the imgs' className='my-5' />
-                    <div dangerouslySetInnerHTML={{ __html: blog.content}} />
+                    <div dangerouslySetInnerHTML={{ __html: blog.content }} />
                     <div className='flex justify-end mx-1 items-center text-black mt-5'>
                         <span className='text-base '>
                             <label htmlFor='my-modal-s1'  >
