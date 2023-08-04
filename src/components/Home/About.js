@@ -1,25 +1,39 @@
-import React, { useEffect, useRef, useState } from 'react';
-
-import { Collapse } from 'react-collapse';
+import React, { useEffect, useState } from 'react';
 import { AiFillSound } from 'react-icons/ai';
 import { MdOutlineReadMore } from 'react-icons/md';
 import { GrStar } from 'react-icons/gr';
 import AboutModal, { AboutAudio, aboutData, audioData } from '../homeSubComponents/AboutSectionSub';
 import { useLocation } from 'react-router-dom';
+import axios from '../../apiService/axios';
 const About = () => {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
+  const [allAboutData, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const promises = ['pages/pledge/', 'pages/credo/', 'pages/about/', 'pages/vision/', 'pages/mission/', 'pages/plan/'].map(
+        (item) => axios.get(`/${item}`)
+      );
+      try {
+        const responses = await Promise.all(promises);
+        const newData = responses.map((res) => res.data);
+        setData(newData);
+      } catch (error) {
+        // Handle error if any of the requests fail
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
+ 
   return (
     <div className='bg-[#002868] pb-[100px]' id='about'>
       {pathname == "/about" ? <div className='bg-white  pb-5'>
-
         {/* collapse data here  */}
-        <AboutAll />
+        <AboutAll allAboutData={allAboutData}/>
       </div>
-
         :
-
         <div className='flex  '>
-
           <div className='mt-[130px] md:block hidden   '>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 3, 2].map(item => <div >
               <div className='text-white flex  '>
@@ -39,8 +53,6 @@ const About = () => {
                 <p className='px-3  font-500 text-[20px] mb-[22px]'> Content Here</p>
               </div>
               <div>
-
-
                 {/* react collapse use here  */}
                 <div className={`border border-white  grid         sm:hover:grid-cols-6   grid-cols-5 gap-0 `}>
                   <div className="contacts hover:col-span-2">
@@ -62,7 +74,7 @@ const About = () => {
                             We, the members of this community, pledge to honor and protect the sacrifices made by our military heroes who shed their blood to secure our freedom and ensure the future of our nation. We recognize that their sacrifices were hard-won and the stories lying beneath the headstones at Arlington Cemetery and other military cemeteries across the country are the seeds of freedom that must be protected at all costs.
                           </div>
                           <div className='flex justify-end  '>
-                            <div className='mx-1 flex flex-col justify-center mx-1 items-center text-white'>
+                            <div className='mx-1 flex flex-col justify-center  items-center text-white'>
 
                               <span><MdOutlineReadMore size={18} /></span>
                               <span className='text-[10px] m-[0px]   '>
@@ -73,10 +85,6 @@ const About = () => {
                                 <AboutModal data={aboutData[0]} />
                               </span>
                             </div>
-
-
-
-
                             <div className='flex justify-center mx-1 flex-col items-center text-white'>
 
                               <span><AiFillSound size={18} /></span>
@@ -319,7 +327,8 @@ export default About;
 
 
 
-const AboutAll = () => {
+const AboutAll = ({allAboutData}) => {
+  console.log(allAboutData);
   const [expandedPosts, setExpandedPosts] = useState([]);
   const togglePost = (postId) => {
     if (expandedPosts.includes(postId)) {
@@ -331,20 +340,14 @@ const AboutAll = () => {
 
   return (
     <div>
-      {aboutData.map((post) => (
-        <div key={post.id} className='shadow-lg my-6 p-4'>
-          <h1 className='text-center text-4xl  '>{post?.mh1}</h1>
-          <h1 className='text-center text-4xl   my-8'>{post?.th1}</h1>
-          <p className="text-gray-800">
+      {allAboutData.map((post) => (
+        <div key={post.id} className='shadow-lg my-6  xl:mx-20 lg:mx-16 md:mx-12 mx-6'>
+          <h1 className='text-center xl:text-4xl lg:text-3xl text-2xl my-2 '>{post?.title}</h1>
+          <p className="text-gray-800 xl:text-xl md:text-sm text-base">
+            {post.text}
             {expandedPosts.includes(post?.id)
-              ? post.text1
-              : `${post?.text1?.slice(0, 400)}...`}
-          </p>
-          <h1 className='text-center text-4xl   my-8'>{post?.th2}</h1>
-          <p className="text-gray-800">
-            {expandedPosts.includes(post?.id)
-              ? post.text2
-              : `${post?.text2.slice(0, 400)}...`}
+              ? post.text
+              : `${post?.text?.slice(0, 400)}...`}
           </p>
           <div className='text-center'>
             <button

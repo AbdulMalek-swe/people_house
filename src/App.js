@@ -8,22 +8,14 @@ import { useEffect } from "react";
 import axios from "./apiService/axios";
 import store from "./Redux/store/store";
 import { addUserActions } from "./Redux/apiSlice/userSlice";
-import { useSelector } from "react-redux";
 export default function App() {
-
   const [, , removeCookie] = useCookies(["token"]);
-  // const navigate = useNavigate()
-  const user = useSelector(state=>state)
-  
-  const [cookies] = useCookies(['token']);
-  const token = cookies['token'];
-  
   useEffect(() => {
     async function userProfile() {
       try {
         const profile = await axios.get("/profile/")
-       
         // .then(res=>{
+          console.log(profile);
          store.dispatch(addUserActions.addUser(profile?.data));
         // })
       }
@@ -39,9 +31,8 @@ export default function App() {
 
   return (
     <>
-      <ScrollUpButton ContainerclassName="   p-2 "
+      <ScrollUpButton ContainerclassName="p-2 "
         TransitionclassName="transition duration-300" />
-
       <RouterProvider router={router} />
     </>
   )

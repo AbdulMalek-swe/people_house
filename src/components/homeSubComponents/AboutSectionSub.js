@@ -1,7 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { AiFillSound } from 'react-icons/ai';
-import { MdOutlineReadMore } from 'react-icons/md';
-
 import audio1 from '../../Assets/People House Image & Data/Data/Pledge and Credo.mp3';
 import audio2 from '../../Assets/People House Image & Data/Data/Request_Invitation.mp3'
 import audio4 from '../../Assets/People House Image & Data/Data/Pledge and Credo.mp3'
