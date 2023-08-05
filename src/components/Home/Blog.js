@@ -196,9 +196,7 @@ export const BlogDetails = () => {
                     <div dangerouslySetInnerHTML={{ __html: blog.content }} />
                     <div className='flex justify-end mx-1 items-center text-black mt-5'>
                         <span className='text-base '>
-                            <label htmlFor='my-modal-s1'  >
-                                <FaShare className='text-7xl cursor-pointer text-right' title='share post' />
-                            </label>
+                           
                             <ModelShare data={datas} />
                         </span>
                     </div>
