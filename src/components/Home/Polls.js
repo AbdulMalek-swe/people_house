@@ -17,8 +17,6 @@ const Polls = () => {
       return { ...currentPoll, votes: newVotes };
     });
   };
-   
-  
   return (
     <div className="bg-primary text-white py-20">
       <div className="container-ml">
@@ -29,11 +27,9 @@ const Polls = () => {
         <div className="bg-white text-black pt-[75px] px-[30px] pb-[35px] rounded-[10px]">
           {
             poll.map((item,index)=><ul>
-              
             </ul>)
           }
           <ul>
-
             {poll.options.map((option, index) => (
               <li key={index} className="flex justify-between   items-center   border border-primary rounded-lg mt-2 px-4 py-1">
                 <div>

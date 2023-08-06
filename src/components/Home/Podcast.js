@@ -10,6 +10,7 @@ import youtube from '../../Assets/Icons/youtube.svg';
 import axios from '../../apiService/axios';
 import { FaShare } from 'react-icons/fa';
 import ModelShare from '../shareModel/ModelShare';
+import { useSelector } from 'react-redux';
 const Podcast = () => {
   const { pathname } = useLocation()
 
@@ -115,20 +116,25 @@ export default Podcast;
 // reading card design here 
 export const PodcastAll = ({ item }) => {
   return (
-    <div className='p-4   rounded shadow-md'>
-      <div className='flex items-center  '>
-        <div className='  w-1/6'>
-          <img src={item?.image} className='rounded-full w-full' alt='loading' />
-        </div>
-        <div className='mb-3'>
-          <h1 className='pt-7 mb-2'>{item?.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: item?.description.slice(0, 250) }}></div>
-          <Link to={`/podcast/${item.id}`}>
-            <button className=' hover:underline hover:text-primary   py-3 rounded text-black my-5'>Read more</button>
-          </Link>
-        </div>
+
+   <>
+    {
+      item.visibility ==="public" &&<div className='p-4 rounded shadow-md'>
+        <div className='flex items-center  '>
+      <div className='  w-1/6'>
+        <img src={item?.image} className='rounded-full w-full' alt='loading' />
+      </div>
+      <div className='mb-3'>
+        <h1 className='pt-7 mb-2'>{item?.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: item?.description.slice(0, 250) }}></div>
+        <Link to={`/podcast/${item.id}`}>
+          <button className=' hover:underline hover:text-primary   py-3 rounded text-black my-5'>Read more</button>
+        </Link>
       </div>
     </div>
+    
+      
+    </div>}</>
   );
 };
 
@@ -137,13 +143,14 @@ export const PodcastAll = ({ item }) => {
 export const PodcastDetails = () => {
   const [pod, setPod] = useState({});
   const { id } = useParams()
-
+ const user = useSelector(state=>state.reducer.user)
+ console.log(user);
   useEffect(() => {
     async function blogFunction() {
       try {
         axios.get(`/podcast/${id}/`)
           .then(res => {
-            console.log(res.data, "ok blog");
+            
             setPod(res.data)
           })
       } catch (error) {
@@ -178,8 +185,7 @@ export const PodcastDetails = () => {
               </div>
               <div className='mb-3'>
                 <h1 className='  mb-2'>{pod.title}</h1>
-
-                <a href={pod?.file}>play</a>
+                   <a href={pod?.file} className=''>play</a>
               </div>
             </div>
           </div>

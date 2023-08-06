@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import axios from "../../apiService/axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Polls = () => {
   const [voter,setVoter] = useState([])
@@ -35,7 +36,7 @@ const Polls = () => {
    
     getVote()
   },[])
-  console.log(voter[0]?.choices);
+const user = useSelector(state=>state.reducer.user)
   return (
     <div className="bg-white text-white py-20">
       <div className="container-ml">
@@ -43,7 +44,7 @@ const Polls = () => {
           <h1 className=' text-primary text-[40px] px-3 border-l-[5px] border-primary h-[60px] my-[18px]'>Poll</h1>
           <p className='px-3 text-primary  font-500 text-[20px] mb-[35px]'>{voter[0]?.question}</p>
         </div>
-        <div className="bg-white text-black pt-[75px] px-[30px] pb-[35px] rounded-[10px]">
+      { !user.email &&   <div className="bg-white text-black  px-[30px] pb-[35px] rounded-[10px]">
             {
               voter.map((item,index)=> <ul key={index}>
                   <h1 className=" text-black px-3 py-3 my-3 font-arial font-900 rounded">{item?.question}</h1>
@@ -59,7 +60,7 @@ const Polls = () => {
                 }
               </ul>)
             }
-        </div>
+        </div>}
       </div>
     </div>
   );
