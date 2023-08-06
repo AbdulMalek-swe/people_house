@@ -131,7 +131,7 @@ export const BlogAll = ({ blog }) => {
                         </div>)
                     }
                 </div>
-                <div className=' shadow-md p-5 rounded-md'>
+                <div className=' shadow-md p-5 rounded-md mt-16'>
                     <img src={blogMid?.image} alt='loading' className='object-contain w-full' />
                     <h1 className='my-4 xl:text-3xl lg:text-2xl md:text-xl text-base'>{blogMid.header} </h1>
                     <div dangerouslySetInnerHTML={{ __html: blogMid.description }}  className=' xl:text-xl lg:text-base text-sm'/>
