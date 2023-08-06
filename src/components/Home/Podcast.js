@@ -44,21 +44,21 @@ const Podcast = () => {
     }
 
   }
-  const [podcast,setPodcast] = useState([]);
-    async function blogFunction(){
-       try {
-        axios.get("/podcasts/")
-        .then(res=>{
-           console.log(res.data,"ok blog");
-           setPodcast(res.data)
+  const [podcast, setPodcast] = useState([]);
+  async function blogFunction() {
+    try {
+      axios.get("/podcasts/")
+        .then(res => {
+          console.log(res.data, "ok blog");
+          setPodcast(res.data)
         })
-       } catch (error) {
-        
-       }
+    } catch (error) {
+
     }
-    useEffect(()=>{
-        blogFunction()
-    },[])
+  }
+  useEffect(() => {
+    blogFunction()
+  }, [])
   return (
     <div >
       <div className='container-ml mb-6' id='podcast'>
@@ -82,7 +82,7 @@ const Podcast = () => {
                   itemclassName=" "
                   responsive={responsive}   >
                   {
-                    [img1, img2, img3, img4, img1,].map((item,index )=> <div  key={index} >
+                    [img1, img2, img3, img4, img1,].map((item, index) => <div key={index} >
                       <div className='mx-3 ' >
                         <img src={`${item}`} alt="loading" width="100%" height="300px" className='h-[300px]' />
                       </div>
@@ -94,7 +94,7 @@ const Podcast = () => {
         </div>
         <div className='mt-7   '>
           {
-            pathname === '/podcast' && podcast.slice(0, sliceNumber).map(item => <PodcastAll item={item}/>)
+            pathname === '/podcast' && podcast.slice(0, sliceNumber).map(item => <PodcastAll item={item} />)
           }
 
         </div>
@@ -113,7 +113,7 @@ export default Podcast;
 
 
 // reading card design here 
-export const PodcastAll = ({item}) => {
+export const PodcastAll = ({ item }) => {
   return (
     <div className='p-4   rounded shadow-md'>
       <div className='flex items-center  '>
@@ -122,7 +122,7 @@ export const PodcastAll = ({item}) => {
         </div>
         <div className='mb-3'>
           <h1 className='pt-7 mb-2'>{item?.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: item?.description.slice(0,250) }}></div>
+          <div dangerouslySetInnerHTML={{ __html: item?.description.slice(0, 250) }}></div>
           <Link to={`/podcast/${item.id}`}>
             <button className=' hover:underline hover:text-primary   py-3 rounded text-black my-5'>Read more</button>
           </Link>
@@ -136,21 +136,21 @@ export const PodcastAll = ({item}) => {
 
 export const PodcastDetails = () => {
   const [pod, setPod] = useState({});
-  const {id} = useParams()
- 
+  const { id } = useParams()
+
   useEffect(() => {
-      async function blogFunction() {
-          try {
-              axios.get(`/podcast/${id}/`)
-                  .then(res => {
-                      console.log(res.data, "ok blog");
-                      setPod(res.data)
-                  })
-          } catch (error) {
-  
-          }
+    async function blogFunction() {
+      try {
+        axios.get(`/podcast/${id}/`)
+          .then(res => {
+            console.log(res.data, "ok blog");
+            setPod(res.data)
+          })
+      } catch (error) {
+
       }
-      blogFunction()
+    }
+    blogFunction()
   }, [id])
   const datas = window.location.href;
   return (
@@ -178,34 +178,25 @@ export const PodcastDetails = () => {
               </div>
               <div className='mb-3'>
                 <h1 className='  mb-2'>{pod.title}</h1>
-             
-                    <a href={pod?.file}>play</a>
+
+                <a href={pod?.file}>play</a>
               </div>
             </div>
-          </div> 
+          </div>
         </div>
       </div>
       <div >
         <div className=' my-10 mx-12'>
-        <div dangerouslySetInnerHTML={{ __html: pod.description}} />
-          {/* <div className='md:px-20 lg:px-28'>
-            <h1 className='text-xl text-center'>In This Episode</h1>
-            <p className='text-[12px] text-center'>this is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sv</p>
-          </div>
-          <div className='md:px-20 lg:px-28 my-8 text-center'>
-            <h1 className='text-xl'>Transcript</h1>
-            <p className='text-[12px]'>this is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is sthis is peopleshouse problem fetching this is s</p>
-            <button className='bg-primary px-5 py-2 text-white rounded'>see more</button>
-          </div> */}
+          <div dangerouslySetInnerHTML={{ __html: pod.description }} />
+         
         </div>
-       
+
       </div>
       <div className=' flex justify-end mx-10 items-center text-black mt-5'>
-                        <span className='text-base '>
-                           
-                            <ModelShare data={datas} />
-                        </span>
-                    </div>
+        <span className='text-base '>
+          <ModelShare data={datas} />
+        </span>
+      </div>
     </>
   );
 };

@@ -65,8 +65,8 @@ const Blog = () => {
                                     <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 400) }} className='xl:text-xl lg:text-base text-sm'>
                                     </div>
                                 </div>
-                                <div className="flex items-center    image-full">   
-                                   <figure className='object-contain'><img src={item.image} alt="Shoes"   className='object-contain'  /></figure>
+                                <div className="flex items-center    image-full">
+                                    <figure className='object-contain'><img src={item.image} alt="Shoes" className='object-contain' /></figure>
                                 </div>
                             </div>
                         </div>
@@ -95,21 +95,35 @@ export default Blog;
 
 // reading card design here 
 export const BlogAll = ({ blog }) => {
+    const [blogMid, setBlogMid] = useState({})
+    useEffect(() => {
+        async function getBlogMid() {
+            try {
+                const result = await axios.get("/blogpage/1/")
+                console.log(result);
+                setBlogMid(result.data)
+            } catch (error) {
 
+            }
+        }
+
+
+        getBlogMid()
+    }, [])
     return (
-        <div className='  rounded'>
+        <div className='whitespace-normal break-words'>
 
-            <div className='grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-content-center   justify-center gap-x-6 '>
+            <div className='grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 place-content-center justify-center gap-x-6 gap-y-6  p-4'>
                 <div className=' '>
                     <div>
                         <h1 className='text-3xl mb-3'>Top Stories</h1>
-                        <div className='border mb-6'></div>
+                        <div className='border mb-3'></div>
                     </div>
                     {
-                        blog.slice(0, 1).map(item => <div key={item.id}  >
-                            <img src={item?.image} alt='loading' className='h-24 w-full' />
-                            <h1 className='my-4 text-2xl'>{item.title} </h1>
-                            <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }} />
+                        blog.slice(0, 1).map(item => <div key={item.id} className='shadow-md p-5 rounded-md' >
+                            <img src={item?.image} alt='loading' className='lg:h-44 md:h-32 h-28  object-contain ' />
+                            <h1 className='my-4 xl:text-3xl lg:text-2xl md:text-xl text-base'>{item.title} </h1>
+                            <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }} className=' xl:text-xl lg:text-base text-sm'/>
 
                             <div className='mt-7 text-right'>
                                 <Link className='py-2 px-3 rounded bg-primary text-white  hover:underline hover:text-red' to={`/blog/${item.id}`}>See More</Link>
@@ -117,19 +131,21 @@ export const BlogAll = ({ blog }) => {
                         </div>)
                     }
                 </div>
-                <div className='  col-span-2 lg:block hidden'>
-
+                <div className=' shadow-md p-5 rounded-md'>
+                    <img src={blogMid?.image} alt='loading' className='object-contain w-full' />
+                    <h1 className='my-4 xl:text-3xl lg:text-2xl md:text-xl text-base'>{blogMid.header} </h1>
+                    <div dangerouslySetInnerHTML={{ __html: blogMid.description }} />
                 </div>
                 <div className=' '>
                     <div>
                         <h1 className='text-3xl mb-3'>Recent Stories</h1>
-                        <div className='border mb-10'></div>
+                        <div className='border mb-3'></div>
                     </div>
                     {
-                        blog.slice(0, 1).map(item => <div key={item.id}>
-                            <div className='flex items-center'>
+                        blog.slice(0, 1).map(item => <div key={item.id} className='shadow-md p-5  rounded-md'>
+                            <div className='flex items-center  '>
                                 <div>
-                                    <img src={item?.image} alt='loading' className='h-10 w-10 rounded-full' />
+                                    <img src={item?.image} alt='loading' className=' lg:h-44 md:h-32 h-28 object-contain ' />
                                 </div>
                                 <div>
                                     <span className='mx-3 block'>Admin</span>
@@ -137,7 +153,7 @@ export const BlogAll = ({ blog }) => {
                                 </div>
                             </div>
                             <h1 className='my-4 text-2xl'>{item.title} </h1>
-                            <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }} />
+                            <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }} className=' xl:text-xl lg:text-base text-sm' />
 
                             <div className='mt-7 text-right'>
                                 <Link className='py-2 px-3 rounded bg-primary text-white  hover:underline hover:text-red' to={`/blog/${item.id}`}>See More</Link></div>
@@ -145,7 +161,7 @@ export const BlogAll = ({ blog }) => {
                     }
                 </div>
             </div>
-            <div className='mt-10 grid md:grid-cols-3 grid-cols-1 gap-4 gap-y-10'>
+            <div className='mt-10 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:gap-8 lg:gap-6 gap-4'>
                 {blog.map(item => <BlogCard key={item.id} item={item} />)}
             </div>
         </div>
@@ -155,10 +171,10 @@ export const BlogAll = ({ blog }) => {
 export const BlogCard = ({ item }) => {
     return (
         <>
-            <div>
+            <div className='p-5 shadow-md rounded-md'>
                 <img src={item?.image} alt='loading' className='h-40 w-full' />
-                <h1 className='my-4 text-2xl'> {item.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }} />
+                <h1 className='my-4 xl:text-4xl lg:text-3xl md:text-2xl text-xl'> {item.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: item.content.slice(0, 300) }} className='xl:text-xl lg:text-base text-sm' />
 
                 <div className='mt-7 text-right'>
                     <Link className='py-2 px-3 rounded bg-primary text-white  hover:underline hover:text-red' to={`/blog/${item.id}`}>See More</Link>
@@ -196,7 +212,7 @@ export const BlogDetails = () => {
                     <div dangerouslySetInnerHTML={{ __html: blog.content }} />
                     <div className='flex justify-end mx-1 items-center text-black mt-5'>
                         <span className='text-base '>
-                           
+
                             <ModelShare data={datas} />
                         </span>
                     </div>
