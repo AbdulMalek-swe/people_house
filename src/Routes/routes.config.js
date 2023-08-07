@@ -23,6 +23,7 @@ import Forum from "../components/Home/PeopleForum"
 import Zoo from "../Pages/Zoo/Zoo"
 import PublicRoute from "./PublicRoute"
 import ProtectedRoute from "./ProtectedRoute"
+import Profile from "../components/Navbar/Profile"
 
 const router = createBrowserRouter([
     {
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
             {
                 path: '/zoo',
                 element: <Zoo/>,
+            },
+            {
+                path: '/profile',
+                element: <ProtectedRoute><Profile /></ProtectedRoute> ,
             },
             {
                 path: '/login',

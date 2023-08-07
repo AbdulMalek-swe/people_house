@@ -25,10 +25,7 @@ const Polls = () => {
           <p className='px-3 text-[#FFFFFFCC] font-500 text-[20px] mb-[35px]'>{poll.question}</p>
         </div>
         <div className="bg-white text-black pt-[75px] px-[30px] pb-[35px] rounded-[10px]">
-          {
-            poll.map((item,index)=><ul>
-            </ul>)
-          }
+           
           <ul>
             {poll.options.map((option, index) => (
               <li key={index} className="flex justify-between   items-center   border border-primary rounded-lg mt-2 px-4 py-1">

@@ -19,15 +19,15 @@ const Reading = () => {
             items: 3
         },
         tablet: {
-            breakpoint: { max: 1024, min: 464 },
+            breakpoint: { max: 1024, min: 664 },
             items: 2
         },
         mobile: {
-            breakpoint: { max: 464, min: 0 },
+            breakpoint: { max: 664, min: 0 },
             items: 1
         }
     };
-    const data = [2, 3, 4, 5, 5, 5, 5, 5, 5, 1, 2, 3, 4, 5, 6, 5, 6, 5, 6, 3, 2, 1, 2, 3, 4, 3];
+    const data = [2,  3];
     const [toggler, setTogller] = useState(true)
     const [sliceNumber, setSliceNumber] = useState(10);
     const addSlice = e => {
@@ -40,49 +40,42 @@ const Reading = () => {
 
     }
     const [reading,setReading] = useState([])
-    const [filters,setFilters] = useState([]);
-    async function getReading(){
-        axios.get("/recommended-readings/")
-        .then(res=>{
-           console.log(res.data,"ok blog");
-           setReading(res.data)
-           setFilters(res.data)
-        })  
-    }
+    const [filterName,setFilterName] = useState("book")
     useEffect(()=>{
+        async function getReading(){
+            axios.get("/recommended-readings/")
+            .then(res=>{
+              
+               if(pathname === '/reading'){
+                const filters = res.data.filter(item=>item.type.toLowerCase() === filterName)
+                setReading(filters)
+               }
+               else{
+                setReading(res.data)
+               }
+            })  
+        }
       getReading()
-  
-    },[])
-    const handleReading = items =>{
-        const s = filters.filter(item=> {
-            console.log(item.type.toLowerCase() ==items);
-           return item.type.toLowerCase() ==items
-        })
-       
-            setReading(s)
-         
-        
-       
-       
-    } 
+    },[filterName,pathname])
     return (
         <div className='container-ml mb-[10px]' id='reading'>
             <div>
-                <div>
+          <div>
                     <h1 className='text-black text-[40px] px-3 border-l-[5px] border-[#002868] h-[60px] my-[48px]'>Reading</h1>
-                    <p className='px-3 text-[#000000cc] font-500 text-[20px] mb-[22px]'>Our clients have recomended</p>
-
-
+                    {pathname === '/reading'?<></> :  <div className='flex text-black justify-between md:text-xl  text-base capitalize my-7'>
+                   <p className='mx-7'>Our clients have recomended</p>
+                   <Link to="/reading" className='hover:underline'>see all</Link>
+                   </div>}
                 </div>
 
                 {pathname === '/reading' && <div className='grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-1 gap-x-1 '>
-                    <button className="bg-red text-white font-medium py-2 px-5 flex items-center rounded-md gap-6   text-center justify-center my-2 shadow-lg hover:bg-primary" onClick={()=>handleReading('book')}>
+                    <button className={`${filterName==='book'?'bg-red':"bg-white"} text-black font-medium py-2 px-5 flex items-center rounded-md gap-6   text-center justify-center my-2 shadow-lg hover:bg-primary hover:text-white hover:underline`} onClick={()=>setFilterName('book')}>
                         <span>Book</span>
                     </button>
-                    <button className="bg-white text-black font-medium py-2 px-5 flex items-center rounded-md gap-6  text-center justify-center my-2  shadow-lg hover:bg-red hover:text-white " onClick={()=>handleReading('video')}>
+                    <button className={`${filterName==='video'?'bg-red':"bg-white"} text-black font-medium py-2 px-5 flex items-center rounded-md gap-6  text-center justify-center my-2  shadow-lg hover:bg-primary hover:text-white hover:underline `} onClick={()=>setFilterName('video')}>
                         <span>Video </span>
                     </button>
-                    <button className="bg-primary text-white font-medium py-2 px-5 flex items-center rounded-md gap-6  text-center justify-center my-2 shadow-lg hover:bg-red" onClick={()=>handleReading('article')}>
+                    <button className={`${filterName==='article'?'bg-red':"bg-white" } text-black  font-medium py-2 px-5 flex items-center rounded-md gap-6  text-center justify-center my-2 shadow-lg hover:bg-primary hover:text-white hover:underline`} onClick={()=>setFilterName('article')}>
                         <span>Article</span>
                     </button>
                 </div>}
@@ -103,14 +96,14 @@ const Reading = () => {
 
                             >
                                 {
-                                    ['book', 'video', 'article'].map((item,index) => <div  key={index}>
-                                        <div className='pl-[40px] pr-[13px] mx-2  shadow-sm   h-[320px]      '>
+                                    reading.map((item,index) => <div  key={index} className='p-5'>
+                                        <div className='pl-[40px] pr-[13px] mx-2  h-[320px]     break-words shadow-md '>
                                             <div className='flex items-center pt-[37px] mb-[35px]'>
-                                                <div  >  <img src={img2} alt='' height="50px" width="50px" /></div>
-                                                <p className='text-dark text-[20px] py-[2px] mx-8  mb-[-15px]'>{item}</p>
+                                                <div  >  <img src={item.image} alt='' height="50px" width="50px" /></div>
+                                                <p className='text-dark     mx-8  mb-[-15px] lg:text-3xl md:text-2xl text-xl'>{item.title}</p>
                                             </div>
-                                            <div className='pb-[41px]'>
-                                                <span className='text-[20px] font-normal'>Set-top boxes and embedded software for the broadcasting market, including DVB, OTT, and IPTV solutions. </span>
+                                            <div  >
+                                                <span className='  font-normal  md:text-base text-sm'> {item.description.slice(0,500)} </span>
                                             </div>
                                         </div>
                                     </div>)
@@ -144,10 +137,10 @@ export const ReadingAll = ({item}) => {
         <div className='pl-[40px] pr-[13px]   rounded shadow-md'>
             <div className='flex items-center pt-[37px] mb-[35px]'>
                 <div  >  <img src={item?.image} alt='' height="50px" width="50px" /></div>
-                <p className='text-dark text-[20px] py-[2px] mx-8  mb-[-15px]'> {item?.title}</p>
+                <p className='text-dark lg:text-2xl  text-xl  py-[2px] mx-8  mb-[-15px]'> {item?.title}</p>
             </div>
             <div className='pb-[41px]'>
-                <span className='text-[20px] font-normal whitespace-normal break-words'> {item?.description.slice(0,200)} </span>
+                <span className='lg:text-base text-sm font-normal whitespace-normal break-words'> {item?.description.slice(0,200)} </span>
             </div>
             <Link to={`/reading/${item.id}`}>
                 <button className='bg-primary px-5 py-3 rounded text-white my-5'>Details</button>

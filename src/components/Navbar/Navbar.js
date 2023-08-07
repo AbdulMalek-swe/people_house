@@ -13,14 +13,16 @@ const handleClick = (id) => {
 };
 
 const Navbar = () => {
-    const user = useSelector(state=>state.reducer.user)
+    const user = useSelector(state => state.reducer.user)
     const navigate = useNavigate();
     const [, , removeCookie] = useCookies(["token"]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const logout = ()=>{
+    const [cookies] = useCookies(["token"]);
+    const token = cookies.token;
+    const logout = () => {
         store.dispatch(addUserActions.removeUser())
-removeCookie("token", { path: "/" });
+        removeCookie("token", { path: "/" });
         navigate("/")
     }
     return (
@@ -179,18 +181,37 @@ removeCookie("token", { path: "/" });
 
 
                     {/*  */}
-                    <ul className="flex items-center hidden space-x-8 lg:flex mr-3">
-                       { user?.email? <li className='ml-3'>
-                            <button onClick={logout}>
-                                Log-out
-                            </button>
-                        </li>:<li className='ml-3'>
-                            <Link to="/login">
-                                Log-in
-                            </Link>
-                        </li>
-                        
-                    }
+                    <ul className="items-center hidden space-x-8 lg:flex mr-3 mx-4">
+                        {token ?
+                            <li className="group relative ">
+                                <Link
+                                    to="/profile"
+                                    className=" font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#002868] hover:underline "
+
+                                >
+                                    <div className='flex items-center' >
+                                        <span>Profile</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                        </svg>
+                                    </div>
+                                </Link>
+                                <ul className="group-hover:block hidden   absolute top-[100%] left-0 z-[999] bg-white  border space-y-3 py-4 rounded-md w-[200px]">
+                                    <li className=" hover:bg-slate-200 text-black">
+                                        <button onClick={logout}>
+                                            Log-out
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            : <li className='ml-3'>
+                                <Link to="/login">
+                                    Log-in
+                                </Link>
+                            </li>
+
+                        }
                         <li>
                             <Link to="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-facebook " viewBox="0 0 16 16">

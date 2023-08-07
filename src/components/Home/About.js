@@ -18,8 +18,7 @@ const About = () => {
         const newData = responses.map((res) => res.data);
         setData(newData);
       } catch (error) {
-        // Handle error if any of the requests fail
-        console.error('Error fetching data:', error);
+       
       }
     };
     fetchData();
@@ -32,8 +31,8 @@ const About = () => {
       </div>
         :
         <div className='flex  '>
-          <div className='mt-[130px] md:block hidden   '>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 3, 2].map(item => <div >
+          <div className='mt-28  hidden  md:flex flex-col justify-between '>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(item => <div key={item}>
               <div className='text-white flex  '>
                 <GrStar className='mx-[2px] my-[17px]' />
                 <GrStar className='mx-[2px] my-[17px]' />

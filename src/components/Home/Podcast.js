@@ -1,19 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-
 import Carousel from 'react-multi-carousel';
-import img2 from '../../Assets/People House Image & Data/mike.jpg';
-import img3 from '../../Assets/People House Image & Data/allmike.jpg';
-import img4 from '../../Assets/People House Image & Data/mike1.jpg';
-import img1 from '../../Assets/People House Image & Data/mikeprimary.jpg';
-import youtube from '../../Assets/Icons/youtube.svg';
 import axios from '../../apiService/axios';
-import { FaShare } from 'react-icons/fa';
 import ModelShare from '../shareModel/ModelShare';
 import { useSelector } from 'react-redux';
+import { useCookies } from 'react-cookie';
+import { BsFillPlayFill } from 'react-icons/bs';
 const Podcast = () => {
   const { pathname } = useLocation()
-
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -25,11 +19,11 @@ const Podcast = () => {
       items: 3
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 1024, min: 664 },
       items: 2
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 664, min: 0 },
       items: 1
     }
   };
@@ -69,7 +63,8 @@ const Podcast = () => {
             <p className='px-3 text-[#000000cc] font-500 text-[20px] mb-[22px]'> Here we speak for ourselves</p>
             {pathname == '/podcast' ? <></> : <div className='flex justify-between'>
               <span className='px-3 text-[30px] mb-5'>For You</span>
-              <span className='text-[20px] mb-6'>See All</span>
+              <Link to='/podcast' className='hover:underline'> <span className='text-[20px] mb-6'>See All</span></Link>
+             
             </div>}
           </div>
           <div>
@@ -83,9 +78,9 @@ const Podcast = () => {
                   itemclassName=" "
                   responsive={responsive}   >
                   {
-                    [img1, img2, img3, img4, img1,].map((item, index) => <div key={index} >
+                    podcast.map((item, index) => <div key={index} >
                       <div className='mx-3 ' >
-                        <img src={`${item}`} alt="loading" width="100%" height="300px" className='h-[300px]' />
+                        <img src={`${item.image}`} alt="loading" width="100%" height="300px" className='lg:h-72 md:h-52 h-44' />
                       </div>
                     </div>)
                   }
@@ -115,26 +110,44 @@ export default Podcast;
 
 // reading card design here 
 export const PodcastAll = ({ item }) => {
+  const [cookies] = useCookies(["token"]);
+  const token = cookies.token; 
   return (
 
    <>
     {
-      item.visibility ==="public" &&<div className='p-4 rounded shadow-md'>
+      token&&<div className='p-4 rounded shadow-md'>
         <div className='flex items-center  '>
       <div className='  w-1/6'>
         <img src={item?.image} className='rounded-full w-full' alt='loading' />
       </div>
       <div className='mb-3'>
-        <h1 className='pt-7 mb-2'>{item?.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: item?.description.slice(0, 250) }}></div>
+        <h1 className='pt-7 mb-2 lg:text-2xl text-xl'>{item?.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: item?.description.slice(0, 250) }} className='lg:text-base text-sm'></div>
         <Link to={`/podcast/${item.id}`}>
           <button className=' hover:underline hover:text-primary   py-3 rounded text-black my-5'>Read more</button>
         </Link>
       </div>
     </div>
-    
-      
-    </div>}</>
+    </div>
+    }
+      {
+        !token && item.visibility==="public" && <div className='p-4 rounded shadow-md'>
+        <div className='flex items-center  '>
+      <div className='  w-1/6'>
+        <img src={item?.image} className='rounded-full w-full' alt='loading' />
+      </div>
+      <div className='mb-3'>
+        <h1 className='pt-7 mb-2 lg:text-2xl text-xl'>{item?.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: item?.description.slice(0, 250) }} className='lg:text-base text-sm'></div>
+        <Link to={`/podcast/${item.id}`}>
+          <button className=' hover:underline hover:text-primary   py-3 rounded text-black my-5'>Read more</button>
+        </Link>
+      </div>
+    </div>
+    </div>
+      }
+    </>
   );
 };
 
@@ -143,8 +156,7 @@ export const PodcastAll = ({ item }) => {
 export const PodcastDetails = () => {
   const [pod, setPod] = useState({});
   const { id } = useParams()
- const user = useSelector(state=>state.reducer.user)
- console.log(user);
+ 
   useEffect(() => {
     async function blogFunction() {
       try {
@@ -184,8 +196,9 @@ export const PodcastDetails = () => {
                 <img src={pod.image} className='rounded-full w-48 ' alt='loading' />
               </div>
               <div className='mb-3'>
-                <h1 className='  mb-2'>{pod.title}</h1>
-                   <a href={pod?.file} className=''>play</a>
+                <h1 className='  mb-2 xl:text-3xl lg:text-2xl text-xl '>{pod.title}</h1>
+                   <a href={pod?.file} className='text-7xl' title='play the voice'> 
+                   <BsFillPlayFill/></a>
               </div>
             </div>
           </div>
@@ -193,7 +206,7 @@ export const PodcastDetails = () => {
       </div>
       <div >
         <div className=' my-10 mx-12'>
-          <div dangerouslySetInnerHTML={{ __html: pod.description }} />
+          <div dangerouslySetInnerHTML={{ __html: pod.description }} className='md:text-base text-sm'/>
          
         </div>
 

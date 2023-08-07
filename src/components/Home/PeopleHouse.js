@@ -1,12 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import img from '../../Assets/Photos/countdownflag.png'
-import { AiFillSound } from 'react-icons/ai';
-import { MdOutlineReadMore } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import audio from '../../Assets/People House Image & Data/we the people front page.mpeg'
-import Invite from './Invite';
 import PeopleHousemodal, { PeopleHouseAudio } from '../homeSubComponents/PeopleHouse';
-import { useSelector } from 'react-redux';
+import { useCookies } from 'react-cookie';
 const PeopleHouse = () => {
     const [week, setweek] = useState(0);
     const [hours, setHours] = useState(0);
@@ -14,7 +10,8 @@ const PeopleHouse = () => {
     const [seconds, setSeconds] = useState(0);
     const [year, setYear] = useState(0)
     const [month, setMonth] = useState(0)
-    const user = useSelector(state=>state.reducer.user)
+    const [cookies] = useCookies(["token"]);
+  const token = cookies.token; 
     useEffect(() => {
         const compareDate = new Date('2024-11-05');
         // const chicagoTime = compareDate.toLocaleString('en-US', { timeZone: 'America/Chicago' });
@@ -66,7 +63,7 @@ const PeopleHouse = () => {
                             </div>
                             <div className="lg:flex lg:flex-row flex-col    items-center gap-10 my-8">
                                {
-                               user.email ?  <Link to="/subscribe">
+                              token ?  <Link to="/subscribe">
                                <button className="bg-red text-white font-medium py-2 px-5 flex items-center rounded-md gap-6 w-[250px] text-center justify-center my-4">
                                    <span>Subscribe</span>
                                </button>
@@ -78,7 +75,7 @@ const PeopleHouse = () => {
                                
                                }
                                  {
-                               user.email ?   
+                             token?   
                                    <span> </span>
                               : <Link to="/login">
                                     <button className="bg-red text-white font-medium py-2 px-5 flex items-center rounded-md gap-6 w-[250px] text-center justify-center my-4">
