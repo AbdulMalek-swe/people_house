@@ -95,44 +95,45 @@ const PeopleHouse = () => {
                     <div className='text-center'>
                         <button className="  px-10 py-2 bg-[#002868] text-[25px] font-700 text-white my-3 rounded-[10px]">Donation</button>
                         <p className='bg-primary  rounded-t-[10px] text-white py-2 lg:text-[20px] md:text-xl text-lg font-800'>Next Presidential Election Starts In:</p>
-                        <div className='relative xl:w-[600px] lg:w-[500px] w-[350px] '>
+                       <div >
+                       <div className='relative xl:w-[600px] lg:w-[500px] w-[350px]  '>
                             <div>
                                 <img alt='' width="100%" className=' ' src={img} />
                             </div>
-                            <div className='absolute left-[15%] top-[20%] mx-4'>
+                            <div className='absolute left-[15%] top-[19%] mx-4 '>
 
-                                <div className='flex items-center justify-center'>
-                                    <div className='grid grid-cols-3  gap-4 pr-[47px] lg:pr-0  '>
+                                <div className=' '>
+                              <div className='grid grid-cols-3  gap-x-6 gap-y-3 pr-[47px] lg:pr-0 w-full   '>
 
-                                        <div className='text-white font-semibold lg:text-[30px] md:text-xl text-lg'>
+                                        <div className='text-white font-semibold lg:text-[30px] md:text-xl text-lg   w-full '>
 
-                                            <p className='bg-red w-full h-5 '></p>
+                                            <p className='bg-red w-full h-5 ml-1 '></p>
                                             <p className='lg:mt-5'>{year}</p>
                                             <p className='lg:mt-3'>Year</p>
                                         </div>
-                                        <div className='text-white font-semibold lg:text-[30px] md:text-xl text-lg'>
-                                            <p className='bg-white w-full h-5'></p>
+                                        <div className='text-white font-semibold lg:text-[30px] md:text-xl text-lg   '>
+                                            <p className='bg-white w-full h-5 ml-1 '></p>
                                             <p className='lg:mt-5'>{month}</p>
                                             <p className='lg:mt-3'>Month</p>
                                         </div>
                                         <div className='text-white font-semibold lg:text-[30px] md:text-xl text-lg'>
-                                            <p className='bg-primary w-full h-5'></p>
+                                            <p className='bg-primary w-full h-5 ml-1'></p>
                                             <p className='lg:mt-5'>{week}</p>
                                             <p className='lg:mt-3'>Weeks</p>
                                         </div>
 
                                         <div className='text-white font-semibold lg:text-[30px] md:text-xl text-lg lg:mt-9'>
-                                            <p className='bg-red w-full h-5'></p>
+                                            <p className='bg-red w-full h-5 px-4 ml-1 '></p>
                                             <p className='lg:mt-5'>{hours} </p>
                                             <p className='lg:mt-3'>Hours</p>
                                         </div>
                                         <div className='text-white font-semibold lg:text-[30px] md:text-xl text-lg lg:mt-9'>
-                                            <p className='bg-white w-full h-5'></p>
+                                            <p className='bg-white w-full h-5 ml-1'></p>
                                             <p className='lg:mt-5'>{minutes} </p>
                                             <p className='lg:mt-3'>Minutes</p>
                                         </div>
                                         <div className='text-white font-semibold lg:text-[30px] md:text-xl text-lg lg:mt-9'>
-                                            <p className='bg-primary w-full h-5'></p>
+                                            <p className='bg-primary w-full h-5 ml-1 '></p>
                                             <p className='lg:mt-5'> {seconds} </p>
                                             <p className='lg:mt-3'>Second</p>
                                         </div>
@@ -141,6 +142,7 @@ const PeopleHouse = () => {
                                 </div>
                             </div>
                         </div>
+                       </div>
                     </div>
                 </div>
             </div>
